@@ -1,0 +1,309 @@
+
+///
+// Optimaal Digitaal - 80-structure.less
+// ----------------------------------------------------------------------------------
+// breedtes en hoogtes en breakpoints
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.7.1
+// @desc.   Taxonomy, archives reviewed. Sharing icons restyled, pagination updated.
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+.footer-widgets, .site-footer {
+	margin: 0;
+    background-position: center top;
+    background-size: cover;
+    background-image: url('images/footer-320w@2x.png');
+    
+    .widget-wrap {
+	    padding: 0 ( 2 * @padding );
+	    
+	    h4, a, p, li {
+			color: @wit;
+			text-decoration: none;
+	    }
+    }
+}
+.site-footer {
+//    background-position: center bottom;
+}
+.footer-widgets {
+	margin-top: 2em;
+	padding-top: 80px;
+}
+
+.footer-widgets, .site-footer {
+
+	ul, li {
+		list-style-image: none;
+		list-style: none;
+		margin-left: 0;
+		padding-left: 0;
+		
+		widget-wrap
+		a {
+			color: @wit;
+			text-decoration: none;
+			
+			&:hover,
+			&:active,
+			&:focus {
+				color: @wit;
+				text-decoration: underline;
+			}
+		}
+	}
+	
+}
+
+
+
+#maincontent {
+	outline: none;
+}
+
+.site-inner {
+	overflow: hidden !important;
+}
+
+@helebreedte: 	480px;
+@kleurvlak: 	448px;
+@cardmargin:	16px;
+
+@restant: ( @helebreedte - @kleurvlak );
+@padding_perc_links: ( ( ( @restant / @helebreedte ) * 100% ) / 2 );
+
+@restant2: ( @helebreedte - ( @kleurvlak + ( 2 * @cardmargin ) ) );
+@padding_perc_rechts: ( ( ( @restant2 / @helebreedte ) * 100% ) / 2 );
+		
+
+.home, 
+.page-template-page_filter, 
+.post-type-archive-tips,
+.tax-tipthema {
+    main  {
+		.taxonomy-description,
+		.cardflex {
+			.content_margins(@cardmargin, @padding_perc_rechts, 0, @padding_perc_links);
+		}
+		#tab-panel-1 span, #tab-panel-2 span,
+		#filter_tips {
+			.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
+		}
+		#tabs_list {
+			margin-right: @padding_perc_links;
+			margin-left: @padding_perc_links;
+		}
+	}
+}
+
+
+.error404 .entry-title,
+.error404 .content,
+.search .content,
+.entry-content {
+	.content_margins(@cardmargin, @padding_perc_rechts, 0, @padding_perc_links);
+}
+
+
+//=========================================================================================================
+@media only screen and (max-width: ( @break_phone600 ) )  {
+  .title-area {
+    #nav-primary-button, .menu-button {
+      span.label {
+        visibility: hidden;
+        display: none;
+      }
+    }
+  }
+
+  #filter_tips,
+  #cardflex_tab1,
+  .tab-widget__list {
+    display: none;
+    visibility: hidden;			
+  }
+}
+  
+
+
+
+//=========================================================================================================
+@media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
+
+	@helebreedte: 		520px;
+	@kleurvlak: 		448px;
+
+	@restant: ( @helebreedte - @kleurvlak );
+	@padding_perc_links: ( ( ( @restant / @helebreedte ) * 100% ) / 2 );
+
+	@restant2: ( @helebreedte - ( @kleurvlak + ( 2 * @cardmargin ) ) );
+	@padding_perc_rechts: ( ( ( @restant2 / @helebreedte ) * 100% ) / 2 );
+		
+	.home, 
+	.page-template-page_filter, 
+	.post-type-archive-tips,
+	.tax-tipthema {
+	    main  {
+			.taxonomy-description,
+			.cardflex {
+				.content_margins(1em, @padding_perc_rechts, 0, @padding_perc_links);
+			}
+			#tab-panel-1 span, #tab-panel-2 span,
+			#filter_tips {
+				.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
+			}
+			#tabs_list {
+				margin-right: @padding_perc_links;
+				margin-left: @padding_perc_links;
+			}
+	    }
+	}    
+	.entry-content {
+		.content_margins(1em, @padding_perc_rechts, 0, @padding_perc_links);
+	}
+}
+
+//=========================================================================================================
+@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+
+	footer {
+		.visuallyhidden();
+	}
+
+	.content {
+		margin: 0 auto;
+	}
+
+	.home, 
+	.page-template-page_filter {
+		.content {
+			padding-left: 0;
+			
+			.entry-content {
+				margin: 0 ( 1 * @padding );
+			}
+		}
+	}
+
+	.footer-widgets {
+		.visuallyhidden();
+	}
+	
+
+    .site-inner {
+        padding-left: @padding;
+    }
+
+	@helebreedte: 		720px;
+	@kleurvlak: 		690px;
+
+	@restant: ( @helebreedte - @kleurvlak );
+	@padding_perc_links: ( ( ( @restant / @helebreedte ) * 100% ) / 2 );
+
+	@restant2: ( @helebreedte - ( @kleurvlak + ( 2 * @cardmargin ) ) );
+	@padding_perc_rechts: ( ( ( @restant2 / @helebreedte ) * 100% ) / 2 );
+		
+	.home, 
+	.page-template-page_filter, 
+	.post-type-archive-tips,
+	.tax-tipthema {
+	    main  {
+			.taxonomy-description,
+			.cardflex {
+				.content_margins(@cardmargin, @padding_perc_rechts, 0, @padding_perc_links);
+			}
+			#tab-panel-1 span, #tab-panel-2 span,
+			#filter_tips {
+				.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
+			}
+			#tabs_list {
+				margin-right: @padding_perc_links;
+				margin-left: @padding_perc_links;
+			}
+		}
+	}
+	.entry-content {
+		.content_margins(1em, @padding_perc_rechts, 0, @padding_perc_links);
+	}
+	
+}
+//=========================================================================================================
+
+@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+
+	@helebreedte:	1280px;
+	@kleurvlak:		1180px;
+	@cardmargin2:	18px;
+
+	@restant: ( @helebreedte - @kleurvlak );
+	@padding_perc_links: ( ( ( @restant / @helebreedte ) * 100% ) / 2 );
+
+	@restant2: ( @helebreedte - ( @kleurvlak + ( 2 * @cardmargin2 ) ) );
+	@padding_perc_rechts: ( ( ( @restant2 / @helebreedte ) * 100% ) / 2 );
+	
+	.home, 
+	.page-template-page_filter, 
+	.post-type-archive-tips,
+	.tax-tipthema {
+	    main  {
+			.taxonomy-description,
+			.cardflex {
+				.content_margins(@cardmargin2, @padding_perc_rechts, 0, @padding_perc_links);
+			}
+			#tab-panel-1 span, #tab-panel-2 span,
+			#filter_tips {
+				.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
+			}
+			#tabs_list {
+				margin-right: @padding_perc_links;
+				margin-left: @padding_perc_links;
+			}
+		}
+	}
+	.entry-content {
+		.content_margins(@cardmargin2, @padding_perc_rechts, 0, @padding_perc_links);
+	}
+}
+
+//=========================================================================================================
+@media only screen and (min-width: @break_fullwidth ) {
+
+	.single-tips {
+		
+		& .content {
+		    width: 900px;
+		    margin: 0 auto;
+		    float: none;
+		    padding: 0;
+		}	
+	}	
+	.site-container {
+		margin: 0 auto;
+		max-width: @max_width;
+	}
+
+    .content {
+    	padding: 0 ( 0 * @padding ) ( 2 * @padding ) ( 2 * @padding );
+    	margin-top: 0;
+    	margin-bottom: @padding;
+    	min-height: 650px;
+    }
+
+
+
+    body.page .content {
+    	padding-right: ( 2 * @padding );
+    }
+    
+}
+ 
+@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+	.site-header, .site-inner {
+		max-width: 	@max_width;
+	}
+}
+    

@@ -1,0 +1,112 @@
+
+///
+// Optimaal Digitaal - 55-tabs.less
+// ----------------------------------------------------------------------------------
+// voor de tabs op de filterpagina
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.5.20
+// @desc.   Caroussel voor tipkaarten op filterpagina
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+.tabs() {
+	
+	#tabs_list {
+		margin-top: 2em;
+		overflow: hidden;
+	}
+	
+	.tab-widget__list {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	}
+	
+	.tab-widget__item {
+	    display: inline;
+	}
+
+	.tab-widget__link {    
+    vertical-align: top;
+    white-space: nowrap;
+    background-color: @filter_form_bg;
+    color: @txt;
+    padding: .4em 1px 1.5em 1px;
+    text-decoration: none;
+    width: 50%;
+    display: inline-block;
+    float: left;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    
+    background: url(images/filter.png);
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    background-image: url('images/filter.png');
+    background-image: url('images/filter.svg'), none;
+		
+		&:hover,
+		&:active,
+		&:focus {
+      background-repeat: no-repeat;
+      background-image: url('images/filter-hover.png');
+      background-image: url('images/filter-hover.svg'), none;
+		}
+	}
+	
+	.tab-widget__link--active {
+		&,
+		&:hover,
+		&:active,
+		&:focus {
+
+			background-repeat: no-repeat;
+			background-image: url('images/filter-selected.png');
+			background-image: url('images/filter-selected.svg'), none;
+		    color: @active_color;
+		}
+	}
+	
+
+	.dojs {
+		p#tab-panel-1,
+		#tab-panel-1-h2 {
+			.visuallyhidden();
+		}
+	}
+
+	.tab-widget__tab-content {    
+		&:focus {
+		    outline: none;
+		}
+	}
+		
+
+	
+	@media only screen and (min-width: ( @break_phone600 ) )  {
+		.tab-widget__tab-content {    
+		    display: none;
+		}
+	}
+	
+	.tab-widget__tab-content--active,
+	.nojs .tab-widget__tab-content {
+	    display: block;
+	}
+	
+	.nojs .tab-widget__tab-content {
+		overflow: hidden;
+		clear: both;
+	}
+	
+	.nojs .tab-widget__list {
+		display: none;
+		visibility: hidden;
+	}
+}
+	

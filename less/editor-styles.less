@@ -1,0 +1,81 @@
+
+///
+// Optimaal Digitaal - editor-styles.less
+// ----------------------------------------------------------------------------------
+// Deze zorgt voor het CSS-bestand in de WYSIWYG-editor in de back-end
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.5.14
+// @desc.   LESS-bestanden voorzien van comments
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+@import "00-mixins.less";          /* colors, sizes */
+@import "20-fonts.less";             
+@import "30-textstyles.less";     /* font-styles, shared with admin editor-styles.less */
+
+* {
+    .basefont();
+}
+
+.textstyles();
+
+
+
+h2 {
+	.font-size( @fontsize_title_h3 );
+	text-transform: uppercase;
+    .bold-font();
+}
+
+@waarschuwing:				'Deze tekst bevat nog verkeerde opmaakcode. Selecteer de tekst en klik op de gum-knop om dit weg te halen';
+@waarschuwingh1:			'In de content mag geen H1 gebruikt worden. De H1 is gereserveerd voor de paginatitel.';
+@waarschuwingbold: 			'Deze tekst is vet. Als je een tussenkopje wil maken, gebruik dan h2, h3, h4. Vette tekst leidt erg af; van harte afgeraden.';
+@waarschuwingunderlined: 	'Onderstreepte tekst impliceert een link. Niet gebruiken, alsjeblieft.';
+
+h1 {
+    &:before {
+	    content: @waarschuwingh1;
+	    display: block;
+	    background: red;
+	    color: white;
+	    font-size: 1rem;
+    }
+}
+
+
+strong, b, span[style*="font"], span[style*="underline"], u {
+    background: red !important;
+    color: white !important;
+    padding: .4em 0;
+}
+strong, b {
+    font-weight: bold;
+}
+strong, b, span[style*="font"], span[style*="underline"], u  {
+    &:before { 
+        background: yellow url('images/opmaak-verwijderen.png') no-repeat .4em .4em !important;
+        content: @waarschuwing;
+        display: block;
+        padding: .4em .4em .4em 42px;
+        font-family: sans-serif;
+        font-size: 10px;
+        line-height: 16px;
+        width:  180px;
+        border: 1px solid black;
+        float: left;
+        color: black !important;
+    }
+}
+span[style*="font"]:before { 
+    content: @waarschuwing;
+}
+span[style*="underline"]:before, u:before {
+    content: @waarschuwingunderlined;
+}
+strong:before, b:before {
+    content: @waarschuwingbold;
+}

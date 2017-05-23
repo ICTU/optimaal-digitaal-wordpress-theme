@@ -1,0 +1,324 @@
+
+///
+// Optimaal Digitaal - 85-header-logo.less
+// ----------------------------------------------------------------------------------
+// styling voor header en logo
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.7.1
+// @desc.   Taxonomy, archives reviewed. Sharing icons restyled, pagination updated.
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+.header-logo() {
+  
+  
+  .site-header {
+    .title-area, .entry-title , .site-description {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }		    
+    .title-area {
+      background-image: url('images/header-320w@2x.png');
+      padding-top: 48px;
+      padding-left: 55px;
+    }		    
+  }
+  
+  .site-header .entry-title,
+  .site-header .title-area,
+  .home article {
+    background-position: center top;
+    background-size: cover;
+  }
+  
+  .site-header .entry-title,
+  .home article {
+    background-position: center top;
+    background-size: cover;
+    background-image: url('images/header-320w-slice@2x.png');
+    padding-top: 83px;
+    padding-bottom: 1rem;
+    
+    color: @wit;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-left: 32px;
+    padding-right: 32px;
+  }    
+  
+  .site-title, .site-description {
+    color: @wit;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+
+    &, a {
+      text-transform: uppercase;
+    }			    
+    a {
+      color: @wit;
+      text-decoration: none;
+      &:hover,
+      &:active,
+      &:focus {
+        color: @wit;
+      }
+    }
+  }
+  
+  
+  .site-title  {
+    font-family: @headerfont_italic;
+    font-size: 22px;
+  }
+  .site-description {
+    font-size: 12px;
+  }
+  
+  .archive,
+  .error404 {		
+    .site-header {
+      position: relative;
+      width: 100%;
+      padding-bottom: 147px;
+      float: none;
+      height: 0;
+      
+      .title-area {
+        background-image: url('images/header-320w-geen-bg@2x.png');
+        background-size: 100% 147px;
+        height: 147px;
+        background-repeat: no-repeat;
+        
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;			    
+      }
+    }
+  }
+  
+  .social-media {
+    li {
+      a {
+        background-image: url('images/icon-share.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+        display: block !important;
+        width: 2em;
+        height: 2em;
+        margin: 3px 3px 12px 3px;
+        
+        &.linkedin {
+          background-image: url('images/icon-linkedin.png');
+          .social_icon_hover_color('../images/icon-linkedin.svg', '#fff');
+
+          &:hover,
+          &:active,
+          &:focus {
+            .social_icon_hover_color('../images/icon-linkedin.svg', @txt );
+          }
+          
+        }
+        &.twitter {
+          background-image: url('images/icon-twitter.png');
+          .social_icon_hover_color('../images/icon-twitter.svg', '#fff');
+
+          &:hover,
+          &:active,
+          &:focus {
+            .social_icon_hover_color('../images/icon-twitter.svg', @txt );
+          }
+
+        }
+        &.mail {
+          background-image: url('images/icon-mail.png');
+          .social_icon_hover_color('../images/icon-mail.svg', '#fff');
+
+          &:hover,
+          &:active,
+          &:focus {
+            .social_icon_hover_color('../images/icon-mail.svg', @txt );
+          }
+
+        }
+        &.print {
+          background-image: url('images/icon-print.png');
+          .social_icon_hover_color('../images/icon-print.svg', '#fff');
+
+          &:hover,
+          &:active,
+          &:focus {
+            .social_icon_hover_color('../images/icon-print.svg', @txt );
+          }
+
+        }
+        
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: @wit;
+        }
+        
+      }
+    }
+    .share {
+      ul {
+//        visibility: hidden;
+      }
+    }
+  }
+  
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .site-header {
+      .title-area {
+        background-image: url('images/header-320w@2x.png');
+      }
+      .entry-title {
+        background-image: url('images/header-320w-slice@2x.png');
+      }
+    }
+  }
+  
+  @media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
+    
+    .site-header .entry-title,
+    .home article {
+      background-image: url('images/header-480w-slice@2x.png');
+    }
+    
+    .site-header {
+      .title-area {
+        background-image: url('images/header-480w@2x.png');
+      }
+    }
+    
+    
+    
+    .archive,
+      .error404 {		
+      .site-header {
+        padding-bottom: 220px;
+        .title-area {
+          background-image: url('images/header-480w-geen-bg@2x.png');
+          background-size: 100% 220px;
+          height: 220px;
+        }
+      }
+    }	
+    
+  .footer-widgets, .site-footer {
+    background-image: url('images/footer-480w@2x.png');
+    
+      .widget-wrap {
+        padding-left: ( 3 * @padding );				
+        padding-right: ( 3 * @padding );				
+      }
+    }
+  }
+  
+  @media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+    
+    .site-header {
+      .title-area {
+        background-image: url('images/header-720w@2x.png');
+      }		    
+    }
+
+    .site-header .entry-title,
+    .home article {
+      background-image: url('images/header-720w-slice@2x.png');
+    }
+    
+    .archive,
+    .error404 {		
+      .site-header {
+        padding-bottom: 189px;
+        .title-area {
+          background-image: url('images/header-720w-geen-bg@2x.png');
+          background-size: 100% 189px;
+          height: 189px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: ( @break_tablet + 1 ) ) {
+    
+    .site-header .entry-title,
+    .home article {
+      background-image: url('images/header-1280w-slice@2x.png');
+    }
+    
+    .site-header {
+      .title-area {
+        background-image: url('images/header-1280w@2x.png');
+      }
+    }
+    
+    .search .content,
+    .error404 .content,
+    .error404 .entry-title,
+    body.page article {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    
+    .search,
+    .archive,
+    .error404 {		
+    .entry-content {
+      margin-left: 0;	
+      margin-right: 0;	
+    }
+    
+    }
+    .archive,
+    .error404 {		
+      .site-header {
+        padding-bottom: 232px;
+        .title-area {
+          height: 232px;
+          background-image: url('images/header-1280w-geen-bg@2x.png');
+          background-size: 100% 232px;
+        }
+      }
+    }
+    
+    .site-title  {
+      font-size: 44px;
+    }
+    .site-description {
+      .setfont(@ubuntumedium, 17);
+    }
+
+    header.onderwerp {
+//      position: relative;
+      
+      h1 {
+//        margin-bottom: 2em;
+      }
+
+      .social-media {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+
+        li {
+          float: right !important;
+
+          a {
+            background-size: 75% 75%;
+          }
+        }
+      }
+    }
+  }
+}	

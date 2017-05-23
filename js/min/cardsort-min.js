@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){var e=$("#cardflex_tab1"),t=e.find("#cardflex_tab1");e.shuffle({itemSelector:".containstip",sizer:t})});

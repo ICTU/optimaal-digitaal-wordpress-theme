@@ -1,0 +1,145 @@
+
+///
+// Optimaal Digitaal - 60-sidebar-widgets.less
+// ----------------------------------------------------------------------------------
+// Widgets en zijbalk (if any)
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.5.14
+// @desc.   LESS-bestanden voorzien van comments
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+.sidebars() {
+		
+	/*
+	Sidebars
+	---------------------------------------------------------------------------------------------------- */
+	
+	.sidebar {
+		color: @txt;
+		.font-size( 15 );
+		background: @sidebarwidget;
+		color: @wit;
+	    padding: @headerheight @padding @padding @padding;
+	
+	
+	    a {
+	        color: @wit;
+	//        text-decoration: underline;
+	        
+	        &:hover {
+	            color: @wit;
+	        }
+	    }
+	    
+	    p:last-child {
+	    	margin-bottom: 0;
+	    }
+	
+	
+	    li {
+	        list-style-type: square;
+	    	word-wrap: break-word;
+	    }
+	
+	    ul > li:last-child {
+	    	margin-bottom: 0;
+	    }
+	
+	    .widget {
+	//    	background-color: @sidebarwidget;
+	//    	color: @wit;
+	    	margin: 0;
+	    	
+	        .widget-title {
+	//            background: @blauw;
+	            font-family: @bodyfont;
+	            color: @wit;
+	        }
+	        a {
+	            color: @wit;
+	        }
+	    	
+	    	article {
+	        	margin: @padding;
+	    	}
+	    }
+	}
+	.sidebar .enews-widget {
+		background-color: @wit;
+	}
+
+	
+	/*
+	Footer Widgets
+	---------------------------------------------------------------------------------------------------- */
+	
+	.footer-widgets {
+		color: @txt;
+		clear: both;
+		padding: 0;
+		.wrap {
+	    	background-color: @blauw3;
+	    	color: @wit;
+	    	
+	    	a {
+	        	color: @wit;
+	    	}
+		}
+	
+		.widget {
+	        margin: 0;
+		    overflow: hidden;
+		}
+		
+		.widgettitle {
+	    	padding-top: 0;
+		}
+	
+		ul.menu {
+		    overflow: hidden;
+	
+		    margin-left: ( 2 * @padding );
+		    padding-left: 0;
+		    
+		    li {
+	    	    display: inline-block;
+	    	    float: left;
+	    	    margin: 0 0 ( @padding / 2 ) @padding;
+		    }
+		    li + li {
+	    	    &:before {
+	        	    content: '|';
+	        	    display: inline-block;
+	        	    float: left;
+	        	    margin: 0 ( @padding / 1 ) 0 0;
+	    	    }
+		    }
+		    a {
+	    	    .font-size(14);
+	    	    font-weight: normal;
+	    	    text-decoration: none;
+	    	    text-transform: lowercase;
+		    }
+		}
+	
+	    .widget-title {
+	    	color: @wit;
+	    }
+	    
+	    li {
+	    	list-style-type: none;
+	    	margin-bottom: ( @padding / 2 );
+	    	word-wrap: break-word;
+	    }
+	    
+	    .search-form input:focus {
+	    	border: 1px solid @wit;
+	    }
+	}
+}
+

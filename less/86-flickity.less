@@ -1,0 +1,234 @@
+
+///
+// Optimaal Digitaal - 86-flickety.less
+// ----------------------------------------------------------------------------------
+// wordt niet gebruikt; wellicht in de toekomst weer
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.6.10
+// @desc.   Previous / next tip on single tip page. And click through to taxonomy page
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+
+@grootte: 95%;
+@pijlpadding: ( ( 100% - @grootte ) / 2 );
+@buttongrootte: 50px;
+
+@boxshadow: 			      2;    
+@boxshadow_opacity:     .4;    
+
+@boxshadow_color2: 		  rgba(@boxshadow,@boxshadow,@boxshadow, @boxshadow_opacity);    
+@boxshadow_color3: 		  rgba(0,0,0,0.75);    
+
+@boxshadowsize: 20px;
+
+
+.caroussel_styling() {	
+}
+.no_flickity() {	
+	
+	/*! Flickity v1.1.1
+	http://flickity.metafizzy.co
+	---------------------------------------------- */
+
+	.flickity-enabled {
+	  position: relative;
+
+    .containstip {
+    }	  
+	  
+	}
+
+	.flickity-viewport {
+	  overflow: hidden;
+	  position: relative;
+	  height: 100%;
+	  padding-left: @buttongrootte;
+  	min-height: 400px !important;
+	}
+	
+	.flickity-slider {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+/*  	  min-height: @cardheight; */
+	  
+	  .containstip {
+  	  a.tipkaart {
+    	  margin-bottom: 3em;
+    	  padding-bottom: 0;
+  	  }
+	  }
+	}
+	
+	/* draggable */
+	
+	.flickity-enabled.is-draggable {
+    tap-highlight-color: transparent;
+    user-select: none;
+
+    .flickity-viewport {
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+
+      &.is-pointer-down {
+        cursor: -webkit-grabbing;
+        cursor: grabbing;
+      }
+    }
+	}
+	
+
+	
+	/* ---- previous/next buttons ---- */
+	
+	.flickity-prev-next-button {
+	  position: absolute;
+//	  top: 50%;
+	  width: @buttongrootte;
+	  height: @buttongrootte;
+	  border: none;
+	  padding: 0;
+/*	  border-radius: 50%; */
+background: none;
+	  cursor: pointer;
+	  /* vertically center */
+//    transform: translateY(-50%);
+
+    min-height: @cardheight;
+    top: 0;
+    visibility: visible;
+    
+    &:hover, 
+    &:focus,
+    &:active {
+      filter: alpha(opacity=100); /* IE8 */
+      opacity: 1;
+      svg {
+        background: white; 
+      }
+    }
+
+    &.previous { 
+      left: 0; 
+      margin-right: 1em;
+
+      svg {
+//      	box-shadow: ( @boxshadowwidth ) @boxshadowwidth @boxshadowspread 0px @boxshadow_color2;
+
+
+          box-shadow: @boxshadowsize 0px 29px -11px @boxshadow_color2;
+//          border-radius: 0 4px 4px 0;
+      }
+    }
+    &.next { 
+      right: 0; 
+      margin-left: 1em;
+      svg {
+//      	box-shadow: ( @boxshadowwidth * -2 ) 0 @boxshadowspread 0px @boxshadow_color2;
+          box-shadow: ( -1 * @boxshadowsize ) 0px 29px -11px @boxshadow_color2;
+//          border-radius: 4px 0 0 4px;
+    	}
+    }
+    &:disabled {
+      filter: alpha(opacity=10); /* IE8 */
+      opacity: 0.1;
+      visibility: hidden;
+      cursor: auto;
+    }
+
+
+    svg {
+  		background: @light_gray;
+      position: absolute;
+      top: @pijlpadding;
+      bottom: @pijlpadding;
+      left: 0;
+      right: 0;
+      width: @grootte;
+      height: @grootte;
+    }
+
+    &.no-svg {
+      color: #333;
+      font-size: 26px;
+    }
+    
+	}
+	
+	
+	
+	
+
+	/* right to left */
+	.flickity-rtl {
+  	.flickity-prev-next-button.previous {
+  	  left: auto;
+  	  right: 10px;
+  	}
+    .flickity-prev-next-button.next {
+  	  right: auto;
+  	  left: 10px;
+  	}
+    .flickity-page-dots {
+      direction: rtl;
+    }
+	}
+	
+
+	
+		
+	
+	
+	/* ---- page dots ---- */
+	
+	.flickity-page-dots {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		text-align: center;
+		line-height: 1;
+
+    .dot {
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      margin: 0 8px 8px 8px;
+      background: @dark_gray;
+      border-radius: 50%;
+      
+      filter: alpha(opacity=25); /* IE8 */
+      cursor: pointer;
+    }	
+    .dot.is-selected {
+      filter: alpha(opacity=100); /* IE8 */
+      opacity: 1;
+      background: @wit;
+    }    
+	}
+
+	.inlinelinks a {
+		display: inline-block;
+
+		height: 24px;
+		width: 24px;
+
+		margin: 0 8px 24px 8px;
+		background: @dark_gray;
+		border-radius: 50%;
+		border: 4px solid @light_gray;
+		
+		span {
+			.visuallyhidden();
+		}
+	}
+}
+	

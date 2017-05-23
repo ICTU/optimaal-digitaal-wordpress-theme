@@ -1,0 +1,68 @@
+
+///
+// Optimaal Digitaal - 99-browserhacks.less
+// ----------------------------------------------------------------------------------
+// voor browsers met een uitdaging en voor wat uitzonderlijke gevallen
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.6.6
+// @desc.   Padding voor tip-caroussel. nojs gecorrigeerd.
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+noscript.dont-panic {
+	background: @wit url('images/geen-paniek.jpg') no-repeat left center;
+	background-size: contain;
+	padding: 1em 1em 1em 8em;
+	width: 100%;
+	max-height: 120px;
+	max-height: 5vh;
+	font-size: 12px;
+	font-size: 1vh;
+	line-height: 2.5;
+	display: block;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 9999;
+	box-shadow: -5px 0px 46px 0px rgba(@grijs,@grijs,@grijs,0.33),  -4px 0px 4px 0px rgba(@grijs,@grijs,@grijs,0.22);		
+	
+	&:before {
+		display: block;
+		content: 'Tip 42: Geen paniek';
+		font-weight: bold;
+		float: left;
+	}
+	&:after {
+		display: block;
+		content: ' Vergeet je handdoek niet.';
+		margin-left: 1em;
+		margin-right: 1em;
+		float: left;
+	}
+}
+
+/*
+==============================================================================================================
+*/
+.ie6, .ie7 {
+    
+    .content {
+    	width: ( @break_fullwidth - ( ( 4 * @gutter ) + @sidebar_width ) ) ;
+    }
+    .social-media {
+        .visuallyhidden();
+    }
+
+}
+
+.ie8, .ie7, .ie6 {
+    img {
+    	height: auto;
+    	width: auto; /* IE8 */
+    }
+}
+

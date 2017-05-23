@@ -1,0 +1,551 @@
+/*!
+Theme Name: Optimaal Digitaal (v2.7.3)
+Description: Optimaal Digitaal. (v2.7.3 Code clean-up home.php, functions.php)
+Author: Paul van Buuren
+Author URI: http://wbvb.nl/
+Version: 2.7.3
+Version description: 2.7.3 Code clean-up home.php, functions.php
+Template: genesis
+Template Version: 2.2.0
+
+License: GPL-2.0+
+License URI: http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+@versie_nummer: '2.7.3';
+@versie: 'versie @{versie_nummer}';
+
+/*
+Imports
+---------------------------------------------------------------------------------------------------- */
+
+@import "addenda-tips.less";
+
+@import "00-mixins.less";
+@import "10-resets.less";             
+@import "20-fonts.less";             
+@import "30-textstyles.less";
+@import "40-forms.less";
+@import "50-menu.less";
+@import "55-tabs.less";
+@import "60-sidebar-widgets.less";		// nu nog niets van gebruikt
+@import "70-pagetypes.less";
+@import "80-structure.less";
+@import "81-card-overview-page.less";
+@import "85-header-logo.less";
+@import "87-slick.less";
+@import "90-printstyles.less";
+@import "99-browserhacks.less";
+
+
+.setfonts();
+
+	#site-container {
+	overflow: hidden;
+}
+
+.resets();
+
+
+/* Float Clearing
+--------------------------------------------- */
+
+.archive-pagination:before,
+.clearfix:before,
+.entry:before,
+.entry-pagination:before,
+.footer-widgets:before,
+.nav-primary:before,
+.site-container:before,
+.site-footer:before,
+.site-header:before,
+.site-inner:before,
+.wrap:before {
+	content: " ";
+	display: table;
+}
+
+.archive-pagination:after,
+.clearfix:after,
+.entry:after,
+.entry-pagination:after,
+.footer-widgets:after,
+.nav-primary:after,
+.site-container:after,
+.site-footer:after,
+.site-header:after,
+.site-inner:after,
+.wrap:after {
+	clear: both;
+	content: " ";
+	display: table;
+}
+
+/*
+Defaults
+---------------------------------------------------------------------------------------------------- */
+
+/* Typographical Elements
+--------------------------------------------- */
+
+html {
+	font-size: 62.5%; /* 10px browser default */
+}
+
+/* Chrome fix http://surefirewebservices.com/development/genesis-framework/genesis-rem-chrome-font-size-bug */
+/*
+body > div { font-size: 1.6rem; }
+*/
+
+body {
+	background-color: @bodybgcolor;
+    .basefont();
+}
+
+::-moz-selection {
+	background-color: #333;
+	color: @wit;
+}
+
+.screen-reader-text {
+    .visuallyhidden();
+}
+
+body.nojs {
+	padding-bottom: 200px;
+}
+
+
+/* Text styles, shared with admin CSS
+--------------------------------------------- */
+
+.textstyles();
+
+
+/* Objects
+--------------------------------------------- */
+
+embed,
+iframe,
+img,
+object,
+video,
+.wp-caption {
+	max-width: 100%;
+}
+
+
+/* Titles
+--------------------------------------------- */
+
+.archive .entry-title {
+    padding: 0 0 .3em 0;
+}
+
+
+
+
+.entry-title {
+    a {
+    	color: @txt;
+    	border: none;
+
+        &:hover {
+        	color: @a_hover;
+        }
+    }
+}
+
+
+/*
+Widgets
+---------------------------------------------------------------------------------------------------- */
+
+
+
+/*
+Content Area
+---------------------------------------------------------------------------------------------------- */
+
+/* Entries
+--------------------------------------------- */
+
+.entry + .entry {
+	padding-top: @padding;
+}
+
+
+.entry-content {
+
+    a {
+    	color: @a-content-color;
+    	&:hover, &:active, &:focus {
+        	color: @a-content-hover-color;
+    	}
+    }
+    h1, h2, h3, h4, h5, h6 {
+        a {
+            color: @txt;
+            text-decoration: underline;      
+        }
+    } 
+    li {
+        margin-bottom: .5em;
+    }   
+    ul li {
+        list-style: square;
+        overflow: visible;
+    }
+    
+
+    .attachment a,
+    .gallery a {
+    	border: none;
+    }
+    
+    ol,
+    p,
+    ul,
+    .quote-caption {
+    	margin-bottom: @contentpadding;
+    }
+    
+    ol,
+    ul {
+    	margin-left: @padding;
+    	padding-left: @padding;
+    }
+    
+    ol li {
+    	list-style-type: decimal;
+    }
+    
+    
+    ol ol,
+    ul ul {
+    	margin-bottom: 0;
+    }
+    
+    .search-form {
+    	width: 50%;
+    }
+    
+}
+
+
+
+
+.entry-meta {
+	color: @meta_color;
+	.font-size(14);
+	line-height: 1.4;
+
+    a {
+    	color: @meta_color;
+    }
+    a:hover {
+    	color: @a-content-hover-color;
+    }
+}
+
+.entry-header .entry-meta {
+	margin-bottom: @padding;
+}
+.entry-header + .entry-content {
+    clear: both;
+}
+
+.entry-footer .entry-meta {
+	margin: 0;
+	padding: @padding 0 0 0;
+}
+
+.entry-comments-link::before {
+	content: "\2014";
+	margin: 0 6px 0 2px;
+}
+
+.entry-categories,
+.entry-tags {
+	display: block;
+}
+
+/* Pagination
+--------------------------------------------- */
+
+.archive-pagination,
+.entry-pagination {
+	.font-size(14);
+	margin: @gutter 0;
+
+  li {
+  	display: inline;
+
+    a {
+    	border: 2px solid @txt;
+    	color: @txt;
+    	cursor: pointer;
+    	display: inline-block;
+    	padding: ( @padding / 2) @padding;
+    	text-decoration: none;
+    }
+    
+    a:hover,
+    a:active,
+    a:focus,
+    &.active a {
+    	border-color: @a_hover;
+    	background-color: @a_hover;
+    	color: @wit;
+    	font-weight: bold;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+    	text-decoration: underline;
+    }
+  	
+  }
+
+}
+
+
+
+
+
+
+
+
+/*
+Site Footer
+---------------------------------------------------------------------------------------------------- */
+
+.site-footer {
+	color: @wit;
+	.font-size(14);
+	padding: @padding 0;
+}
+
+.site-footer a {
+//	text-decoration: underline;
+}
+.site-footer a:hover {
+//	text-decoration: none;
+}
+
+.site-footer p {
+	margin-bottom: 0;
+}
+
+/*
+Accessibility Extras
+---------------------------------------------------------------------------------------------------- */
+
+
+/* Hide visually but not from screen readers and keyboard users */
+.screen-reader-text,
+.screen-reader-text span,
+.search-form label {
+	position: absolute;
+	left: -1000em;
+	top: -1000em;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-shortcut {
+	position: absolute;
+	top: -1000em;
+	.boxshadow();
+}
+
+.screen-reader-shortcut:focus {
+	left: 1em;
+	top: 1em;
+	height: auto;
+	width: auto;
+	display: block;
+	.font-size(16);
+    .bold-font();
+	padding: 15px 23px 14px;
+	background: @wit;
+	color: @txt;
+	z-index: 100000;
+	line-height: normal;
+	text-decoration: none;
+	.boxshadow_hover();
+}
+
+
+.wpacc-genesis-skip-link li {
+	height: 0;
+	width: 0;
+	list-style: none;
+
+}
+/* Display search button */
+.search-form {
+    input[type="submit"], 
+    input[type="search"], 
+    input[type="text"] {
+    	width: auto;
+        -webkit-appearance: none;	
+    	margin-right: -2px;
+    }
+}
+
+input[type="search"], 
+input[type="text"] {
+    &:focus {
+        border-width: 2px;    
+    }
+}
+
+
+.site-inner {
+    padding: 0;
+}
+
+/*
+Styling voor header en logo
+---------------------------------------------------------------------------------------------------- */
+
+.header-logo(); // afkomstig van 85-header-logo.less
+
+.writeforms();
+
+.off-canvas-menu();
+
+//.altmenu();  // alternatief voor off-canvas-menu
+
+.pagetypes();
+
+.contactform7();
+
+.caroussel_styling();
+
+.tabs(); 
+
+.card-overview();
+
+.printstyles();
+
+//.debugstyles();
+
+.skiplinks();
+
+.debugstyles() {
+	
+	
+	body {
+		&:before {
+			display: block;
+			float: none;
+			background: yellow;
+			color: black;
+			border: 1px solid black;
+			padding: .5em 1em;
+			width: 80%;
+			margin: 0 auto;
+			text-align: center;
+		}	
+	}
+	
+	
+	
+	@media only screen and (max-width: ( @break_phone480 ) ) {
+		body {
+			&:before {
+				content: 'AFGEKAPT @{break_phone480_desing}: kleiner dan @{break_phone480}, dus afgekapt design voor @{break_phone480_desing}';
+			}		
+		}	
+	}
+	
+	@media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
+		body {
+			&:before {
+				content: 'RUIM @{break_phone480_desing}: kleiner dan @{break_phone600}, groter dan @{break_phone480}, dus design voor @{break_phone480_desing}';
+			}		
+		}	
+	}
+	
+	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+		body {
+			&:before {
+				content: 'TABLET @{break_tablet_desing}: groter dan @{@break_phone600} maar kleiner dan @{break_tablet}, dus design voor @{break_tablet_desing}';
+			}		
+		}	
+	}	
+	
+	@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+		body {
+			&:before {
+				content: 'DESKTOP @{break_fullwidth_desing}: groter dan @{break_tablet} dus design voor @{break_fullwidth_desing}, max breedte: @{max_width}';
+			}		
+		}	
+	}
+}
+
+.fail-message {
+	visibility: hidden;
+	display: none;	
+}
+
+.fail {
+	overflow: hidden;
+	
+	.fail-message {
+		visibility: visible;
+		display: block;
+	}
+}
+
+.skiplinks() {
+	
+    
+	ul#skiplinks, ul#skiplinks li {
+	    list-style-type: none;
+	    list-style-image: none;
+	    padding: 0;
+	    margin: 0;
+	}
+	ul#skiplinks li {
+	    background: none;
+	}
+	#skiplinks li a {
+	    position: absolute;
+	    top: -1000px;
+	    left: 50px;
+	}
+	#wpadminbar .screen-reader-shortcut:focus, 
+	#skiplinks li a:focus {
+	
+	
+	    left: 6px;
+	    top: 7px;
+	    height: auto;
+	    width: auto;
+	    display: block;
+	    font-size: 14px;
+	    font-weight: 700;
+	    padding: 15px 23px 14px;
+	    background: #fff;
+	    color: #000;
+	    z-index: 100000;
+	    line-height: normal;
+	    text-decoration: none;
+	    -webkit-box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+	    box-shadow: 0 0 2px 2px rgba(0,0,0,.6)
+	}
+	
+		
+	#zoeken:focus label {
+	    position: relative;
+	    left: 0;
+	    top: 0;
+	}
+}
+	

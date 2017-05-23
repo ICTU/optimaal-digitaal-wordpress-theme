@@ -1,0 +1,328 @@
+
+///
+// Optimaal Digitaal - 81-card-overview-page.less
+// ----------------------------------------------------------------------------------
+// styling voor die verduiveld lastige overview pagina
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.6.10
+// @desc.   Previous / next tip on single tip page. And click through to taxonomy page
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+@cardminmargin:       20px;
+@cardgrow:            12px;
+
+@card_margin_top:     12px;
+@card_margin_bottom:  @card_margin_top;
+@card_margin_left:    ( 1 * @padding );
+@card_margin_right:   @card_margin_left;
+
+@aantalcards:         5;
+
+@cardwidth:				   120px;
+@cardheight:			   320px;
+
+@boxshadowwidth: 		 2px;
+@boxshadowspread:     10px;
+
+
+.card-overview() {
+  
+  
+	.tipkaart {
+
+		width: 220px;
+		min-height: @cardheight;
+		margin: 0 1em 1em 0;
+		position: relative;
+		text-align: center;
+
+	    text-decoration: none;
+	    display: block;
+	    overflow: hidden;
+	    padding-bottom: @padding;
+	    		
+    .inner {
+      overflow: hidden;
+      min-height: @cardheight;
+      padding-bottom: 100px;			
+    }
+	
+		h3 {
+			font-size: 22px;
+			margin-top: 0;
+			padding-top: 0;
+			white-space: normal;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+
+		.tipnummer {
+			display: block;
+			text-align: center;
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+	
+		.contentinfo {
+	
+			font-size: 13px;
+			height: 100px;			
+			
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			min-height: 100px;
+			padding-top: ( @padding * 3 );
+	        background: transparent url('images/default.png') no-repeat;
+	        background-position: center top;
+		    .iconaddfill('../images/default.svg', '#fff');
+		    background-size: 80%;
+		    min-height: 0;
+		    text-transform: uppercase;
+	
+		    span {
+			    display: block;
+			    position: absolute;
+			    bottom: @padding;
+			    width: 100%;
+			    text-align: center;
+			    line-height: 1;
+			    padding: 0 @padding;
+		    }
+		    
+			&:after {
+				content: 'nog geen stijl ingesteld voor dit thema';
+				font-size: 1rem;
+				display: block;
+			}
+	
+		}
+	
+		&.check .contentinfo {
+		    .iconaddfill('../images/check.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-digitaaloporde .contentinfo {
+		    .iconaddfill('../images/icon-digitaaloporde-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-goedproces .contentinfo {
+		    .iconaddfill('../images/icon-goedproces-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-deelenwerksamen .contentinfo {
+		    .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-kanaalsturing .contentinfo {
+		    .iconaddfill('../images/icon-kanaalsturing-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-interndraagvlak .contentinfo {
+		    .iconaddfill('../images/icon-interndraagvlak-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+	
+		&:hover,&:focus,&:active {
+			color: @wit !important;
+			.boxshadow_hover();
+			text-decoration: none;
+		}
+	}
+
+  .containstip.slick-current a {
+			color: @wit !important;
+			.boxshadow_hover();
+			text-decoration: none;
+  }
+
+
+
+	.cardflex {
+		.containstip {
+			float: left;
+			
+			a {
+				width: 90%; /* fallback if needed */
+				width: ~"calc(100% - 1em)";
+			}
+		}
+		.containstip[data-bound] {
+			display: none;
+		}
+	}
+
+	.cardgallery {
+		background: @light_gray;
+		padding-left: 2em;
+		border-top: 3px solid @txt;
+		margin-top: 2em;
+		overflow: hidden;
+		
+		p {
+			color: lighten(@txt, 50%);
+			font-size: 120%;
+			padding-right: 1em; /* HOOOOIII Trevor!!1! */
+			line-height: 1.4;
+		}
+		h2 {
+			text-transform: none;
+		}
+
+		nav {
+			a {
+			    width: 15px;
+			    height: 15px;
+			    font-size: 0;
+			    border-radius: 50%;
+			    background: #ccc;
+			    display: inline-block;
+			    border: 3px solid #e6e6e6;
+				box-sizing:content-box;
+			}
+			a + a {
+			    margin-left: 10px;
+			}
+			li + li {
+				margin-left: 1.5em;
+			}
+			li, a, ul {
+				display: inline-block;
+				float: left;
+			}
+		}
+		.rolcontainer {
+		    width: 100%;
+			overflow-x: scroll;		    
+		    padding: 0;
+		    
+		    div {
+			    display: block;
+			    white-space: nowrap;
+		    }
+
+			.scrollbaar {
+				
+				.tipkaart {
+					height: 320px;
+					width: 220px;
+					display: inline-block;
+				    white-space: normal;
+				    clear: none;
+				    vertical-align: top;
+				}
+
+
+				.containstip {
+					display: inline-block;
+				}
+				
+			}
+		}
+		.rolcontainer::-webkit-scrollbar {
+		    display: block;
+		}
+	}
+
+	.tipsstyling(type-tips,@defaultkaarkleur, @defaultkaarkleur_sub, @defaultkaarkleur_sub);
+	.tipsstyling(oranje,@oranje,@oranje_sub, @oranje_sub);
+	.tipsstyling(groen,@groen, @groen_sub, @groen_sub);
+	.tipsstyling(paars,@paars,@paars_sub, @paars_sub);
+	.tipsstyling(blauw,@blauw, @blauw_sub, @blauw_sub);
+	.tipsstyling(turquoise,@turquoise, @turquoise_sub, @turquoise_sub);
+	
+	
+	.archive.tax-tiporganisatie,
+	.archive.tax-tipvraag,
+	.archive.tax-tipthema {
+  	#cardflex {
+    	.containstip {
+      	display: inline-block;
+      	float: left;
+    	}
+  	}
+	}
+	
+	
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
+		// groter dan 480, kleiner dan 600
+
+	}
+
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+		// groter dan 600
+
+		.cardflex {
+//		.rolcontainer .scrollbaar {
+			.containstip {
+				width: 33%;
+				
+				a {
+					width: 90%; /* fallback if needed */
+					width: ~"calc(100% - 1em)";
+				}
+			}
+		}
+	}
+		
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+
+		.cardflex {
+//		.rolcontainer .scrollbaar {
+			.containstip {
+				width: 25%;
+				
+				a {
+					width: 90%; /* fallback if needed */
+					width: ~"calc(100% - 1em)";
+				}
+			}
+		}
+	}
+
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_fullwidth) ) {
+		.cardflex {
+//		.rolcontainer .scrollbaar {
+			.containstip {
+				width: 20%;
+				
+				a {
+					width: 90%; /* fallback if needed */
+					width: ~"calc(100% - 1em)";
+				}
+			}
+		}
+	}
+
+	//=========================================================================================================
+	
+}
+

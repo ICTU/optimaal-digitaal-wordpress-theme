@@ -1,0 +1,214 @@
+
+///
+// Optimaal Digitaal - 87-slick.less
+// ----------------------------------------------------------------------------------
+// Styling voor slick caroussel
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.6.10
+// @desc.   Previous / next tip on single tip page. And click through to taxonomy page
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+@grootbuttonmetcirkel:   36px;
+@buttonpijltje:         50px;
+
+@boxshadow_color2: 		  rgba(@boxshadow,@boxshadow,@boxshadow, @boxshadow_opacity);    
+@boxshadow_color3: 		  rgba(0,0,0,0.75);    
+
+//@boxshadow_color2: @boxshadow_color3;
+
+@borderwidth:           3px;
+@cirkelgrootte:         16px;
+@boxshadowsize:         20px;
+
+@grootte:               90%;
+@pijlpadding:           ( ( 100% - @grootte ) / 2 );
+
+/* Slider */
+
+.no_slickslider() {	
+}
+.caroussel_styling() {	
+  
+
+  
+  .slick-slider {
+      position: relative; 
+      display: block;
+      box-sizing: border-box;
+      -webkit-touch-callout: none;
+      user-select: none;
+      touch-action: pan-y;
+      -webkit-tap-highlight-color: transparent;
+      
+      padding-left: ( @buttonpijltje - 0 );
+      padding-right: ( @buttonpijltje - 0 );
+
+      .slick-arrow {
+        position: absolute;
+        top: @pijlpadding;
+        height: ( @grootte - ( @pijlpadding * 2 ) );
+        width: @buttonpijltje;
+        background-color: @light_gray;
+        background-image: url('images/icon-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: 18px center;
+        text-indent: 999em;
+        z-index: 9999;
+        display: block;
+        padding: 0;
+
+      }
+      
+      .slick-prev {
+        left: 0;
+        transform: rotate(180deg);
+        box-shadow: ( -1 * @boxshadowsize ) 0px 29px -11px @boxshadow_color2;
+
+      }
+      .slick-next {
+        right: 0;
+        box-shadow: ( -1 * @boxshadowsize ) 0px 29px -11px @boxshadow_color2;
+      }
+
+  	  .containstip {
+    	  a.tipkaart {
+      	  padding-bottom: 0;
+    	  }
+  	  }
+  	  
+  	  .slick-disabled {
+    	  opacity: .2;
+    	  visibility: hidden;
+    	  display: none;
+  	  }
+
+
+    .slick-dots {
+      li {
+        display: inline;
+        float: left;
+        list-style: none;
+        margin: .5em;
+      }
+    
+    	button {
+      	text-indent: 9999em;
+      	width: @grootbuttonmetcirkel;
+      	height: @grootbuttonmetcirkel;
+      	display: block;
+      	padding: 0;
+      	margin: 0;
+      	position: relative;
+      	background: none;
+      	border-radius: 50%;
+
+      	
+      	&:after {
+    	    box-sizing: content-box;
+        	border-radius: 50%;
+        	position: absolute;
+        	left: ( ( @grootbuttonmetcirkel - ( @cirkelgrootte + @borderwidth ) ) / 2 );
+        	top: ( ( @grootbuttonmetcirkel - ( @cirkelgrootte + @borderwidth ) ) / 2 );
+        	border: @borderwidth solid grey;
+        	content: ' ';
+        	display: block;
+        	height: @cirkelgrootte;
+        	width: @cirkelgrootte;
+      	}
+    	}
+    }
+  }
+  
+  .slick-list {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      margin: 0;
+      padding: 0;
+  
+      &.dragging {
+          cursor: pointer;
+          cursor: hand;
+      }
+  }
+  .slick-slider .slick-track,
+  .slick-slider .slick-list {
+      transform: translate3d(0, 0, 0);
+  }
+  
+  .slick-track {
+      position: relative;
+      left: 0;
+      top: 0;
+      display: block;
+  
+      &:before,
+      &:after {
+          content: "";
+          display: table;
+      }
+  
+      &:after {
+          clear: both;
+      }
+  
+      .slick-loading & {
+          visibility: hidden;
+      }
+  }
+  .slick-slide {
+      float: left;
+      height: 100%;
+      min-height: 1px;
+      [dir="rtl"] & {
+          float: right;
+      }
+      img {
+          display: block;
+      }
+      &.slick-loading img {
+          display: none;
+      }
+  
+      display: none;
+  
+      &.dragging img {
+          pointer-events: none;
+      }
+  
+      .slick-initialized & {
+          display: block;
+      }
+  
+      .slick-loading & {
+          visibility: hidden;
+      }
+  
+      .slick-vertical & {
+          display: block;
+          height: auto;
+          border: 1px solid transparent;
+      }
+  }
+  .slick-arrow.slick-hidden {
+      display: none;
+  }
+
+  @media only screen and (max-width: ( @break_phone600 ) ) {
+    .slick-slider {
+      padding-left: ( 20px);
+      padding-right: ( 20px );
+
+      .slick-arrow {
+        height: 60px;
+        bottom: 30px;
+        top: auto;
+      }
+    }
+  }
+}

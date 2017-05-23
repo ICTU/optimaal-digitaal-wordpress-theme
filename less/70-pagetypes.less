@@ -1,0 +1,998 @@
+
+///
+// Optimaal Digitaal - 70-paginatypes.less
+// ----------------------------------------------------------------------------------
+// styling voor aparte paginatypes
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.6.10
+// @desc.   Previous / next tip on single tip page. And click through to taxonomy page
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+@sectionpadding:          60px;
+@maxbordershadow:         10px;
+@borderwithflex:          1px;
+@dinges:                  ( -1 * ( @borderwithflex / 1) );
+@bglabelflex:             white;
+@bgchildlabelflex:        white;
+@buttonmenuwidth:         24%;
+@margintopblock:          @padding;
+
+
+.marge_top() {
+	margin-top: @margintopblock;
+}
+.marge_top_skip() {
+	margin-top: 0;
+}
+
+
+.pagetypes() {
+
+
+	.page-template-page_filter,
+	.post-type-archive-tips,
+	.tax-tipthema,
+	.single-tips {
+	
+		& .content {
+		    margin: 0 auto;
+		    float: none;
+		    padding: 0;
+		}	
+
+    nav#backlink {
+      max-width: @singletip_width;
+      margin: 0 auto;
+      display: block;
+      float: none;
+      clear: both;
+      overflow: hidden;
+      
+      a, .search-form {
+        float: left;
+        display: inline-block;
+      }
+      .search-form {
+        width: @backlink_search_width;
+      }
+      a {
+        text-decoration: none;
+        .setfont(@ubuntumedium, 14);
+        text-transform: uppercase;
+        height: 36px;
+        line-height: 2.5;
+        width: @backlink_anchor_width;
+        
+        &:hover, &:active, &:focus {
+          text-decoration: underline;
+        }    
+      }
+    }
+	
+
+    @media only screen and (min-width: ( @break_phone600 ) ) {
+      .halfwidth {
+        float: right;
+        margin-left: @padding;
+        display: inline-block;
+        max-width: 50%;
+      }
+      .halfwidth.links {
+        float: left;
+        margin-left: 0;
+        margin-right: @padding;
+      }
+    }
+	    
+    main {
+      section {
+        overflow: hidden;
+        float: none;
+        clear: both;
+        background: @wit; 
+
+        blockquote {
+          margin: 0;
+          p {
+            padding: 0;
+          }
+          &:before {
+            content: '';
+            display: none;
+            visibility: hidden;
+          }
+        }
+        h2, h3, h4, h5, h6 {
+          padding-top: 0;
+        }
+      }
+      section section {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+	
+
+    main .onderwerp {
+        background: @blauw3;
+        padding: @padding 0 0 0;
+        overflow: hidden;
+
+        *, a {
+            color: @wit;
+        }
+
+        h1 {
+	        text-align: center;
+        }
+        ul {
+            margin: 0 auto;
+            padding: 0;
+            display: table;
+
+            li {
+                float: left;
+                display: inline-block;
+    
+                a {
+                    color: @wit;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    
+
+    main .suggestie {
+
+	    div.textbox {
+		    display: inline-block;
+		    float: left;
+		    width: 50%;
+		    margin-right: 0;
+		    
+		    &.left {
+		        padding-left: ( 4 * @padding );
+		        padding-right: @padding;
+		    }
+		    &.right {
+		        padding-right: ( 4 * @padding );
+		    }
+	    }
+    }
+	}   
+
+	.single-tips {
+
+		.setfont(@osansregular, 20);
+
+		h1 {
+			.setfont(@ubuntumedium, 32);
+			text-transform: none;
+            margin: 0;
+            padding: @padding 0;
+            line-height: 1;
+		}
+
+		h2 {
+			.setfont(@ubunturegular, 32);
+			text-transform: none;
+			font-weight: normal;
+		}
+
+		.goedevoorbeelden,
+		.onderzoek,
+		.suggestie,
+		.pagination,
+		.nuttigelinks {
+			h2 {
+				border-bottom: 1px solid @txt;
+				margin-bottom: .5em;
+			}
+		}
+
+    .pagination {
+      ul {
+        display: block;
+        float: none;
+        clear: both;
+        margin-top: 1em;
+        padding-top: 1em;
+      }
+      a {
+        text-decoration: none;
+        
+        strong {
+          display: block;
+          font-family: @headerfont_bold;
+          text-transform: uppercase;
+          clear: both;
+          float: none;
+        }
+      }
+      
+      .pagination-previous,
+      .pagination-next {
+        a {
+          background-repeat: no-repeat;
+          display: block;
+        }
+      }  		
+      .pagination-previous {
+        a {
+          background-image: url('images/arrow-halfwidth-left.png');			
+          .iconaddfill4('../images/arrow-halfwidth-left.svg', black);
+          background-position: left center;
+          padding-left: 35px;
+          
+          &:hover,
+          &:active,
+          &:focus {
+            .iconaddfill4('../images/arrow-halfwidth-left.svg', @active_color);
+          }        
+        }
+      }
+
+      .pagination-next {
+        a {
+          background-image: url('images/arrow-halfwidth-right.png');			
+          .iconaddfill4('../images/arrow-halfwidth-right.svg', black);
+          
+          background-position: right center;
+          padding-right: 35px;
+          &:hover,
+          &:active,
+          &:focus {
+            .iconaddfill4('../images/arrow-halfwidth-right.svg', @active_color);
+          }        
+        }
+      }
+    }
+		
+		section {
+			margin-bottom: ( @sectionpadding / 2 );
+			&#inleiding, 
+			&.goedevoorbeelden, 
+			&.contactformulierjump,
+			&.nuttigelinks,
+			&.pagination,
+			&.suggestie,
+			&.onderzoek {
+				padding: 0 1em;
+			}
+			&.waaromwerktdit {
+				margin: 0 1em;
+			}
+		}
+		section section {
+			margin-bottom: 0;
+		}		
+
+		h3 {
+			.setfont(@ubunturegular, 24);
+        }
+		
+		article.entry {
+			background: @wit;
+			margin: 0 1em 1em 1em;
+			box-shadow: 1px 0px 5px 2px @boxshadow_color;
+		}
+	
+		#maincontent {
+			outline: none;
+		}
+	
+	
+    .goedvoorbeeld,
+    .opsomming {
+      div {
+        float: left;
+      }
+    }
+
+    #inleiding h2 {
+			// stom design
+			.visuallyhidden();		    
+    }
+	
+    #inleiding,
+    .goedvoorbeeld,
+    .opsomming {
+		    img {
+		        border: 1px solid @border-color;
+		        margin-top: ( @padding / 2 );
+		    }
+	    }
+
+		.opsomming {
+  		float: none;
+  		clear: both;
+  		overflow: hidden;
+		    img {
+		        margin-right: 12px;
+		    }
+	    }
+	
+  
+  .goedvoorbeeld + .goedvoorbeeld {
+    .marge_top();
+  }
+
+	    .goedvoorbeeld {
+
+			
+			.setfont(@osansregular, 18);
+
+			h2 {
+				.setfont(@ubunturegular, 32);
+			}
+			
+			h3 {
+				.setfont(@ubuntumedium, 24);
+			}
+			
+		    img {
+			    margin-right: 1em;
+			    float: left;
+		    }
+		    
+	
+		    &.rechts {
+			    
+			    img {
+				    float: right;
+				    margin-right: 0;
+				    margin-left: 1em;
+			    }
+		    }
+	    }
+
+	
+	    .hasboxshadow {
+			background-color: @nuttigelinks_bg;       
+
+			.boxshadow();
+
+	        padding: @padding;
+		    text-decoration: none;
+		    display: block;
+		    overflow: hidden;
+		    
+			&:hover,&:focus,&:active {
+			    text-decoration: none;
+			    background-color: @nuttigelinks_bg_hover;
+
+				.boxshadow_hover();
+				
+		    }
+		    a {
+				&:hover,&:focus,&:active {
+				    color: @txt;
+			    }
+		    }
+	    }
+	
+		.nuttigelinks {
+			section + section {
+				.marge_top();
+			}			
+		}
+      
+    .nuttigelink, .jumptosuggestie {
+
+      .setfont(@osansregular, 18);
+      
+      h2 {
+        .setfont(@osansregular, 24);
+      }
+
+      div.folder,
+      div.document {
+      }
+      div {
+        content: ' ';
+        background-image: url('images/default.png');
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        background-size: @klikicoon_klein_height @klikicoon_klein_width;
+        padding-bottom: ( @klikicoon_klein_width + ( 1 *  @padding ) ); 
+        min-width: @klikicoon_klein_width;
+        min-height: @klikicoon_klein_height;
+        display: inline-block;
+        float: left;
+        
+        div {
+          background: none;
+          background-image: none !important;
+          padding: 0;
+          margin: 0;
+          float: none;
+          clear: none;
+          display: inline;
+          min-height: 0;
+          min-width: 0;
+        }
+      }
+      
+      span.cta {
+        text-decoration: underline;
+      }
+    }
+	
+		.opsomming {
+			
+			div {
+				.setfont(@ubuntuitalic, 20);
+//				margin-right: @padding;
+			}
+			h2 {
+				line-height: 1;
+				.setfont(@ubuntuitalic, 28);
+			}
+			ul {
+				padding-left: 1.2em;
+				display: block;
+			}
+		}
+	
+		.waaromwerktdit {
+			p {
+				margin: 0;
+			}
+			p + p {
+				margin-top: @padding;
+			}
+			.setfont(@osansregular, 18);
+			h2 {
+				.setfont(@ubuntumedium, 24);
+			}
+		}
+	
+		.onderzoek {
+			.setfont(@osansregular, 18);
+			
+			.cijfers {
+				border-top: @borderwithflex solid @border-color;
+			}
+	
+			.conclusie {
+				overflow: hidden;
+				clear: both;
+				float: none;
+				margin-top: 1em;
+				padding: @padding;
+	
+				border: 1px solid @border-color;
+	
+				h3 {
+					margin: 0;
+					padding: 0;
+				}
+			}
+
+			div#cijfers {
+		        p.onderzoekvraag {
+					.setfont(@ubuntubold, 18);
+					
+					.cijfers {
+						border: @borderwithflex solid @border-color;
+					}
+					
+					.cijfer {
+						.setfont(@ubuntubold, 72);
+					}
+					.antwoord {
+						.setfont(@ubuntubold, 24);
+					}
+				}
+			}
+		}
+	
+		p.onderzoekvraag {
+      text-transform: uppercase;
+      font-family: @headerfont_bold;
+      padding-right: 0;
+	
+			span {
+				display: block;
+			}
+			.cijfers {
+				padding: @padding;
+			}
+	
+			.vraag {
+				font-size: 12px;
+				line-height: 1.2;
+				padding-bottom: 1em;
+				background: @bglabelflex;
+				margin-top: @dinges;
+				margin-left: @dinges;
+				margin-right: @dinges;
+			}
+			.antwoord {
+				font-size: 12px;
+			}
+			.cijfer {
+				font-size: 36px;
+			} 
+			.cijfer, 
+			.antwoord {
+				text-align: center;
+			}
+		}
+		
+		.suggestie {
+			
+			form {
+				padding: @padding ( 2 * @padding );
+				background: @nuttigelinks_bg_hover;
+				overflow: hidden;
+				
+				.naam,
+				.e-mail,
+				.suggestie,
+				.sendcopy {
+  				padding-top: .3em;
+				}
+
+				input[type="text"],
+				input[type="email"],
+				textarea {
+					border: 1px solid @border-color
+				}
+				div.sendcopy {
+  				span.wpcf7-list-item {
+    				padding-left: .5em;
+    				padding-right: .8em;
+  				}
+				}
+			}
+
+			@media only screen and (min-width: ( @break_phone600 ) ) {
+			
+				div {
+					&.naam,
+					&.e-mail {
+						width: 48%;
+						float: left;
+					}
+					&.e-mail {
+						float: right;
+						clear: right;
+					}
+					&.suggestie {
+						clear: both;
+					}
+				}
+			}
+			
+		}
+	
+		.tipthema {
+
+			display: inline-block;
+			padding: ( @padding / 2 ) @padding ( @padding / 2 ) ( @padding * 3 ) ;
+
+	
+	        background: url('images/default.png') no-repeat center center;
+		    .iconaddfill('../images/default.svg', '#fff');
+	
+	        background-size: @padding @padding;
+	        text-decoration: none;
+	        background-size: 38px 25px;
+			height: 25px;
+			background-size: contain;
+	
+			&.icon-deelenwerksamen {
+			    .iconaddfill('../images/icon-deelenwerksamen.svg', '#fff');
+			}
+			&.icon-digitaaloporde {
+			    .iconaddfill('../images/icon-digitaaloporde.svg', '#fff');
+			}
+			&.icon-goedproces {
+			    .iconaddfill('../images/icon-goedproces.svg', '#fff');
+			}
+			&.icon-interndraagvlak {
+			    .iconaddfill('../images/icon-interndraagvlak.svg', '#fff');
+			}
+			&.icon-kanaalsturing {
+			    .iconaddfill('../images/icon-kanaalsturing.svg', '#fff');
+			}
+			&.icon-deelenwerksamen {
+			    .iconaddfill('../images/icon-deelenwerksamen.svg', '#fff');
+			}
+			span {
+				.visuallyhidden();
+			}
+		}
+	}
+
+	#tip_inline_nav {
+		button {
+			display: none;
+			visibility: hidden;
+		}
+	}
+
+
+	@media only screen and (max-width: ( @break_phone600 ) ) {
+
+		.goedvoorbeeld {
+			img {
+				max-width: 40%;
+				height: auto;
+			}
+		}
+
+		.dojs #tip_inline_nav {
+			overflow: hidden;
+			
+			button {
+				display: inline-block;
+				visibility: visible;
+				float: left;
+				width: @buttonmenuwidth;
+				span {
+					display: inline-block;
+					float: left;
+				}
+				.label {
+					padding-top: 9px;
+				}
+			}
+			ul {
+				width: 100%;
+				float: none;
+				display: block;
+				
+				li, a {
+					display: block;
+					float: none;
+					clear: both;
+					font-size: 85%;
+					width: 100%;
+				}
+				
+				a {
+					&:hover,
+					&:focus,
+					&:active {
+						text-decoration: none;
+					}
+				}
+
+				&[aria-hidden="true"] {
+					.visuallyhidden();
+				}
+			}
+		}
+	}
+
+
+	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+
+		.single-tips {
+			.setfont(@osansregular, 16);
+
+			section {
+				.marge_top();
+			}
+			section section {
+				.marge_top_skip();
+			}		
+
+
+			nav li a {
+				.setfont(@ubuntumedium, 13);
+				text-transform: uppercase;
+			}
+
+			.tipnummer,
+			.tipthema {
+				clear: both;
+				float: none;
+				display: block;
+			}
+			.tipnummer {
+				text-align: center;
+				margin-top: 1em;
+			}
+
+			#inleiding {
+				.setfont(@osansregular, 18);
+				h2, ul {
+					margin-bottom: 0;
+				}
+				ul {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+
+				.opsomming {
+					div {
+						.setfont(@osansregular, 18);
+					}
+					div + div {
+						max-width: 450px;
+					}
+					& + .opsomming {
+						margin-top: 1em;
+					}
+				}
+   				
+			}
+			.goedevoorbeelden, .nuttigelinks {
+				.setfont(@osansregular, 16);
+				h2 {
+					.setfont(@ubunturegular, 30);
+				}
+				h3 {
+					.setfont(@ubuntumedium, 30);
+				}
+				.auteur {
+					.setfont(@osansregular, 14);
+				}
+			}
+			.waaromwerktdit {
+				.setfont(@osansregular, 16);
+				padding: ( 2 * @padding ) ( ( @brainsize + @padding ) + 45px) ( 2 * @padding ) ( 2 * @padding );
+				h2 {
+					.setfont(@ubuntumedium, 30);
+					padding-top: 0;
+					margin-top: 0;
+				}
+			}
+			.jumptosuggestie {
+				.setfont(@osansregular, 16);
+				h2 {
+					.setfont(@osanssemibold, 20);
+					border-bottom: none;
+					margin: 0;
+				}
+			}			
+			#jumptosuggestie {
+				&:hover,
+				&:active,
+				&:focus {
+					color: @txt;
+				}
+			}
+			
+			.jumptosuggestie, .nuttigelink {
+				.setfont(@osansregular, 16);
+				
+				div {
+					background-position: left top;
+					padding: 0 1em 1em 96px;
+					background-size: 86px 86px;
+				}
+			}			
+
+			.onderzoek {
+				.setfont(@osansregular, 16);
+				
+				h2 {
+					.setfont(@ubunturegular, 30);
+				}			
+				h3 {
+					.setfont(@ubunturegular, 26);
+				}
+
+				div#cijfers {
+					display: flex;
+				    width: 100%;
+			
+					flex-direction: row;
+					flex-wrap: nowrap;
+			
+					align-items: stretch;
+		
+			        p.onderzoekvraag:nth-child(1) {
+						margin-right: 2em;
+			        }
+			        p.onderzoekvraag:nth-child(2) {
+			        }
+			        p.onderzoekvraag:nth-child(3) {
+						margin-left: 2em;
+			        }
+					
+					p.onderzoekvraag {
+					    flex-grow: 1;
+						align-items: stretch;
+						border: @borderwithflex solid @border-color;
+						.setfont(@ubuntubold, 12);
+		
+					    .cijfers {
+						    height: 100%;
+						    border-bottom-style: none;
+						    border-right-style: none;
+						    border-left-style: none;
+						    .cijfer {
+								.setfont(@ubuntubold, 36);
+						    }
+						    .antwoord {
+								.setfont(@ubuntubold, 12);
+						    }
+					    }
+					}
+				}
+			}
+			.jumptosuggestie,
+			.nuttigelink {
+				div {
+					min-height: 86px;
+				}
+			}
+//			.suggestie {
+//				padding-top: 1em;
+//			}
+		}
+	}
+
+
+	
+	@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+  	
+		.single-tips {
+
+			nav#backlink {
+				padding: ( @padding / 2 ) @padding;
+			}
+
+			.setfont(@osansregular, 14);
+
+			& .content {
+			    width: @singletip_width;
+			}	
+
+			.tipnummer {
+				.setfont(@ubuntubold, 13);
+				margin-top: 1em;
+			}
+			h1 {
+				.setfont(@ubuntumedium, 36);
+			}
+			.waaromwerktdit,
+			.goedevoorbeelden,
+			.nuttigelinks {
+				h3 {
+					.setfont(@ubuntumedium, 18);
+				}
+			}
+			.goedvoorbeeld {
+//				.setfont(@osansregular, 14);
+			}
+
+			#inleiding {
+				&, .opsomming div {
+					.setfont(@osansregular, 18);
+				}
+			}
+			.waaromwerktdit {
+				h2 {
+					.setfont(@ubuntumedium, 18);
+				}
+			}
+			.onderzoek {
+				.setfont(@osansregular, 16);
+				div#cijfers {
+					p.onderzoekvraag {
+						.setfont(@ubuntubold, 10);
+		
+					    .cijfers {
+						    .cijfer {
+								.setfont(@ubuntubold, 36);
+						    }
+						    .antwoord {
+								.setfont(@ubuntubold, 12);
+						    }
+					    }
+					}
+				}
+			}
+			
+	    .nuttigelink, .jumptosuggestie {
+				.setfont(@osansregular, 14);
+			}
+
+
+			section.waaromwerktdit {
+				margin-left: ( @sectionpadding + @padding );
+				margin-right: ( @sectionpadding + @padding );
+				margin-bottom: 30px;
+			}
+		}	
+
+		section {
+			margin: 0 @sectionpadding 0 @sectionpadding;
+		}	
+		
+    .pagination,		
+    .nuttigelinks {
+			margin-right:  (@sectionpadding - @maxbordershadow) !important;
+			margin-left: @sectionpadding;
+			h2 {
+				margin-right: @maxbordershadow;
+			}
+		}
+	}	
+
+  
+  @media only screen and (max-width: 600px ) {
+    .single-tips {
+      .pagination {
+        .pagination-previous,
+        .pagination-next {
+
+          width: 100%;
+
+          a {
+            padding-left: 35px;
+            padding-right: 35px;
+            text-align: left;
+            line-height: 1.4;
+            margin-bottom: 1em;
+          }
+        }       
+      }	
+    }	
+	}	
+
+  @nextprev_width:          220px;
+  @nextprev_borderradius:   20px;
+	
+	
+  @media only screen and (min-width: ( @break_tablet + ( 2 * @nextprev_width )  ) ) {
+  
+  	.single-tips {
+    	.pagination {
+  
+        ul {
+          padding-top: 0;
+          margin-top: 0;
+        }
+  
+        .pagination-previous {
+          left: 0;    
+          border-radius: 0 @nextprev_borderradius @nextprev_borderradius 0;
+        }
+        .pagination-next {
+          right: 0;
+          border-radius: @nextprev_borderradius 0 0 @nextprev_borderradius;
+          text-align: left;
+        }
+      	
+        .pagination-previous,
+        .pagination-next {
+  
+          position: fixed;
+          top: 50%;
+          width: @nextprev_width;
+          padding: 1em;
+          transform: translateY(-50%);
+          min-height: 150px;
+          display: table;
+      
+          &:hover {
+      			box-shadow: 1px 0px 5px 2px @boxshadow_color;
+          }
+          
+          a {
+            display: table-cell !important;
+            vertical-align: middle;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+  }
+
+}
+

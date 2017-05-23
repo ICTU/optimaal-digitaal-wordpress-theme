@@ -1,0 +1,397 @@
+
+///
+// Optimaal Digitaal - 50-menu.less
+// ----------------------------------------------------------------------------------
+// Styling voor het menu
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.6.4
+// @desc.   Bugjes in serverside filtering
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+@kiekeboe: 1.0; // kleiner dan 1 is enigszins zichtbaar
+
+/*
+---------------------------------------------------------------------------------------------------- */
+
+.altmenu(){
+	
+}
+
+
+/*
+---------------------------------------------------------------------------------------------------- */
+.off-canvas-menu() {
+
+
+
+	.nav-primary {
+		overflow: hidden;
+	}
+
+	.site-container, .oc-pusher, .site-inner {
+	    height: 100%;
+	}
+	.site-inner {
+	    overflow-y: scroll;
+	}
+	.site-inner, .site-inner-inner {
+	    position: relative;
+	}
+	.site-container {
+	    position: relative;
+	    height: 100%;
+	    overflow: hidden;
+	    overflow-y: scroll;
+	}
+	.oc-pusher {
+	    height: auto;
+	    position: relative;
+	    left: 0;
+	    top: 0;
+	    transition: transform @timer;
+	    z-index: 99;
+
+		&:after {
+		    content: '';
+		    height: 0;
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    opacity: 0;
+		    width: 0;
+		    background: transparent;
+		}
+	}
+
+	.site-header {
+		position: relative;
+	
+		#oc-trigger {
+			position: absolute;
+			right: 1em;
+			top: 1em;
+		}
+	}
+
+	#nav-primary-button, .menu-button {
+		.menubuttondesign();
+	}
+
+
+	.oc-menu {
+	    height: auto;
+	    width: 100%;
+	    position: absolute;
+	    right: 0;
+	    top: ( ( -1 * @kiekeboe ) * @menuhoogte );
+	    transition: all @timer;
+		visibility: hidden;
+	    z-index: 100;
+	    background: transparent url('images/menu-top-480px.png') no-repeat center bottom;   
+		background-size: cover;
+		padding-bottom: 90px;
+
+		ul, li {
+			list-style: none;
+			
+			a {
+				display: inline-block;
+				padding: 10px 0;
+				color: @menu_a_color;
+				text-transform: uppercase;
+				text-decoration: none;
+				font-size: 16px;
+				line-height: 1;
+				width: 90%;
+				text-align: center;
+	
+	            &:hover, &:focus, &:active {
+		            color: @menu_a_color;
+	                text-decoration: underline;
+	            }
+			}
+		}
+		li {
+			margin-left: 20px;
+		}
+		
+	
+		&:before {
+			content: ' ';
+		    background: transparent url('images/menu-top-480px.png') no-repeat center top;   
+			background-size: cover;
+			display: block;
+			clear: both;
+			float: none;
+			height: 50px;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	.oc-menu-open .oc-pusher::after {
+	    height: 100%;
+	    opacity: 1;
+	    width: 100%;
+	}
+	
+
+
+	.oc-menu-open .oc-menu::after {
+	    height: 0;
+	    opacity: 0;
+	    width: 0;
+	}
+	.oc-push.oc-menu {
+		&:after {
+		    display: none;
+		}
+	}
+	.oc-push.oc-menu-open .oc-push.oc-menu {
+//	    overflow: scroll;
+		overflow: hidden;
+	    transition: transform @timer;
+	    visibility: visible;
+	}
+
+	#nav-primary-closebutton {
+    color: @menu_a_color;
+    background: @menu_bg;
+    position: absolute;
+    top: 10px;
+    right: @padding;
+    font-family: arial;
+    display: block;
+    line-height: 1;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    padding: 0;
+    
+    .voor-mensen-met-een-bril:before {
+      font-size: 22px;
+      line-height: 1.6;
+      border: 1px solid @menu_a_color;
+      content: 'x';
+      display: block;
+      height: 36px;
+      width: 36px;
+      margin: 2px;
+      text-align: center;
+      padding: 3px;
+      border-radius: 3px;
+    }
+    
+    .label {
+      .visuallyhidden();
+    }
+    
+		&:hover,
+		&:active,
+		&:focus {
+      border-color: @menu_a_color;
+      text-decoration: none;
+      
+      .voor-mensen-met-een-bril:before {
+        background: @wit;
+      }
+		}
+	}	
+
+	.oc-push.oc-menu-open {
+		.oc-menu.oc-push {
+
+		    transform: translate3d(  0, ( ( 1 * @kiekeboe ) * @menuhoogte ), 0);
+		    transition: transform @timer;
+		    opacity: 1;
+
+		}
+		.oc-pusher {
+//			    transform: translate3d( ( ( -1 * @kiekeboe ) * @menubreedte ), 0, 0);
+		}
+	}		
+
+	
+	@media screen and (-webkit-min-device-pixel-ratio: 2) {
+		.oc-menu {
+			&:before {
+			    background-image: url('images/header-480w@2x.png');
+			}
+		}
+	}
+
+	
+	
+	@media only screen and (min-width: ( @break_phone480 ) ) {
+		
+	.site-header #oc-trigger {
+		    right: 3em;
+		    top: 1em;
+		}		
+	}	
+	
+	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+
+		#nav-primary-button, .menu-button {
+			width: auto;
+			text-align: left;
+			line-height: 2.4;
+		    span.label {
+				padding-left: 1em;
+			    visibility: visible;
+			    display: inline-block;
+		    }
+		}
+
+		.dojs .oc-menu {
+			box-shadow: -5px 0px 46px 0px rgba(@grijs,@grijs,@grijs,0.33),  -4px 0px 4px 0px rgba(@grijs,@grijs,@grijs,0.22);		
+		}
+	
+		.oc-menu {
+		    height: 100%;
+		    top: 0;
+		    right: ( ( -1 * @kiekeboe ) * @menubreedte );
+		    width: @menubreedte;
+			background: @menu_bg;
+			background: @menu_bg;
+	
+			&:before {
+				background: @menu_bg;
+				height: 0;
+			}
+	
+			ul, li {
+				list-style: none;
+				
+				a {
+					text-align: left;
+					max-width: 70%;
+					word-break: break-word;
+				}	    
+			}	    
+		}	    
+	
+		.no-csstransforms3d .oc-pusher {
+		    padding-left: @menubreedte;
+		}
+	
+		.oc-push.oc-menu-open {
+			.oc-menu.oc-push {
+
+			    transform: translate3d( ( ( -1 * @kiekeboe ) * @menubreedte ), 0, 0);
+			    transition: transform @timer;
+	
+			}
+			.oc-pusher {
+//			    transform: translate3d( ( ( -1 * @kiekeboe ) * @menubreedte ), 0, 0);
+			}
+		}		
+	}
+
+	@media only screen and (min-width: ( @break_phone600 ) ) {
+		
+  	.site-header #oc-trigger {
+		    right: 3em;
+		    top: 1.5em;
+		}		
+		.home article, body.page .entry-title {
+			padding-bottom: 1em;
+			padding-top: 110px;
+			font-size: 20px;
+		}
+	}	
+
+	@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+		
+	.site-header #oc-trigger {
+		    right: 5em;
+		    top: 2em;
+		}		
+		.home article, body.page .entry-title {
+			padding: 110px 15% 1em 15%;
+		}
+	}	
+
+	
+	.nojs {
+
+		.oc-menu {
+			height: auto;
+			position: static;
+			transform: translate3d(0, 0, 0);
+			padding: 20px 0 0 0;
+			width: 100%;
+			margin: 0 auto;
+			background: none;
+			visibility: visible;
+		}
+		#oc-trigger {
+			display: none;
+		}
+		.oc-pusher {
+		    padding-left: 0;
+		}
+
+		
+		.nav-primary {
+		    background-image: url('images/header-320w@2x.png');
+			background-color: transparent;
+	
+		    background-position: center bottom;
+		    background-size: cover;
+
+			
+			ul, li {
+				list-style: none;
+			}
+			ul {
+				margin: 1em auto;
+				max-width: 90%;
+				
+				li {
+					display: block;
+					float: left;
+
+					a {
+						color: @wit;
+						text-transform: uppercase;
+						text-decoration: none;
+						display: inline-block;
+						padding: 0 1em;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+	
+		@media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
+			.nav-primary {
+			    background-image: url('images/header-480w@2x.png');
+			}
+		}
+	
+		@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+			.nav-primary {
+			    background-image: url('images/header-720w@2x.png');
+			}
+		}
+	
+		@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+			.nav-primary {
+			    background-image: url('images/header-1280w@2x.png');
+			}
+		}
+	
+	
+		#nav-primary-button, .menu-button {
+			.menubuttondesign();
+		}
+	}
+	
+}

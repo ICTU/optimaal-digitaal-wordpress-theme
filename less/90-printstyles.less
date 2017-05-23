@@ -1,0 +1,68 @@
+
+///
+// Optimaal Digitaal - 90-printstyles.less
+// ----------------------------------------------------------------------------------
+// Hier mijn print-selectors
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.7.1
+// @desc.   Taxonomy, archives reviewed. Sharing icons restyled, pagination updated.
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+.printstyles() {
+
+	
+	@media only print {
+	
+	    body, body>div {
+	        font-size: 12px;
+	    }
+	    
+	    table {
+	        h1, h2, h3, h4, h5, h6 {
+	            font-size: 1.4em;
+	        }
+	    }
+	    h1, h2, h3, h4, h5, h6 {
+	        font-size: 1.4em;
+	    }
+	    h1, h2, h3, h4, h5, h6, p, a {
+	        color: black !important;
+	    }
+
+      .single-tips article.entry {
+        border-style: none;
+        box-shadow: none;
+      }
+
+      a:after{
+        content:" (" attr(href) ") ";
+        font-size:0.8em;
+        font-weight:normal;
+      }
+	
+	    .heroimage, 
+	    .site-header .widget-area {
+	        display: none;
+	        visibility: hidden;
+	    }
+	    .site-inner,
+	    .wrap,
+	    .content, 
+	    .sidebar {
+	        margin: 0;
+	        width: 100%;
+	        max-width: 100%;
+	    }
+	    section.pagination,
+	    #tip_inline_nav,
+	    #backlink {
+  	    display: none;
+  	    visibility: hidden;
+	    }
+	}	
+}

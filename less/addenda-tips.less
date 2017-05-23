@@ -1,0 +1,63 @@
+
+///
+// Optimaal Digitaal - addenda-tips.less
+// ----------------------------------------------------------------------------------
+// ingesteld om wat standaard instellingen voor de filters te overschrijven
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.5.14
+// @desc.   LESS-bestanden voorzien van comments
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+
+.content h2 {
+	text-transform: none;
+}
+    
+.wp-core-ui .button-primary {
+    box-shadow:none;
+    text-shadow:none;
+}
+
+article.entry, #respond {
+	margin: 0 auto;
+}
+
+.tipnummer {
+	text-transform: uppercase;
+	font-size: 13px;
+	transform-origin: top;
+	
+	&:before {
+		content: '__ ';
+		margin-right: 8px;
+	}	
+	&:after {
+		content: ' __';
+		margin-left: 8px;
+	}	
+	&:after,
+	&:before {
+		line-height: 1;
+		display: inline-block;
+		transform: translateY(-6px);
+	}
+}
+
+header.onderwerp a {
+	display: block;
+	text-decoration: none;
+	padding: ( @padding / 2 ) @padding;
+
+	&:hover, &:active, &:focus {
+		//trello
+		text-decoration: underline;	
+	}
+}
+
+
+

@@ -1,0 +1,314 @@
+
+///
+// Optimaal Digitaal - 01-mixins-for-cardstyling.less
+// ----------------------------------------------------------------------------------
+// mixins voor cardstyling, o.m. SVG inclusion
+// ----------------------------------------------------------------------------------
+// @package optimaal-digitaal
+// @author  Paul van Buuren
+// @license GPL-2.0+
+// @version 2.6.10
+// @desc.   Previous / next tip on single tip page. And click through to taxonomy page
+// @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
+///
+
+
+//=========================================================================================================
+.tipsstyling(@classname: 'default', @kleur: @oranje, @subkleur: @oranje_sub, @textcolor: @oranje_sub) {
+
+	 body.@{classname} header.onderwerp, main .tipkaart.@{classname} {
+		background-color: @kleur;
+		color: @wit;
+	}
+	body.@{classname} {
+		main {
+			section {
+				ul {
+					list-style-image: url('images/bullet.png');			
+				    .iconaddbullet('../images/bullet.svg', @kleur);
+				}
+				&.goedevoorbeelden,
+				&.onderzoek,
+				&.suggestie,
+				&.pagination,
+				&.nuttigelinks {
+					
+					h2 {
+						color: @textcolor;
+						border-color: @textcolor;
+					}
+				}
+			}
+		}
+	}			    
+		
+	main .tipkaart.@{classname} {
+		background: @kleur;
+		.contentinfo {
+			background-color: @subkleur;
+		}
+	}
+
+	.cardgallery.@{classname} {
+		border-color: @kleur;
+		h2 {
+			color: @kleur;
+		}
+		.inlinelinks a {
+			&.active,
+			&:active,
+			&:hover,
+			&:focus {
+				border-color: @kleur;
+			}
+		}
+  	.slick-dots {
+    	button:after {
+        border-color: @kleur;
+    	}
+  	}
+
+    .slick-arrow {
+      .iconaddfill3('../images/icon-arrow.svg', @kleur);
+    }
+	}
+
+	body.@{classname} {
+
+		header.onderwerp {
+			margin-bottom: ( 2 * @padding );
+			
+			nav {
+				background: @subkleur;
+				
+				a {
+					&:hover, &:active, &:focus {
+						background: @kleur;
+					}
+				}
+			}
+		}
+		.onderzoekvraag, .conclusie h3 {
+		    color: @textcolor;
+		}
+
+		nav#backlink a {
+		    color: @textcolor;
+		}
+
+		
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"] {
+			background: @kleur;
+		}
+
+
+		.search-form {
+		    input[type="submit"] {
+			    background-color: @wit;
+				.search_form_submit_button(@kleur, @wit, @kleur);
+		    }
+		}
+
+
+		
+    .nuttigelinks a,
+    .nuttigelinks section a,
+    .contactformulierjump section a {
+
+      @media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+        background: @nuttigelinks_bg url('images/icon-arrow.png') no-repeat right center;
+        padding: @padding ( 4 * @padding ) @padding @padding;
+        background-size: @padding @padding;
+        text-decoration: none;
+        background-size: 44px 44px;
+        .iconaddfill3('../images/icon-arrow.svg', @kleur);
+        overflow: hidden;
+      }			
+      
+      div {
+        .iconaddfill('../images/icon-folder.svg', @kleur);
+      }
+
+      &.document {
+        div {
+          .iconaddfill('../images/icon-document.svg', @kleur);
+        }
+      }
+      
+      &:hover, &:focus, &:active {
+        color: @txt;
+      }
+      
+      span {
+        color: @txt;
+      }
+    }	
+		
+
+		.contactformulierjump {
+			.jumptosuggestie {
+				div {
+				    .iconaddfill('../images/icon-lamp.svg', @kleur);
+			    }
+			}
+		}
+	} 
+
+
+	body.@{classname} .waaromwerktdit {
+		color: @wit;
+		background: @kleur;
+		position: relative;
+		
+		a {
+			color: @wit;
+			
+			&:hover, &:active, &:focus {
+				color: @wit;
+			}
+		}
+	}
+
+
+	@media only screen and (max-width: ( @break_phone600 ) ) {
+	
+		body.@{classname} .waaromwerktdit {
+			padding: ( @brainsize + ( 2 * @padding ) ) @padding @padding @padding;
+			&:before {
+				content: ' ';
+				position: absolute;
+		        left: 1em;
+				top: 1em;
+				height: @brainsize;
+				width: @brainsize;
+				display: block;
+//				transform: translateY( ( -1 * ( @brainsize / 2 ) ) );
+	            background: @subkleur url('images/kanalen.png') no-repeat center center;
+			    .iconaddfillbrain('../images/icon-brains.svg', @subkleur);
+	            border-radius: 50%;
+			}
+		}	
+	}	
+
+	@media only screen and (min-width: ( @break_phone600 + 1) ) {
+	
+		body.@{classname} .waaromwerktdit {
+			
+			&:after {
+				content: ' ';
+				position: absolute;
+		        right: 45px;
+				top: @brainsize;
+				height: @brainsize;
+				width: @brainsize;
+				display: block;
+				transform: translateY( ( -1 * ( @brainsize / 2 ) ) );
+	            background: @subkleur url('images/kanalen.png') no-repeat center center;
+			    .iconaddfillbrain('../images/icon-brains.svg', @subkleur);
+	            border-radius: 50%;
+	            
+			}
+		}	
+	}	
+	
+	@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+		body.@{classname} {
+			.nuttigelink, .jumptosuggestie {
+		        margin-bottom: 1em;
+		        margin-right: @maxbordershadow;
+			    .iconaddfill3('../images/icon-arrow.svg', @kleur);
+			    background-repeat: no-repeat;
+			    background-position: right center;
+			}
+		}
+	}
+}
+
+
+
+//=========================================================================================================
+.iconaddfillbrain(@src, @fill-new) {
+
+
+    @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-default: 	escape('class="st0"');
+    @replace-new: 		escape('fill="@{fill-new}"');
+    @replacesrc1: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+    background-image: e(@replacesrc1);
+}
+
+//=========================================================================================================
+.iconaddfill2(@src, @fill-new) {
+
+    @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+
+    @replace-default: 	escape('<path');
+    @replace-new: 		escape('<path fill="@{fill-new}"');
+    @replace-src: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+    background-image: e(@replace-src);
+}
+
+//=========================================================================================================
+.iconaddfill3(@src, @fill-new) {
+
+    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-default:   escape('g id="icon-arrow" fill="#FFFFFF"');
+    @replace-new:       escape('g id="icon-arrow" fill="@{fill-new}"');
+    @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+    background-image: e(@replace-src);
+}
+
+//=========================================================================================================
+.iconaddfill4(@src, @fill-new) {
+
+    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-default:   escape('fill="#000000"');
+    @replace-new:       escape('fill="@{fill-new}"');
+    @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+    background-image: e(@replace-src);
+}
+//=========================================================================================================
+.iconaddbullet(@src, @fill-new) {
+
+    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-default:   escape('<g id="bullet" fill="#00838F"');
+    @replace-new:       escape('<g id="bullet" fill="@{fill-new}"');
+    @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+	list-style-image: e(@replace-src);
+
+}
+
+//=========================================================================================================
+.iconaddfill(@src, @fill-new) {
+    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-default:   escape('class="st0"');
+    @replace-new:       escape('fill="@{fill-new}"');
+    @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+    background-image: e(@replacesrc1);
+}
+
+//=========================================================================================================
+
+
+
+.card_heights_widths(@maxwidth, @aantalcards: '3', @cardmargin: 1em, @cardverschuiving: 9px) {
+	max-width: @maxwidth;
+	margin: 0 auto;
+
+	div.containstip {
+		width: ( 100% / @aantalcards );
+		padding: 0 @cardmargin @cardmargin 0;
+	}
+} 
+
+//=========================================================================================================
+
