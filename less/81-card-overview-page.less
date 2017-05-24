@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.6.10
-// @desc.   Previous / next tip on single tip page. And click through to taxonomy page
+// @version 2.8.1
+// @desc.   Homepage met vragen
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -37,6 +37,8 @@
 
 		width: 220px;
 		min-height: @cardheight;
+		background-color: @defaultcardbg;
+		color: @wit;
 		margin: 0 1em 1em 0;
 		position: relative;
 		text-align: center;
@@ -79,9 +81,9 @@
 			right: 0;
 			min-height: 100px;
 			padding-top: ( @padding * 3 );
-	        background: transparent url('images/default.png') no-repeat;
+	        background: darken( @defaultcardbg, 20% ) url('images/default.png') no-repeat;
 	        background-position: center top;
-		    .iconaddfill('../images/default.svg', '#fff');
+		    .iconaddfill('../images/icon-default-card-bg.svg', '#fff');
 		    background-size: 80%;
 		    min-height: 0;
 		    text-transform: uppercase;
@@ -179,7 +181,7 @@
 	.cardgallery {
 		background: @light_gray;
 		padding-left: 2em;
-		border-top: 3px solid @txt;
+		border-top: 3px solid @active_color;
 		margin-top: 2em;
 		overflow: hidden;
 		
@@ -191,6 +193,7 @@
 		}
 		h2 {
 			text-transform: none;
+			color: @active_color;
 		}
 
 		nav {

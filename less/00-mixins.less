@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.7.1
-// @desc.   Taxonomy, archives reviewed. Sharing icons restyled, pagination updated.
+// @version 2.8.1
+// @desc.   Homepage met vragen
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -67,7 +67,6 @@
 @goedproces:            @blauw;
 @deelwerksamen:         @turquoise;
 
-
 @active_color:          #d81b60;
 
 @od_roze1:              #EC1561;
@@ -76,6 +75,9 @@
 @code-bg:               @border-color;
 @light_gray:            darken(@wit, 10%);
 @dark_gray:           	darken(@light_gray, 20%);
+
+@defaultcardbg:         darken(@light_gray, 50%);
+
 
 @comment-list-odd:      @wit;
 @comment-list-even:     @wit;
@@ -318,6 +320,8 @@
 //    background: @testcolor;
 }
 
+//=========================================================================================================
+
 .visuallyhidden() {
     border: 0;
     clip: rect(0 0 0 0);
@@ -328,6 +332,21 @@
     position: absolute;
     width: 1px;
 }
+
+//=========================================================================================================
+
+.visuallyvisual() {
+    border: inherit;
+    clip: auto;
+    height: auto;
+    margin: auto;
+    overflow: auto;
+    padding: inherit;
+    position: inherit;
+    width: auto;
+}
+
+//=========================================================================================================
 
 
 .visuallyhidden {

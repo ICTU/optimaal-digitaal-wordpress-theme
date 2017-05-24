@@ -8,8 +8,8 @@
 // @package gebruiker-centraal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.7.3
-// @desc.   Code clean-up home.php, functions.php
+// @version 2.8.1
+// @desc.   Homepage met vragen
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 

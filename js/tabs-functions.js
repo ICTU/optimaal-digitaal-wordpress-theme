@@ -36,7 +36,8 @@ function doTabs(document, window, $, undefined) {
                     'aria-selected': 'true',
                     'aria-describedby': 'tab-widget-description'
                 })
-                .addClass('tab-widget__link--active');
+                .addClass('tab-widget__link--active')
+                .removeClass('tab-widget__link--not-yet-activated');
         }
 
         $tab.on('click', function(e) {

@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.6.3
-// @desc.   Bugjes in serverside filtering
+// @version 2.8.1
+// @desc.   Homepage met vragen
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -302,6 +302,9 @@
 		border: 1px solid @txt;
 		border-radius: @border_radius;
 		background: none;
+		margin-bottom: 16px;
+		float: right;
+		
 		&:hover,
 		&:focus,
 		&:active {
@@ -315,13 +318,14 @@
 		overflow: hidden;
 		display: block;
 		float: none;
+		
 		p, .reset {
 			padding: ( @padding / 2 );
-			float: left;
 			display: inline-block;
 			margin-right: 1em;
 		}
 		p {
+			float: left;
 			padding-left: 0;
 		}
 	}

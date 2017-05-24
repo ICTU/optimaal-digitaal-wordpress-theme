@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.5.20
-// @desc.   Caroussel voor tipkaarten op filterpagina
+// @version 2.8.1
+// @desc.   Homepage met vragen
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -74,7 +74,7 @@
 	
 
 	.dojs {
-		p#tab-panel-1,
+		p#tab-panel-2,
 		#tab-panel-1-h2 {
 			.visuallyhidden();
 		}
@@ -89,14 +89,14 @@
 
 	
 	@media only screen and (min-width: ( @break_phone600 ) )  {
-		.tab-widget__tab-content {    
-		    display: none;
+		.tab-widget__link--not-yet-activated {    
+      .visuallyhidden();  	
 		}
 	}
 	
 	.tab-widget__tab-content--active,
 	.nojs .tab-widget__tab-content {
-	    display: block;
+    .visuallyvisual();  	
 	}
 	
 	.nojs .tab-widget__tab-content {

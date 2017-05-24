@@ -6,8 +6,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.6.1
-// @desc.   Ter beoordeling: caroussel voor tipkaarten op filterpagina
+// @version 2.8.1
+// @desc.   Homepage met vragen
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 
 
@@ -21,6 +21,19 @@ jQuery(document).ready(function( $ ) {
   doSlick(jQuery('#carousel-kanaalsturing'));
   doSlick(jQuery('#carousel-creeer-intern-draagvlak'));
   doSlick(jQuery('#carousel-deel-en-werk-samen'));
+
+  // sjees, wat ben je lui, Paul
+  doSlick(jQuery('#carousel-1'));
+  doSlick(jQuery('#carousel-2'));
+  doSlick(jQuery('#carousel-3'));
+  doSlick(jQuery('#carousel-4'));
+  doSlick(jQuery('#carousel-5'));
+  doSlick(jQuery('#carousel-6'));
+  doSlick(jQuery('#carousel-7'));
+  doSlick(jQuery('#carousel-8'));
+  doSlick(jQuery('#carousel-9'));
+  doSlick(jQuery('#carousel-10'));
+
 
 
   function doSlick(objectndinges) {

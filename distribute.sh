@@ -50,4 +50,3 @@ rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/developmen
 # remove temp dir
 rm -rf '/shared-paul-files/Webs/temp/'
 
-
