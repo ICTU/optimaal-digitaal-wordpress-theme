@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.8.1
-// @desc.   Homepage met vragen
+// @version 2.8.2
+// @desc.   PHP waarschuwingen weggehaald en betere style.css :-)
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -45,8 +45,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'http://wbvb.nl/themes/optimaaldigitaal' );
-define( 'CHILD_THEME_VERSION', '2.8.1' );
-define( 'CHILD_THEME_DESCRIPTION', "2.8.1 Homepage met vragen" );
+define( 'CHILD_THEME_VERSION', '2.8.2' );
+define( 'CHILD_THEME_DESCRIPTION', "2.8.2 PHP waarschuwingen weggehaald en betere style.css :-)" );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
@@ -635,7 +635,6 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 	// start Aan de slag
 	// ============================================================================================================================================
 	echo '<div class="tab-widget__tab-content tab-widget__link--not-yet-activated" tabindex="-1">';
-
 	echo '<p id="tab-panel-2" tabindex="-1"><span>' . __( "Aan de slag", 'gebruikercentraal' ) . '</span></p>';
 
 	global $tipcounter;
@@ -650,9 +649,12 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 		// per thema's de tips ophalen
 
 		$inlinelinks			= '';
-
-		$kleuren	= $classes[$term->slug]['kleur'];
-		$plaatjes	= $classes[$term->slug]['plaatje'];
+		$kleuren	        = array();
+		$plaatjes         = array();
+    if ( isset( $classes[$term->slug] ) ) {
+    	$kleuren	      = $classes[$term->slug]['kleur'];
+    	$plaatjes	      = $classes[$term->slug]['plaatje'];
+    }
     
     $args = array(
       'post_type' 		  => GC_TIP_CPT,
@@ -679,7 +681,7 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
       $carousselcounter++;
 
-			echo '<section class="cardgallery ' . $kleuren . '">';
+			echo '<section class="cardgallery ' . implode( $kleuren ) . '">';
 			echo "<h2>" . $term->name . "</h2>";
 
 			if ( $term->description ) {
