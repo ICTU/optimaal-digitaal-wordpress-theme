@@ -44,7 +44,7 @@ $genesis_js_no_js->run();/**
 // Theme constants
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
-define( 'CHILD_THEME_URL', 'http://wbvb.nl/themes/optimaaldigitaal' );
+define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
 define( 'CHILD_THEME_VERSION', '2.8.2' );
 define( 'CHILD_THEME_DESCRIPTION', "2.8.2 PHP waarschuwingen weggehaald en betere style.css :-)" );
 
