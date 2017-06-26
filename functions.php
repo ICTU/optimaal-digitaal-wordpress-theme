@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.8.2
-// @desc.   PHP waarschuwingen weggehaald en betere style.css :-)
+// @version 2.8.3
+// @desc.   Icoontjes voor informatieveiligheid toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -45,8 +45,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.8.2' );
-define( 'CHILD_THEME_DESCRIPTION', "2.8.2 PHP waarschuwingen weggehaald en betere style.css :-)" );
+define( 'CHILD_THEME_VERSION', '2.8.3' );
+define( 'CHILD_THEME_DESCRIPTION', "2.8.3 Icoontjes voor informatieveiligheid toegevoegd." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
@@ -1904,6 +1904,7 @@ acf_add_local_field_group(array (
 				'icon-goedproces' 		=> 'Goed proces',
 				'icon-interndraagvlak'	=> 'Intern draagvlak',
 				'icon-kanaalsturing' 	=> 'Kanaalsturing',
+				'icon-informatieveiligheid' 	=> 'Informatieveiligheid',
 			),
 			'other_choice' => 0,
 			'save_other_choice' => 0,
@@ -1929,6 +1930,7 @@ acf_add_local_field_group(array (
 				'paars' => 'Paars',
 				'blauw' => 'Blauw',
 				'turquoise' => 'Turquoise',
+				'bruin' => 'Bruin',
 			),
 			'other_choice' => 0,
 			'save_other_choice' => 0,
@@ -3193,10 +3195,10 @@ if (navigator.appVersion.indexOf(\"PPC\") != -1) return true;
 else return false;
 }
 if(isPPC()) {
-document.write('<a class=\"mail\" HREF=\\\"mailto:\?subject\=" . $mailbody . ", ' + document.title + '?body=Link: ' + window.location + '\" onMouseOver=\"window.status=\'" . $mail_alt . "\'; return true\" TITLE=\"" . $mail_alt . "\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
+document.write('<a class=\"mail\" HREF=\\\"mailto:\?subject\=" . $mailbody . ", ' + document.title + '?body=Link: ' + window.location + '\" onMouseOver=\"window.status=\'" . $mail_alt . "\'; return true\" title=\"" . $mail_alt . "\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
 }
 else { 
-document.write('<a class=\"mail\" HREF=\\\"mailto:\?body\=" . $mailbody . ": ' + document.title + '. Link: ' + window.location + '\\\" onMouseOver=\"window.status=\\'" . $mail_alt . "\\'; return true\" TITLE=\"" . $mail_alt . "\" rel=\"nofollow\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
+document.write('<a class=\"mail\" HREF=\\\"mailto:\?body\=" . $mailbody . ": ' + document.title + '. Link: ' + window.location + '\\\" onMouseOver=\"window.status=\\'" . $mail_alt . "\\'; return true\" title=\"" . $mail_alt . "\" rel=\"nofollow\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
 }
 // End -->
 </script>";

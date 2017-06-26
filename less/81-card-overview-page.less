@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.8.1
-// @desc.   Homepage met vragen
+// @version 2.8.3
+// @desc.   Icoontjes voor informatieveiligheid toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -70,41 +70,40 @@
 			margin-bottom: 1em;
 		}
 	
-		.contentinfo {
-	
-			font-size: 13px;
-			height: 100px;			
-			
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			min-height: 100px;
-			padding-top: ( @padding * 3 );
-	        background: darken( @defaultcardbg, 20% ) url('images/default.png') no-repeat;
-	        background-position: center top;
-		    .iconaddfill('../images/icon-default-card-bg.svg', '#fff');
-		    background-size: 80%;
-		    min-height: 0;
-		    text-transform: uppercase;
-	
-		    span {
-			    display: block;
-			    position: absolute;
-			    bottom: @padding;
-			    width: 100%;
-			    text-align: center;
-			    line-height: 1;
-			    padding: 0 @padding;
-		    }
-		    
-			&:after {
-				content: 'nog geen stijl ingesteld voor dit thema';
-				font-size: 1rem;
-				display: block;
-			}
-	
-		}
+    .contentinfo {
+      
+      font-size: 13px;
+      height: 100px;			
+      
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 100px;
+      padding-top: ( @padding * 3 );
+      background: darken( @defaultcardbg, 20% ) url('images/default.png') no-repeat;
+      background-position: center top;
+      .iconaddfill('../images/icon-default-card-bg.svg', '#fff');
+      background-size: 80%;
+      min-height: 0;
+      text-transform: uppercase;
+      
+      span {
+        display: block;
+        position: absolute;
+        bottom: @padding;
+        width: 100%;
+        text-align: center;
+        line-height: 1;
+        padding: 0 @padding;
+      }
+      
+      &:after {
+        content: 'nog geen stijl ingesteld voor dit thema';
+        font-size: 1rem;
+        display: block;
+      }
+    }
 	
 		&.check .contentinfo {
 		    .iconaddfill('../images/check.svg', '#fff');
@@ -143,6 +142,13 @@
 		}
 		&.icon-interndraagvlak .contentinfo {
 		    .iconaddfill('../images/icon-interndraagvlak-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-informatieveiligheid .contentinfo {
+		    .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', '#fff');
 	
 			&:after {
 				content: '';
@@ -257,7 +263,8 @@
 	.tipsstyling(paars,@paars,@paars_sub, @paars_sub);
 	.tipsstyling(blauw,@blauw, @blauw_sub, @blauw_sub);
 	.tipsstyling(turquoise,@turquoise, @turquoise_sub, @turquoise_sub);
-	
+	.tipsstyling(bruin,@bruin, @bruin_sub, @bruin_sub);
+
 	
 	.archive.tax-tiporganisatie,
 	.archive.tax-tipvraag,
