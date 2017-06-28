@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.8.3
-// @desc.   Icoontjes voor informatieveiligheid toegevoegd.
+// @version 2.9.1
+// @desc.   Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -45,8 +45,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.8.3' );
-define( 'CHILD_THEME_DESCRIPTION', "2.8.3 Icoontjes voor informatieveiligheid toegevoegd." );
+define( 'CHILD_THEME_VERSION', '2.9.1' );
+define( 'CHILD_THEME_DESCRIPTION', "2.9.1 Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
