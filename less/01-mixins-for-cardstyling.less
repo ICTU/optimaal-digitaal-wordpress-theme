@@ -7,19 +7,20 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.6.10
-// @desc.   Previous / next tip on single tip page. And click through to taxonomy page
+// @version 2.10.1
+// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
 
 //=========================================================================================================
-.tipsstyling(@classname: 'default', @kleur: @oranje, @subkleur: @oranje_sub, @textcolor: @oranje_sub) {
+.tipsstyling(@classname: 'default', @kleur: @oranje, @subkleur: @oranje_sub, @textcolor: @oranje_sub, @txtkleur: @wit, @headerkleur: @wit ) {
 
-	 body.@{classname} header.onderwerp, main .tipkaart.@{classname} {
-		background-color: @kleur;
-		color: @wit;
-	}
+  body.@{classname} header.onderwerp,
+  main .tipkaart.@{classname} {
+    background-color: @kleur;
+    color: @txtkleur;
+  }
 	body.@{classname} {
 		main {
 			section {
@@ -34,8 +35,8 @@
 				&.nuttigelinks {
 					
 					h2 {
-						color: @textcolor;
-						border-color: @textcolor;
+						color: @headerkleur;
+						border-color: @headerkleur;
 					}
 				}
 			}
@@ -89,11 +90,11 @@
 			}
 		}
 		.onderzoekvraag, .conclusie h3 {
-		    color: @textcolor;
+			color: @headerkleur;
 		}
 
 		nav#backlink a {
-		    color: @textcolor;
+			color: @headerkleur;
 		}
 
 		
@@ -102,13 +103,14 @@
 		input[type="reset"],
 		input[type="submit"] {
 			background: @kleur;
+			color: @txtkleur;
 		}
 
 
 		.search-form {
 		    input[type="submit"] {
 			    background-color: @wit;
-				.search_form_submit_button(@kleur, @wit, @kleur);
+				.search_form_submit_button(@headerkleur, @wit, @headerkleur);
 		    }
 		}
 
@@ -124,7 +126,7 @@
         background-size: @padding @padding;
         text-decoration: none;
         background-size: 44px 44px;
-        .iconaddfill3('../images/icon-arrow.svg', @kleur);
+        .iconaddfill3('../images/icon-arrow.svg', @headerkleur );
         overflow: hidden;
       }			
       
@@ -156,18 +158,36 @@
 			}
 		}
 	} 
+	body.@{classname}.single-tips main .onderwerp {
+  	* {
+      color: @txtkleur;
+  	} 
 
+    .linkedin {
+      .social_icon_hover_color('../images/icon-linkedin.svg', @txtkleur );
+    }
+    .twitter {
+      .social_icon_hover_color('../images/icon-twitter.svg', @txtkleur );
+    }
+    .mail {
+      .social_icon_hover_color('../images/icon-mail.svg', @txtkleur );
+    }
+    .print {
+      .social_icon_hover_color('../images/icon-print.svg', @txtkleur );
+    }
+
+  }
 
 	body.@{classname} .waaromwerktdit {
-		color: @wit;
+		color: @txtkleur;
 		background: @kleur;
 		position: relative;
 		
 		a {
-			color: @wit;
+			color: @txtkleur;
 			
 			&:hover, &:active, &:focus {
-				color: @wit;
+				color: @txtkleur;
 			}
 		}
 	}

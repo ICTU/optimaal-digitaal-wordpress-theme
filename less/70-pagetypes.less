@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.9.1
-// @desc.   Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt.
+// @version 2.10.1
+// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -579,14 +579,11 @@
 
 			display: inline-block;
 			padding: ( @padding / 2 ) @padding ( @padding / 2 ) ( @padding * 3 ) ;
-
-	
-	        background: url('images/default.png') no-repeat center center;
-		    .iconaddfill('../images/default.svg', '#fff');
-	
-	        background-size: @padding @padding;
-	        text-decoration: none;
-	        background-size: 38px 25px;
+      background: url('images/default.png') no-repeat center center;
+      .iconaddfill('../images/default.svg', '#fff');
+      background-size: @padding @padding;
+      text-decoration: none;
+      background-size: 38px 25px;
 			height: 25px;
 			background-size: contain;
 	
@@ -608,7 +605,10 @@
 			&.icon-informatieveiligheid {
 			    .iconaddfill('../images/icon-informatieveiligheid.svg', '#ffffff');
 			}
-			
+			&.icon-gloeilamp {
+			    .iconaddfill('../images/icon-gloeilamp.svg', '#000000');
+			}
+
 			span {
 				.visuallyhidden();
 			}

@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.9.1
-// @desc.   Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt.
+// @version 2.10.1
+// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -45,8 +45,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.9.1' );
-define( 'CHILD_THEME_DESCRIPTION', "2.9.1 Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt." );
+define( 'CHILD_THEME_VERSION', '2.10.1' );
+define( 'CHILD_THEME_DESCRIPTION', "2.10.1 Gouden kleur en CSS-effect voor gouden kleur toegevoegd." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
@@ -1899,12 +1899,13 @@ acf_add_local_field_group(array (
 				'id' => '',
 			),
 			'choices' => array (
-				'icon-deelenwerksamen'	=> 'Deel en werk samen',
-				'icon-digitaaloporde'	=> 'Digitaal op orde',
-				'icon-goedproces' 		=> 'Goed proces',
-				'icon-interndraagvlak'	=> 'Intern draagvlak',
-				'icon-kanaalsturing' 	=> 'Kanaalsturing',
-				'icon-informatieveiligheid' 	=> 'Informatieveiligheid',
+				'icon-deelenwerksamen'      => 'Deel en werk samen',
+				'icon-digitaaloporde'       => 'Digitaal op orde',
+				'icon-goedproces' 		      => 'Goed proces',
+				'icon-interndraagvlak'      => 'Intern draagvlak',
+				'icon-kanaalsturing'        => 'Kanaalsturing',
+				'icon-informatieveiligheid' => 'Informatieveiligheid',
+				'icon-gloeilamp'            => 'Gloeilamp',
 			),
 			'other_choice' => 0,
 			'save_other_choice' => 0,
@@ -1925,12 +1926,13 @@ acf_add_local_field_group(array (
 				'id' => '',
 			),
 			'choices' => array (
-				'oranje' => 'Oranje',
-				'groen' => 'Groen',
-				'paars' => 'Paars',
-				'blauw' => 'Blauw',
+				'oranje'    => 'Oranje',
+				'groen'     => 'Groen',
+				'paars'     => 'Paars',
+				'blauw'     => 'Blauw',
 				'turquoise' => 'Turquoise',
-				'bruin' => 'Bruin',
+				'bruin'     => 'Rood',
+				'goud'      => 'Goud',
 			),
 			'other_choice' => 0,
 			'save_other_choice' => 0,

@@ -5,13 +5,14 @@
 Dit theme wordt gebruikt op [optimaaldigitaal.gebruikercentraal.nl](https://optimaaldigitaal.gebruikercentraal.nl)
 
 ## Version
-Current: 2.9.1 - Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt.
+Current: 2.10.1 - Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
 
 ## Contact
 * Victor Zuydweg
 * Paul van Buuren: paul@wbvb.nl
 
 ## Version history
+* 2.10.1 - Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
 * 2.9.1 - Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt.
 * 2.8.3 - Icoontjes voor informatieveiligheid toegevoegd.
 * 2.8.2 - PHP waarschuwingen weggehaald en betere style.css :-)

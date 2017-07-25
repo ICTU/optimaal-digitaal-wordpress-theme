@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.9.1
-// @desc.   Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt.
+// @version 2.10.1
+// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -154,6 +154,13 @@
 				content: '';
 			}
 		}
+		&.icon-gloeilamp .contentinfo {
+	    .iconaddfill('../images/icon-gloeilamp-card-bg.svg', '#000000');
+	
+			&:after {
+				content: '';
+			}
+		}
 	
 		&:hover,&:focus,&:active {
 			color: @wit !important;
@@ -161,6 +168,44 @@
 			text-decoration: none;
 		}
 	}
+
+	.tipkaart.goud {
+
+    .inner:after {
+      content: "";
+      position: absolute;
+      top: -140%;
+      left: -250%;
+      width: 200%;
+      height: 200%;
+      opacity: .1;
+      transform: rotate(30deg);
+      
+      background: rgba(255, 255, 255, 0.03);
+      background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.13) 77%,
+        rgba(255, 255, 255, 0.5) 92%,
+        rgba(255, 255, 255, 0.0) 100%
+      );  
+    }  	
+  	
+		&:hover,&:focus,&:active {
+			color: @txt !important;
+
+			
+      .inner:after {
+        opacity: 1;
+        top: -40%;
+        left: -40%;
+        transition-property: left, top, opacity;
+        transition-duration: 1.3s, 0.9s, 0.3s;
+        transition-timing-function: ease;  			
+    	}
+  	}
+	}
+
 
   .containstip.slick-current a {
 			color: @wit !important;
@@ -257,13 +302,54 @@
 		}
 	}
 
-	.tipsstyling(type-tips,@defaultkaarkleur, @defaultkaarkleur_sub, @defaultkaarkleur_sub);
-	.tipsstyling(oranje,@oranje,@oranje_sub, @oranje_sub);
-	.tipsstyling(groen,@groen, @groen_sub, @groen_sub);
-	.tipsstyling(paars,@paars,@paars_sub, @paars_sub);
-	.tipsstyling(blauw,@blauw, @blauw_sub, @blauw_sub);
-	.tipsstyling(turquoise,@turquoise, @turquoise_sub, @turquoise_sub);
-	.tipsstyling(bruin,@gmred, @gmred_sub, @gmred_sub);
+	.tipsstyling(type-tips, @defaultkaarkleur, @defaultkaarkleur_sub, @defaultkaarkleur_sub, @wit, @defaultkaarkleur );
+	.tipsstyling(oranje, @oranje, @oranje_sub, @oranje_sub, @wit, @oranje );
+	.tipsstyling(groen, @groen, @groen_sub, @groen_sub, @wit, @groen );
+	.tipsstyling(paars, @paars, @paars_sub, @paars_sub, @wit, @paars );
+	.tipsstyling(blauw, @blauw, @blauw_sub, @blauw_sub, @wit, @blauw );
+	.tipsstyling(turquoise, @turquoise, @turquoise_sub, @turquoise_sub, @wit, @turquoise );
+	.tipsstyling(bruin, @gmred, @gmred_sub, @gmred_sub, @wit, @gmred );
+	.tipsstyling(goud, @goud, @goud_sub, @goud_sub, @txt, @goud_header );
+
+  .single-tips.goud {
+
+    header.onderwerp {
+      position: relative;
+  
+      &:after {
+        content: "";
+        z-index: 9999;
+        position: absolute;
+        top: -140%;
+        left: -250%;
+        width: 150%;
+        height: 300%;
+        opacity: .1;
+        transform: rotate(2deg);
+        
+        background: rgba(255, 255, 255, 0.03);
+        background: linear-gradient(
+          to right, 
+          rgba(255, 255, 255, 0.13) 0%,
+          rgba(255, 255, 255, 0.13) 77%,
+          rgba(255, 255, 255, 0.5) 92%,
+          rgba(255, 255, 255, 0.0) 100%
+        );  
+      }  	
+
+      &:hover {
+
+        &:after {
+          opacity: 1;
+          top: -50%;
+          left: -5%;
+          transition-property: left, top, opacity;
+          transition-duration: 1.3s, 0.9s, 0.6s;
+          transition-timing-function: ease;  			
+      	}
+    	}
+  	}
+  }
 
 	
 	.archive.tax-tiporganisatie,
