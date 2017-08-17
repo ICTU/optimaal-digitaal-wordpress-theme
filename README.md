@@ -5,13 +5,14 @@
 Dit theme wordt gebruikt op [optimaaldigitaal.gebruikercentraal.nl](https://optimaaldigitaal.gebruikercentraal.nl)
 
 ## Version
-Current: 2.10.1 - Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
+Current: 2.10.2 - Tabs op homepage weer omgedraaid: eerst 'alle tips', daarna 'aan de slag'
 
 ## Contact
 * Victor Zuydweg
 * Paul van Buuren: paul@wbvb.nl
 
 ## Version history
+* 2.10.2 - Tabs op homepage weer omgedraaid: eerst 'alle tips', daarna 'aan de slag'
 * 2.10.1 - Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
 * 2.9.1 - Icoontje informatieveiligheid gewijzigd en kleuren bijgewerkt.
 * 2.8.3 - Icoontjes voor informatieveiligheid toegevoegd.
