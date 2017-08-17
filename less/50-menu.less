@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.6.4
-// @desc.   Bugjes in serverside filtering
+// @version 2.10.3
+// @desc.   CSS bugjes vanwege .goud class op homepage
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -80,6 +80,7 @@
 
 	#nav-primary-button, .menu-button {
 		.menubuttondesign();
+		color: @wit;
 	}
 
 
@@ -153,12 +154,11 @@
 		    display: none;
 		}
 	}
-	.oc-push.oc-menu-open .oc-push.oc-menu {
-//	    overflow: scroll;
-		overflow: hidden;
-	    transition: transform @timer;
-	    visibility: visible;
-	}
+  .oc-push.oc-menu-open .oc-push.oc-menu {
+    overflow: hidden;
+    transition: transform @timer;
+    visibility: visible;
+  }
 
 	#nav-primary-closebutton {
     color: @menu_a_color;
@@ -205,16 +205,11 @@
 	}	
 
 	.oc-push.oc-menu-open {
-		.oc-menu.oc-push {
-
-		    transform: translate3d(  0, ( ( 1 * @kiekeboe ) * @menuhoogte ), 0);
-		    transition: transform @timer;
-		    opacity: 1;
-
-		}
-		.oc-pusher {
-//			    transform: translate3d( ( ( -1 * @kiekeboe ) * @menubreedte ), 0, 0);
-		}
+    .oc-menu.oc-push {
+      transform: translate3d(  0, ( ( 1 * @kiekeboe ) * @menuhoogte ), 0);
+      transition: transform @timer;
+      opacity: 1;
+    }
 	}		
 
 	
@@ -230,68 +225,63 @@
 	
 	@media only screen and (min-width: ( @break_phone480 ) ) {
 		
-	.site-header #oc-trigger {
-		    right: 3em;
-		    top: 1em;
-		}		
+    .site-header #oc-trigger {
+      right: 3em;
+      top: 1em;
+    }		
 	}	
 	
 	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
 
-		#nav-primary-button, .menu-button {
-			width: auto;
-			text-align: left;
-			line-height: 2.4;
-		    span.label {
-				padding-left: 1em;
-			    visibility: visible;
-			    display: inline-block;
-		    }
-		}
+    #nav-primary-button, .menu-button {
+      width: auto;
+      text-align: left;
+      line-height: 2.4;
+      span.label {
+        padding-left: 1em;
+        visibility: visible;
+        display: inline-block;
+      }
+    }
 
 		.dojs .oc-menu {
 			box-shadow: -5px 0px 46px 0px rgba(@grijs,@grijs,@grijs,0.33),  -4px 0px 4px 0px rgba(@grijs,@grijs,@grijs,0.22);		
 		}
 	
-		.oc-menu {
-		    height: 100%;
-		    top: 0;
-		    right: ( ( -1 * @kiekeboe ) * @menubreedte );
-		    width: @menubreedte;
-			background: @menu_bg;
-			background: @menu_bg;
+    .oc-menu {
+      height: 100%;
+      top: 0;
+      right: ( ( -1 * @kiekeboe ) * @menubreedte );
+      width: @menubreedte;
+      background: @menu_bg;
+      background: @menu_bg;
+      
+      &:before {
+        background: @menu_bg;
+        height: 0;
+      }
+      
+      ul, li {
+        list-style: none;
+        
+        a {
+          text-align: left;
+          max-width: 70%;
+          word-break: break-word;
+        }	    
+      }	    
+    }	    
 	
-			&:before {
-				background: @menu_bg;
-				height: 0;
-			}
+    .no-csstransforms3d .oc-pusher {
+      padding-left: @menubreedte;
+    }
 	
-			ul, li {
-				list-style: none;
-				
-				a {
-					text-align: left;
-					max-width: 70%;
-					word-break: break-word;
-				}	    
-			}	    
-		}	    
-	
-		.no-csstransforms3d .oc-pusher {
-		    padding-left: @menubreedte;
-		}
-	
-		.oc-push.oc-menu-open {
-			.oc-menu.oc-push {
-
-			    transform: translate3d( ( ( -1 * @kiekeboe ) * @menubreedte ), 0, 0);
-			    transition: transform @timer;
-	
-			}
-			.oc-pusher {
-//			    transform: translate3d( ( ( -1 * @kiekeboe ) * @menubreedte ), 0, 0);
-			}
-		}		
+    .oc-push.oc-menu-open {
+      .oc-menu.oc-push {
+        transform: translate3d( ( ( -1 * @kiekeboe ) * @menubreedte ), 0, 0);
+        transition: transform @timer;
+      }
+    }		
 	}
 
 	@media only screen and (min-width: ( @break_phone600 ) ) {

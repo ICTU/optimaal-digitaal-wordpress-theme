@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.8.3
-// @desc.   Icoontjes voor informatieveiligheid toegevoegd.
+// @version 2.10.3
+// @desc.   CSS bugjes vanwege .goud class op homepage
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -293,12 +293,14 @@
 		}
 	}
 
-	#toggle_more_filters, .reset {
+	#toggle_more_filters,
+	.reset {
 		text-transform: uppercase;
 		text-decoration: none;
 	}
 	.reset {
 		color: @txt;
+		background: @wit !important;
 		border: 1px solid @txt;
 		border-radius: @border_radius;
 		background: none;
