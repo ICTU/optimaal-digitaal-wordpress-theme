@@ -1,7 +1,7 @@
 <?php
 
 ///
-// Optimaal Digitaal - page.php
+// Optimaal Digitaal - archive-tips.php
 // ----------------------------------------------------------------------------------
 // Archive-pagina voor tips. Toont alle tips.
 // ----------------------------------------------------------------------------------
@@ -13,15 +13,26 @@
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
-remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
-remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
-remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
-remove_action( 'genesis_loop', 'genesis_do_loop' );
+die('ARCHIVE TIPS');
 
-//add_action( 'genesis_loop', 'fn_od_wbvb_tips_archive_cards_loop' );
+if ( 22 == 33 ) {
+  
+  remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
+  remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
+  remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+  remove_action( 'genesis_loop', 'genesis_do_loop' );
+  
+  add_action( 'genesis_loop', 'op_do_show_cards_for_thema', 10 );
+  
+}
+else {
 
-add_action( 'genesis_loop', 'op_do_show_cards_for_thema', 10 );
+  remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
+  
+  remove_action( 'genesis_loop', 'genesis_do_loop' );
+  add_action( 'genesis_loop', 'fn_od_wbvb_tips_archive_cards_home_met_filter' );
+
+}
 
 
 genesis();
-

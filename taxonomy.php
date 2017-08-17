@@ -13,8 +13,6 @@
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
-
-
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );

@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.1
-// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
+// @version 2.10.3b
+// @desc.   Tabs op homepage weer omgedraaid: eerst 'alle tips', daarna 'aan de slag'
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -45,8 +45,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.10.1' );
-define( 'CHILD_THEME_DESCRIPTION', "2.10.1 Gouden kleur en CSS-effect voor gouden kleur toegevoegd." );
+define( 'CHILD_THEME_VERSION', '2.10.3b' );
+define( 'CHILD_THEME_DESCRIPTION', "2.10.3b Tabs op homepage weer omgedraaid: eerst 'alle tips', daarna 'aan de slag'" );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
@@ -441,10 +441,7 @@ function fn_od_wbvb_write_tip_kaart($postobject, $plaatjes, $kleuren, $prefix = 
 	
 }
 
-
-
 //========================================================================================================
-
 
 function fn_od_wbvb_get_filterbutton($term) {
 
@@ -615,129 +612,22 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
 		<ul class="tab-widget__list" id="tabs_list">
 			<li class="tab-widget__item">
-				<a href="#tab-panel-1" class="tab-widget__link">' . __( "Aan de slag", 'gebruikercentraal' ) . '</a>
+				<a href="#tab-panel-1" class="tab-widget__link">' . __( "Alle tips", 'gebruikercentraal' ) . '</a>
 			</li>
 			<li class="tab-widget__item">
-				<a href="#tab-panel-2" class="tab-widget__link">' . __( "Alle tips", 'gebruikercentraal' ) . '</a>
+				<a href="#tab-panel-2" class="tab-widget__link">' . __( "Aan de slag", 'gebruikercentraal' ) . '</a>
 			</li>
-
 		</ul>
 
   <div class="tab-widget__tabs">';
 
 
 
-
-
-
-
-	// ============================================================================================================================================
-	// start Aan de slag
-	// ============================================================================================================================================
-	echo '<div class="tab-widget__tab-content tab-widget__link--not-yet-activated" tabindex="-1">';
-	echo '<p id="tab-panel-2" tabindex="-1"><span>' . __( "Aan de slag", 'gebruikercentraal' ) . '</span></p>';
-
-	global $tipcounter;
-	$tipcounter       = 0;
-	$carousselcounter = 0;
-
-	$terms = get_terms( GC_TIPVRAAG ); // niet meer tips tonen voor alle thema's (GC_TIPTHEMA) maar tips per vraag
-
-	foreach($terms as $term) {
-
-		// door alle thema's heenlopen
-		// per thema's de tips ophalen
-
-		$inlinelinks			= '';
-		$kleuren	        = array();
-		$plaatjes         = array();
-    if ( isset( $classes[$term->slug] ) ) {
-    	$kleuren	      = $classes[$term->slug]['kleur'];
-    	$plaatjes	      = $classes[$term->slug]['plaatje'];
-    }
-    
-    $args = array(
-      'post_type' 		  => GC_TIP_CPT,
-      'post_password'		=>	'',
-      'tax_query' 	    => array(
-        array(
-          'taxonomy'    => GC_TIPVRAAG,
-          'field' 	    => 'slug',
-          'terms' 	    => $term->slug
-        )
-      ),
-      'numberposts'	    => -1,
-			'posts_per_page' 	=>	-1,
-    );
-
-    
- 
-    
-		// The Query
-		$the_query = new WP_Query( $args );
-		
-		// The Loop
-		if ( $the_query->have_posts() ) {
-
-      $carousselcounter++;
-
-			echo '<section class="cardgallery ' . implode( $kleuren ) . '">';
-			echo "<h2>" . $term->name . "</h2>";
-
-			if ( $term->description ) {
-				echo "<p>" . $term->description . "</p>";
-			}
-
-			echo '<div class="carousel" id="carousel-'  . $carousselcounter . '">';
-
-			while ( $the_query->have_posts() ) {
-				$the_query->the_post();
-				
-      	$themadataforcard	= get_the_terms( $the_query->ID, GC_TIPTHEMA );
-
-    		$kleuren	= '';
-    		$plaatjes	= '';
-
-        if ( ! empty( $themadataforcard ) && ! is_wp_error( $themadataforcard ) ){
-
-          $term     = $themadataforcard[0];
-          $kleuren	= $classes[$term->slug]['kleur'];
-          $plaatjes	= $classes[$term->slug]['plaatje'];
-          
-        }
-				
-				$title		      = get_the_title( );
-				$theID          = fn_od_wbvb_write_tip_kaart($the_query, $plaatjes, $kleuren, '<div class="containstip carousel-cell">', '</div>', 'caroussel-');
-				$inlinelinks	.= '<li><a href="#' . $theID . '" title="Spring naar \'' . $title . '\'"><span>' . $title . '</span></a></li>';		
-
-			}
-
-			echo '</div>'; 
-			echo '</section>';
-
-		}
-		else {
-			// no posts found
-		}
-		/* Restore original Post Data */
-		wp_reset_postdata();		
-	}
-	
-	echo '</div>'; // <!-- //tab-widget__tab-content tab-widget__link--not-yet-activated -->
-	// ============================================================================================================================================
-	// einde Aan de slag
-	// ============================================================================================================================================
-
-
-
-
-
-
 	// ============================================================================================================================================
 	// start Alle tips
 	// ============================================================================================================================================
-	echo '<div class="tab-widget__tab-content tab-widget__link--not-yet-activated" id="tab-panel-1" tabindex="-1">';
-	echo '<h2 id="tab-panel-1-h2" tabindex="-1"><span>' . __( "Alle tips", 'gebruikercentraal' ) . '</span></h2>';
+	echo '<div class="tab-widget__tab-content tab-widget__link--not-yet-activated" id="tab-panel-2" tabindex="-1">';
+	echo '<h2 id="tab-panel-2-h2" tabindex="-1"><span>' . __( "Alle tips", 'gebruikercentraal' ) . '</span></h2>';
 
 	$theurl	=	strtok($_SERVER["REQUEST_URI"],'?');	
 
@@ -951,6 +841,112 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 	// ============================================================================================================================================
 	// einde Alle tips
 	// ============================================================================================================================================
+
+
+
+
+
+
+
+	// ============================================================================================================================================
+	// start Aan de slag
+	// ============================================================================================================================================
+	echo '<div class="tab-widget__tab-content tab-widget__link--not-yet-activated" tabindex="-1">';
+	echo '<p id="tab-panel-1" tabindex="-1"><span>' . __( "Aan de slag", 'gebruikercentraal' ) . '</span></p>';
+
+	global $tipcounter;
+	$tipcounter       = 0;
+	$carousselcounter = 0;
+
+	$terms = get_terms( GC_TIPVRAAG ); // niet meer tips tonen voor alle thema's (GC_TIPTHEMA) maar tips per vraag
+
+	foreach($terms as $term) {
+
+		// door alle thema's heenlopen
+		// per thema's de tips ophalen
+
+		$inlinelinks			= '';
+		$kleuren	        = array();
+		$plaatjes         = array();
+    if ( isset( $classes[$term->slug] ) ) {
+    	$kleuren	      = $classes[$term->slug]['kleur'];
+    	$plaatjes	      = $classes[$term->slug]['plaatje'];
+    }
+    
+    $args = array(
+      'post_type' 		  => GC_TIP_CPT,
+      'post_password'		=>	'',
+      'tax_query' 	    => array(
+        array(
+          'taxonomy'    => GC_TIPVRAAG,
+          'field' 	    => 'slug',
+          'terms' 	    => $term->slug
+        )
+      ),
+      'numberposts'	    => -1,
+			'posts_per_page' 	=>	-1,
+    );
+
+    
+ 
+    
+		// The Query
+		$the_query = new WP_Query( $args );
+		
+		// The Loop
+		if ( $the_query->have_posts() ) {
+
+      $carousselcounter++;
+
+			echo '<section class="cardgallery ' . implode( $kleuren ) . '">';
+			echo "<h2>" . $term->name . "</h2>";
+
+			if ( $term->description ) {
+				echo "<p>" . $term->description . "</p>";
+			}
+
+			echo '<div class="carousel" id="carousel-'  . $carousselcounter . '">';
+
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				
+      	$themadataforcard	= get_the_terms( $the_query->ID, GC_TIPTHEMA );
+
+    		$kleuren	= '';
+    		$plaatjes	= '';
+
+        if ( ! empty( $themadataforcard ) && ! is_wp_error( $themadataforcard ) ){
+
+          $term     = $themadataforcard[0];
+          $kleuren	= $classes[$term->slug]['kleur'];
+          $plaatjes	= $classes[$term->slug]['plaatje'];
+          
+        }
+				
+				$title		      = get_the_title( );
+				$theID          = fn_od_wbvb_write_tip_kaart($the_query, $plaatjes, $kleuren, '<div class="containstip carousel-cell">', '</div>', 'caroussel-');
+				$inlinelinks	.= '<li><a href="#' . $theID . '" title="Spring naar \'' . $title . '\'"><span>' . $title . '</span></a></li>';		
+
+			}
+
+			echo '</div>'; 
+			echo '</section>';
+
+		}
+		else {
+			// no posts found
+		}
+		/* Restore original Post Data */
+		wp_reset_postdata();		
+	}
+	
+	echo '</div>'; // <!-- //tab-widget__tab-content tab-widget__link--not-yet-activated -->
+	// ============================================================================================================================================
+	// einde Aan de slag
+	// ============================================================================================================================================
+
+
+
 
 
 
@@ -3270,7 +3266,7 @@ function op_do_show_cards_for_thema() {
 	global $post;
 	global $filterthemas;
 
-    $classes				= array();
+  $classes				= array();
 		
 	$terms = get_terms( GC_TIPTHEMA );
 
@@ -3290,7 +3286,8 @@ function op_do_show_cards_for_thema() {
 
 		}
 
-	    $classes =  array_filter($classes);
+    $classes =  array_filter($classes);
+
 	}
 
 
@@ -3317,4 +3314,25 @@ function op_do_show_cards_for_thema() {
 }
 
 //========================================================================================================
+
+// filter tips: alleen gepubliceerde
+add_action( 'pre_get_posts', 'op_do_filter_tips' );
+
+//========================================================================================================
+
+// Show only public and non-passwordprotected tips
+function op_do_filter_tips( $query ) {
+
+	if( $query->is_main_query() && ! is_admin() ) {
+
+		$query->set( 'post_status', 'publish' );
+		$query->set( 'post_password', '' );
+//		$query->set( 'post_type', GC_TIP_CPT );
+//		$query->set( 'posts_per_page', -1 );
+	}
+
+}
+
+//========================================================================================================
+
 
