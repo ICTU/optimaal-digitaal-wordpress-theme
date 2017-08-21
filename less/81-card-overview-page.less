@@ -7,7 +7,7 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.4
+// @version 2.10.4a
 // @desc.   CSS bug op single .goud pagina: .social-media knopjes.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
@@ -316,9 +316,14 @@
     header.onderwerp {
       position: relative;
       
+      #tip_inline_nav,
       .social-media {
         position: relative;
         z-index: 9999;
+        
+        a {
+          cursor: pointer;
+        }
       }
 
       &:after {
