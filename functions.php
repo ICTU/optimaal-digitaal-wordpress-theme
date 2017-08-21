@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.3
-// @desc.   CSS bugjes vanwege .goud class op homepage
+// @version 2.10.4
+// @desc.   CSS bug op single .goud pagina: .social-media knopjes.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -45,8 +45,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.10.3' );
-define( 'CHILD_THEME_DESCRIPTION', "2.10.3 CSS bugjes vanwege .goud class op homepage" );
+define( 'CHILD_THEME_VERSION', '2.10.4' );
+define( 'CHILD_THEME_DESCRIPTION', "2.10.4 CSS bug op single .goud pagina: .social-media knopjes." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );

@@ -1,5 +1,5 @@
 
-# sh /shared-paul-files/Webs/git-repos/optimaal-digitaal-wordpress-theme/distribute.sh 
+# sh '/shared-paul-files/Webs/git-repos/optimaal-digitaal-wordpress-theme/distribute.sh' &>/dev/null
 
 # clear the log file
 

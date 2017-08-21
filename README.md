@@ -5,13 +5,14 @@
 Dit theme wordt gebruikt op [optimaaldigitaal.gebruikercentraal.nl](https://optimaaldigitaal.gebruikercentraal.nl)
 
 ## Version
-Current: 2.10.3 - CSS bugjes vanwege .goud class op homepage
+Current: 2.10.4 - CSS bug op single .goud pagina: .social-media knopjes.
 
 ## Contact
 * Victor Zuydweg
 * Paul van Buuren: paul@wbvb.nl
 
 ## Version history
+* 2.10.4 - CSS bug op single .goud pagina: .social-media knopjes.
 * 2.10.3 - CSS bugjes vanwege .goud class op homepage
 * 2.10.2 - Tabs op homepage weer omgedraaid: eerst 'alle tips', daarna 'aan de slag'
 * 2.10.1 - Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
