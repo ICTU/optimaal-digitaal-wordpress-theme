@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.1
-// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
+// @version 2.10.5
+// @desc.   CSS bug bij hover op single tip pagina in header.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -474,13 +474,22 @@
 
 //========================================================================================================
 
-.social_icon_hover_color(@src, @fill-new) {
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape(' fill="#FFFFFF"');
-    @replace-new: 		  escape(' fill="@{fill-new}"');
-    @replacesrc1: 		  replace("@{data-uri}", @replace-default, @replace-new, "g");
+.social_icon_hover_color(@src, @fill-new, @fill-new2: @txt ) {
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape(' fill="#FFFFFF"');
+  @replace-new: 		  escape(' fill="@{fill-new}"');
+  @replace-new2: 		  escape(' fill="@{fill-new2}"');
+  @replacesrc1: 		  replace("@{data-uri}", @replace-default, @replace-new, "g");
+  @replacesrc2: 		  replace("@{data-uri}", @replace-default, @replace-new2, "g");
+  
+  background-image: e(@replacesrc1);
 
-    background-image: e(@replacesrc1);
+  &:hover,
+  &:active,
+  &:focus {
+    background-image: e(@replacesrc2);
+  }
+    
 }
 
 //========================================================================================================

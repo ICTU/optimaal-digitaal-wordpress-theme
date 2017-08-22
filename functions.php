@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.4
-// @desc.   CSS bug op single .goud pagina: .social-media knopjes.
+// @version 2.10.5
+// @desc.   CSS bug bij hover op single tip pagina in header.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -45,8 +45,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.10.4' );
-define( 'CHILD_THEME_DESCRIPTION', "2.10.4 CSS bug op single .goud pagina: .social-media knopjes." );
+define( 'CHILD_THEME_VERSION', '2.10.5' );
+define( 'CHILD_THEME_DESCRIPTION', "2.10.5 CSS bug bij hover op single tip pagina in header." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
@@ -2951,7 +2951,7 @@ ul#' . ID_SKIPLINKS . ' li {
 */
 
 function admin_append_editor_styles() {
-    add_editor_style(WBVB_THEMEFOLDER . '/editor-styles.css');
+  add_editor_style(WBVB_THEMEFOLDER . '/editor-styles.css?v=' . CHILD_THEME_VERSION);
 }
 
 add_action( 'init', 'admin_append_editor_styles' );

@@ -7,14 +7,14 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.1
-// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
+// @version 2.10.5
+// @desc.   CSS bug bij hover op single tip pagina in header.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
 
 //=========================================================================================================
-.tipsstyling(@classname: 'default', @kleur: @oranje, @subkleur: @oranje_sub, @textcolor: @oranje_sub, @txtkleur: @wit, @headerkleur: @wit ) {
+.tipsstyling(@classname: 'default', @kleur: @oranje, @subkleur: @oranje_sub, @textcolor: @oranje_sub, @txtkleur: @wit, @headerkleur: @wit, @hovercolor: @txt ) {
 
   body.@{classname} header.onderwerp,
   main .tipkaart.@{classname} {
@@ -148,7 +148,6 @@
         color: @txt;
       }
     }	
-		
 
 		.contactformulierjump {
 			.jumptosuggestie {
@@ -158,22 +157,23 @@
 			}
 		}
 	} 
+	
 	body.@{classname}.single-tips main .onderwerp {
   	* {
       color: @txtkleur;
   	} 
 
     .linkedin {
-      .social_icon_hover_color('../images/icon-linkedin.svg', @txtkleur );
+      .social_icon_hover_color('../images/icon-linkedin.svg', @txtkleur, @txt );
     }
     .twitter {
-      .social_icon_hover_color('../images/icon-twitter.svg', @txtkleur );
+      .social_icon_hover_color('../images/icon-twitter.svg', @txtkleur, @txt );
     }
     .mail {
-      .social_icon_hover_color('../images/icon-mail.svg', @txtkleur );
+      .social_icon_hover_color('../images/icon-mail.svg', @txtkleur, @txt );
     }
     .print {
-      .social_icon_hover_color('../images/icon-print.svg', @txtkleur );
+      .social_icon_hover_color('../images/icon-print.svg', @txtkleur, @txt );
     }
 
   }
