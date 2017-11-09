@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.1
-// @desc.   Gouden kleur en CSS-effect voor gouden kleur toegevoegd.
+// @version 2.11.1
+// @desc.   Contactinfo van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -37,6 +37,7 @@
 	.page-template-page_filter,
 	.post-type-archive-tips,
 	.tax-tipthema,
+	.tax-tipgever,
 	.single-tips {
 	
 		& .content {
@@ -186,7 +187,7 @@
 			text-transform: none;
 			font-weight: normal;
 		}
-
+		
 		.goedevoorbeelden,
 		.onderzoek,
 		.suggestie,
@@ -305,57 +306,68 @@
     #inleiding,
     .goedvoorbeeld,
     .opsomming {
-		    img {
-		        border: 1px solid @border-color;
-		        margin-top: ( @padding / 2 );
-		    }
-	    }
+      img {
+        border: 1px solid @border-color;
+        margin-top: ( @padding / 2 );
+      }
+    }
 
-		.opsomming {
-  		float: none;
-  		clear: both;
+		.visitekaartje {
+  		max-width: 245px;
   		overflow: hidden;
-		    img {
-		        margin-right: 12px;
-		    }
-	    }
-	
-  
-  .goedvoorbeeld + .goedvoorbeeld {
-    .marge_top();
-  }
+      margin-top: ( @padding / 2 );
+      margin-right: .5em;
+      
+      img {
+        margin: 0 0 .5em 0;
+      }
+  		
+  		small {
+    		display: block;
+    		clear: both;
+  		}
+		}
 
-	    .goedvoorbeeld {
+    .opsomming {
+      float: none;
+      clear: both;
+      overflow: hidden;
+      img {
+        margin-right: 12px;
+      }
+    }
 
-			
-			.setfont(@osansregular, 18);
+    .goedvoorbeeld + .goedvoorbeeld {
+      .marge_top();
+    }
 
-			h2 {
-				.setfont(@ubunturegular, 32);
-			}
-			
-			h3 {
-				.setfont(@ubuntumedium, 24);
-			}
-			
-		    img {
-			    margin-right: 1em;
-			    float: left;
-		    }
-		    
-	
-		    &.rechts {
-			    
-			    img {
-				    float: right;
-				    margin-right: 0;
-				    margin-left: 1em;
-			    }
-		    }
-	    }
+    .goedvoorbeeld {
+      .setfont(@osansregular, 18);
+      
+      h2 {
+        .setfont(@ubunturegular, 32);
+      }
+      
+      h3 {
+        .setfont(@ubuntumedium, 24);
+      }
+      
+      img {
+        margin-right: 1em;
+        float: left;
+      }
+      
+      
+      &.rechts {
+        img {
+          float: right;
+          margin-right: 0;
+          margin-left: 1em;
+        }
+      }
+    }
 
-	
-	    .hasboxshadow {
+    .hasboxshadow {
 			background-color: @nuttigelinks_bg;       
 
 			.boxshadow();

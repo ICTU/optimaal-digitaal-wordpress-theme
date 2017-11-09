@@ -8,8 +8,8 @@
 // @package gebruiker-centraal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.8.1
-// @desc.   Homepage met vragen
+// @version 2.11.1
+// @desc.   Contactinfo van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -19,7 +19,7 @@
 //include_once( get_template_directory() . '/lib/init.php' );
 
 // prepare for translation
-load_child_theme_textdomain('gebruikercentraal', GC_FOLDER . '/languages' );
+load_child_theme_textdomain( 'gebruikercentraal', GC_FOLDER . '/languages' );
 
 
 $errormessage = '';
@@ -138,22 +138,22 @@ function showdebug($file = '', $extra = '') {
 //========================================================================================================
 
 function od_wbvb_deregister_styles() {
-    
-    // remove the event manager style sheet
-    wp_dequeue_style('events-manager');
-    wp_dequeue_style('em_enqueue_styles');
-    
-    // alle contact form 7 meuk, preventief
-    wp_dequeue_style('contact-form-7');
-    wp_dequeue_style('contact-form-7-rtl');
-
-    // alle Buddypress meuk
-    wp_dequeue_style('bp-legacy-css');
-    wp_dequeue_style('bp-mentions-css');
-    wp_dequeue_style('bp-admin-bar');
-
-    // wordpress-social-login
-    wp_dequeue_style('wsl-widget');
+  
+  // remove the event manager style sheet
+  wp_dequeue_style('events-manager');
+  wp_dequeue_style('em_enqueue_styles');
+  
+  // alle contact form 7 meuk, preventief
+  wp_dequeue_style('contact-form-7');
+  wp_dequeue_style('contact-form-7-rtl');
+  
+  // alle Buddypress meuk
+  wp_dequeue_style('bp-legacy-css');
+  wp_dequeue_style('bp-mentions-css');
+  wp_dequeue_style('bp-admin-bar');
+  
+  // wordpress-social-login
+  wp_dequeue_style('wsl-widget');
 
 }
 

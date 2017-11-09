@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.7.2
-// @desc.   Bugfixes (taxonomy, single tip, twitter-account)
+// @version 2.11.1
+// @desc.   Contactinfo van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -324,49 +324,116 @@ function od_tip_custom_content() {
 
     echo '</section>';
 
-	
-	        
-	    if ( $goed_voorbeeld ) {
-	
-			echo '<section class="goedevoorbeelden">';
-			
-			echo '<h2 id="' . ID_goedvoorbeeld . '">' . __( "Goede voorbeelden", 'gebruikercentraal' ) . '</h2>';
-			
-			$side = 'rechts';
-	
-	    	foreach( $goed_voorbeeld as $field_name => $value ) {
-		        	
-				if ( $side == 'rechts' ) {
-		    		$side = 'links';
-				}
-				else {
-		    		$side = 'rechts';
-				}
-	
-	    		echo '<section class="goedvoorbeeld ' . $side . '">';
-	
-	            $image = $value['afbeelding_goed_voorbeeld'];
-	            
-	            if ( ( $image ) && ( isset($image["sizes"] ) ) ) {
-	                echo '<img src="' . $image['sizes'][OPSOMMINGWIDTH] . '" alt="" height="' . $image['sizes'][OPSOMMINGWIDTH . '-height'] . '" width="' . $image['sizes'][OPSOMMINGWIDTH . '-width'] . '" />';
-	            }
-	            
-				echo '<h3>' . $value['titel_goed_voorbeeld'] . '</h3>';
-				echo $value['tekst_goed_voorbeeld'];
-				
-				if ( $value['voorbeeld-auteur-naam'] && $value['voorbeeld-auteur-functie'] ) {
-	    			echo '<small class="auteur">' . $value['voorbeeld-auteur-naam'] . ', ' . $value['voorbeeld-auteur-functie'] . '</small>';
-				}
-				else if (  $value['voorbeeld-auteur-naam'] ) {
-	    			echo '<small class="auteur">' . $value['voorbeeld-auteur-naam'] . '</small>';
-				}
-	
-	    		echo '</section>';
-	
-	    	}
-	
-			echo '</section>';
-	    }
+    if ( $goed_voorbeeld ) {
+      
+      echo '<section class="goedevoorbeelden">';
+      
+      echo '<h2 id="' . ID_goedvoorbeeld . '">' . __( "Goede voorbeelden", 'gebruikercentraal' ) . '</h2>';
+      
+      $side = 'rechts';
+      
+      foreach( $goed_voorbeeld as $field_name => $value ) {
+        
+        if ( $side == 'rechts' ) {
+          $side = 'links';
+        }
+        else {
+          $side = 'rechts';
+        }
+        
+        echo '<section class="goedvoorbeeld ' . $side . '">';
+        
+        $image = $value['afbeelding_goed_voorbeeld'];
+        
+        $visitekaart    = '';
+        $archivelink    = '';
+        $naam           = $value['voorbeeld-auteur-naam'];
+        $functietitel   = $value['voorbeeld-auteur-functie'];
+        $experts        = $value[OD_CITAATAUTEUR . '_field'];
+        
+        if ( $experts && ( $experts[0] > 0 )  ) {
+          $xpercounter = 0;              
+
+          foreach ( $experts as $theterm ) {
+            //OD_CITAATAUTEUR . '_field'
+
+            $thetermdata    = get_term( $theterm, OD_CITAATAUTEUR );
+            $acfid          = $thetermdata->taxonomy . '_' . $thetermdata->term_id;
+            $tipgever_foto  = get_field( 'tipgever_foto', $acfid);
+            $functietitel   = get_field( 'tipgever_functietitel', $acfid );
+            $tipgever_mail  = get_field( 'tipgever_mail', $acfid );
+            $tipgever_foon  = get_field( 'tipgever_telefoonnummer', $acfid );
+
+            $acfid          = OD_CITAATAUTEUR . '_' . $theterm;
+            $image_tag      = '';
+
+            if ( $thetermdata->name ) {
+              $naam         = $thetermdata->name;
+            }
+
+            // link naar archive als er meer dan 1 tip aan deze tax. hangt
+            if ( ( $thetermdata->count > 1 ) && $naam ) {
+              $archivelink = ' <a href="' . get_term_link( $thetermdata->term_id ) . '">' . __( "Alle tips van ", 'gebruikercentraal' ) . $naam . '</a>';
+            }
+            
+            if ( $tipgever_mail || $tipgever_foon ) {
+
+              $visitekaart = '<small>' . $naam;
+
+              if ( $functietitel ) {
+                $visitekaart .= '<br>' . $functietitel; 
+              }
+              
+              if ( $tipgever_mail ) {
+                $visitekaart .= '<br><a href="mailto:' . $tipgever_mail . '">' . $tipgever_mail . '</a>'; 
+              }
+              
+              if ( $tipgever_foon ) {
+                $visitekaart .= '<br><a href="tel:' . preg_replace("/[^0-9+]/", "", $tipgever_foon) . '">' . $tipgever_foon . '</a>';
+              }
+              if ( $archivelink ) {
+                $archivelink = '<br>' . $archivelink;
+              }
+              $visitekaart .= $archivelink . '</small>';
+              
+              // naam en functietitel wissen zodat ze niet dubbel getoond worden
+              $functietitel = '';
+              $naam         = '';
+              $archivelink  = '';
+            }
+          }
+        }
+
+        if ( ( $image ) && ( isset($image["sizes"] ) ) ) {
+          if ( $visitekaart ) {
+            $visitekaart = '<div class="visitekaartje"><img src="' . $image['sizes'][OPSOMMINGWIDTH] . '" alt="" height="' . $image['sizes'][OPSOMMINGWIDTH . '-height'] . '" width="' . $image['sizes'][OPSOMMINGWIDTH . '-width'] . '" />' . $visitekaart . '</div>';
+          }
+          else {
+            $visitekaart = '<img src="' . $image['sizes'][OPSOMMINGWIDTH] . '" alt="" height="' . $image['sizes'][OPSOMMINGWIDTH . '-height'] . '" width="' . $image['sizes'][OPSOMMINGWIDTH . '-width'] . '" />';
+          }
+        }
+        
+        echo $visitekaart;
+        
+        echo '<h3>' . $value['titel_goed_voorbeeld'] . '</h3>';
+        echo $value['tekst_goed_voorbeeld'];
+
+
+        // deze waarden zijn alleen gevuld als het visitekaartje NIET getoond is
+        if ( $naam && $functietitel ) {
+          echo '<small class="auteur">' . $naam . ', ' . $functietitel . ' ' . $archivelink . '</small>';
+        }
+        else if ( $naam ) {
+          echo '<small class="auteur">' . $naam . ' ' . $archivelink . '</small>';
+        }
+        
+        echo '</section>';
+        
+      }
+      
+      echo '</section>';
+
+    }
 	
 	    if ( $waaromwerktdit ) {
   			echo '<section class="waaromwerktdit">';

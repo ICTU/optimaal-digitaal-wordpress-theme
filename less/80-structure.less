@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.2
-// @desc.   Tabs op homepage weer omgedraaid: eerst 'alle tips', daarna 'aan de slag'
+// @version 2.11.1
+// @desc.   Contactinfo van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -78,12 +78,18 @@
 
 @restant2: ( @helebreedte - ( @kleurvlak + ( 2 * @cardmargin ) ) );
 @padding_perc_rechts: ( ( ( @restant2 / @helebreedte ) * 100% ) / 2 );
+
+.taxonomy-description {
+  overflow: hidden;
+  clear: both;	
+}
 		
 
 .home, 
 .page-template-page_filter, 
 .post-type-archive-tips,
-.tax-tipthema {
+.tax-tipthema,
+.tax-tipgever {
     main  {
 		.taxonomy-description,
 		.cardflex {
@@ -146,7 +152,8 @@
 	.home, 
 	.page-template-page_filter, 
 	.post-type-archive-tips,
-	.tax-tipthema {
+  .tax-tipthema,
+  .tax-tipgever {
 	    main  {
 			.taxonomy-description,
 			.cardflex {
@@ -210,7 +217,8 @@
 	.home, 
 	.page-template-page_filter, 
 	.post-type-archive-tips,
-	.tax-tipthema {
+  .tax-tipthema,
+  .tax-tipgever {
 	    main  {
 			.taxonomy-description,
 			.cardflex {
@@ -248,7 +256,8 @@
 	.home, 
 	.page-template-page_filter, 
 	.post-type-archive-tips,
-	.tax-tipthema {
+  .tax-tipthema,
+  .tax-tipgever {
 	    main  {
 			.taxonomy-description,
 			.cardflex {
