@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.3
-// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
+// @version 2.11.4
+// @desc.   Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -216,8 +216,8 @@
     
     .visitekaartje {
       flex-grow: 1;
-      min-width: 25%;
-      max-width: 25%;
+      min-width: 100%;
+      max-width: 100%;
       margin: 0;
       align-items: stretch;
       border: @tipgeverkaartborderwidth solid @tipgeverkaartborderkleur;
@@ -285,6 +285,23 @@
     }
   }
 
+  // 
+  @media only screen and (min-width: ( @break_phone600 ) ) {
+    .overzicht-tipgevers {
+      .visitekaartje {
+        min-width: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+  @media only screen and (min-width: ( @break_tablet ) ) {
+    .overzicht-tipgevers {
+      .visitekaartje {
+        min-width: ( 100% / 3 );
+        max-width: ( 100% / 3 );
+      }
+    }
+  }
 
 	 
 
@@ -960,9 +977,6 @@
 					min-height: 86px;
 				}
 			}
-//			.suggestie {
-//				padding-top: 1em;
-//			}
 		}
 	}
 
