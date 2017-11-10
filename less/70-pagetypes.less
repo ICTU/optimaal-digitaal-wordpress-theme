@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.1
-// @desc.   Contactinfo van tipgevers toegevoegd.
+// @version 2.11.2
+// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -166,9 +166,112 @@
 		    &.right {
 		        padding-right: ( 4 * @padding );
 		    }
-	    }
+      }
     }
-	}   
+  }  
+
+  .visitekaartje {
+    max-width: 245px;
+    overflow: hidden;
+    margin-top: ( @padding / 2 );
+    margin-right: .5em;
+    
+    img {
+      margin: 0 0 .5em 0;
+    }
+    
+    small {
+      display: block;
+      clear: both;
+    }
+  }
+
+
+  .ding-met-kaartjes {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    border: @tipgeverkaartgutterwidth solid @tipgeverkaartborderkleur;
+    margin-left: ( -1 * @tipgeverkaartgutterwidth );
+    margin-right: ( -1 * @tipgeverkaartgutterwidth );
+    
+    .visitekaartje {
+      flex-grow: 1;
+      min-width: 25%;
+      max-width: 25%;
+      margin: 0;
+      align-items: stretch;
+      border: @tipgeverkaartborderwidth solid @tipgeverkaartborderkleur;
+      background: @tipgeverkaartbgkleur;
+      font-size: 80%;
+
+      &:hover {
+        border-color: darken( @tipgeverkaartbgkleur, 1% );
+        box-shadow: 4px 4px 25px darken( @tipgeverkaartbgkleur, 15% );
+        z-index: 999;
+        background: @tipgeverkaartbgkleur_hover;
+      }
+      
+      a {
+        display: block;
+        text-decoration: none;
+        border: @tipgeverkaartgutterwidth solid @wit;
+        padding: 1em 1em 3em 1em;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        background: @tipgeverkaartbgkleur;
+        
+        &:hover,
+        &:active,
+        &:focus {
+          background: @tipgeverkaartbgkleur_hover;
+          border-color: @tipgeverkaartbgkleur_hover;
+          text-decoration: underline;
+        }
+      }
+      *, &, a {
+        color: @tipgeverkaarttxtkleur;
+      }
+      img {
+        float: right;
+        margin: .5em 0 .5em .5em;
+      }
+      h2 {
+        padding: 0 0 .5em 0;
+        margin: 0;
+        font-size: 1.5rem;
+      }
+    }
+    .tiplink {
+      display: block;
+      clear: both;
+      float: none;
+      text-align: right;
+      position: absolute;
+      bottom: .5em;
+      left: 1em;
+      right: 1em;
+      text-transform: uppercase;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    ul {
+      float: left;
+      
+      li, & {
+        list-style-type:none;        
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+
+	 
 
 	.single-tips {
 
@@ -311,22 +414,6 @@
         margin-top: ( @padding / 2 );
       }
     }
-
-		.visitekaartje {
-  		max-width: 245px;
-  		overflow: hidden;
-      margin-top: ( @padding / 2 );
-      margin-right: .5em;
-      
-      img {
-        margin: 0 0 .5em 0;
-      }
-  		
-  		small {
-    		display: block;
-    		clear: both;
-  		}
-		}
 
     .opsomming {
       float: none;

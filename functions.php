@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.1
-// @desc.   Contactinfo van tipgevers toegevoegd.
+// @version 2.11.2
+// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -46,8 +46,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.11.1' );
-define( 'CHILD_THEME_DESCRIPTION', "2.11.1 Contactinfo van tipgevers toegevoegd." );
+define( 'CHILD_THEME_VERSION', '2.11.2' );
+define( 'CHILD_THEME_DESCRIPTION', "2.11.2 Contactinfo: overzichtspagina van tipgevers toegevoegd." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
@@ -99,15 +99,8 @@ function add_role_to_header( $attributes ) {
 	return $attributes;
 }
 
-//remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
-//remove_action( 'genesis_header', 'genesis_do_header' );
-//remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );
-
-
-
-
 // ====
-$filterthemas = array();
+$_FILTERTHEMAS = array();
 
 
 //========================================================================================================
@@ -347,7 +340,7 @@ function fn_od_wbvb_write_tip_kaart($postobject, $plaatjes, $kleuren, $prefix = 
 
 function fn_od_wbvb_get_filterbutton($term) {
 
-	global $filterthemas;
+	global $_FILTERTHEMAS;
 	global $dofilter;
 
 	$returnstring = '';	
@@ -430,13 +423,13 @@ function fn_od_wbvb_get_filterbutton($term) {
 			$submitvalue = fn_od_wbvb_filter_input_string( ( isset( $_POST[$name_btn] ) ) ? $_POST[$name_btn] : ( isset( $_GET[$name_btn] ) ) ? $_GET[$name_btn] : '' );
 
 			if ( $submitvalue == "." . $term->slug ) {
-				$filterthemas[$term->slug] = $term;
+				$_FILTERTHEMAS[$term->slug] = $term;
         $dofilter = true;
 			}
 		}	
 		else {
 			if ($term->taxonomy == GC_TIPTHEMA ) {
-				$filterthemas[$term->slug] = $term;
+				$_FILTERTHEMAS[$term->slug] = $term;
 			}
 		}
 	
@@ -535,7 +528,7 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
 	echo '<form method="get" action="' . $theurl . '" id="filter_tips" class="filter-options">';
 
-	global $filterthemas;
+	global $_FILTERTHEMAS;
 
   // ====================================================================================================
 
@@ -701,13 +694,13 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
         
         $loop_counter++;
         
-        if ( count($filterthemas) > 0 ) {
+        if ( count($_FILTERTHEMAS) > 0 ) {
 
           
           if ( $dofilter ) {
             // er moet sowieso gefilterd worden op thema's
             
-            if ( isset($filterthemas[$theslug]) ) {
+            if ( isset($_FILTERTHEMAS[$theslug]) ) {
 
               $kleuren	= $classes[$term_list[0]->slug]['kleur'];
               $plaatjes	= $classes[$term_list[0]->slug]['plaatje'];
@@ -1831,7 +1824,6 @@ function rhswp_add_taxonomy_description() {
     }
     
     if ( $tipgever_foon ) {
-      
       $image_tag .= '<br><a href="tel:' . preg_replace("/[^0-9+]/", "", $tipgever_foon) . '">' . $tipgever_foon . '</a>';
     }
 
@@ -1872,7 +1864,7 @@ function op_do_show_cards_for_thema() {
 	echo '<section class="cardflex">';
 	global $tipcounter;
 	global $post;
-	global $filterthemas;
+	global $_FILTERTHEMAS;
 
     $classes				= array();
 		

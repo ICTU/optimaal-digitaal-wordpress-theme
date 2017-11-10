@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.1
-// @desc.   Contactinfo van tipgevers toegevoegd.
+// @version 2.11.2
+// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -373,7 +373,7 @@ function od_tip_custom_content() {
 
             // link naar archive als er meer dan 1 tip aan deze tax. hangt
             if ( ( $thetermdata->count > 1 ) && $naam ) {
-              $archivelink = ' <a href="' . get_term_link( $thetermdata->term_id ) . '">' . __( "Alle tips van ", 'gebruikercentraal' ) . $naam . '</a>';
+              $archivelink = ' <a href="' . get_term_link( $thetermdata->term_id ) . '">' . sprintf( __( 'Alle tips van %s', 'gebruikercentraal' ), $naam ) . '</a>';
             }
             
             if ( $tipgever_mail || $tipgever_foon ) {
