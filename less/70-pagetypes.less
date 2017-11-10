@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.2
-// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
+// @version 2.11.3a
+// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -171,23 +171,40 @@
   }  
 
   .visitekaartje {
-    max-width: 245px;
     overflow: hidden;
     margin-top: ( @padding / 2 );
     margin-right: .5em;
-    
-    img {
-      margin: 0 0 .5em 0;
-    }
-    
+    background: @light_gray;
+    max-width: 245px;
+
+    a {
+      text-decoration: none;
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline;
+      }
+      
+      &.archivelink {
+        background-image: url('images/arrow-halfwidth-right.png');			
+        .iconaddfill4('../images/arrow-halfwidth-right.svg', black);
+        background-position: right center;
+        padding-right: 35px;
+        text-transform: uppercase;
+        display: block;
+      }
+    }    
     small {
       display: block;
       clear: both;
+      margin: .5em;
+      font-size: 75%;
     }
   }
 
 
-  .ding-met-kaartjes {
+
+  .overzicht-tipgevers {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -216,7 +233,6 @@
       
       a {
         display: block;
-        text-decoration: none;
         border: @tipgeverkaartgutterwidth solid @wit;
         padding: 1em 1em 3em 1em;
         overflow: hidden;
@@ -229,7 +245,6 @@
         &:focus {
           background: @tipgeverkaartbgkleur_hover;
           border-color: @tipgeverkaartbgkleur_hover;
-          text-decoration: underline;
         }
       }
       *, &, a {
@@ -414,6 +429,14 @@
         margin-top: ( @padding / 2 );
       }
     }
+
+    .visitekaartje {
+      img {
+        margin: 0 0 .5em 0;
+        border-style: none;
+      }
+    }
+
 
     .opsomming {
       float: none;
@@ -729,6 +752,13 @@
 				max-width: 40%;
 				height: auto;
 			}
+
+			.visitekaartje {
+        max-width: 50%;
+        img {
+          max-width: 100%;
+        }
+			}
 		}
 
 		.dojs #tip_inline_nav {
@@ -965,9 +995,6 @@
 				h3 {
 					.setfont(@ubuntumedium, 18);
 				}
-			}
-			.goedvoorbeeld {
-//				.setfont(@osansregular, 14);
 			}
 
 			#inleiding {

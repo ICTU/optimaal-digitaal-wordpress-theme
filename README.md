@@ -5,13 +5,14 @@
 Dit theme wordt gebruikt op [optimaaldigitaal.gebruikercentraal.nl](https://optimaaldigitaal.gebruikercentraal.nl)
 
 ## Version
-Current: 2.11.2 - Contactinfo: overzichtspagina van tipgevers toegevoegd.
+Current: 2.11.3a - Contactinfo: visitekaartje op single met achtergrondkleur.
 
 ## Contact
 * Victor Zuydweg
 * Paul van Buuren: paul@wbvb.nl
 
 ## Version history
+* 2.11.3a - Contactinfo: visitekaartje op single met achtergrondkleur.
 * 2.11.2 - Contactinfo: overzichtspagina van tipgevers toegevoegd.
 * 2.11.1 - Contactinfo van tipgevers toegevoegd.
 * 2.10.5 - CSS bug bij hover op single tip pagina in header.

@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.2
-// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
+// @version 2.11.3a
+// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -343,7 +343,7 @@ function od_tip_custom_content() {
         
         echo '<section class="goedvoorbeeld ' . $side . '">';
         
-        $image = $value['afbeelding_goed_voorbeeld'];
+        $image          = $value['afbeelding_goed_voorbeeld'];
         
         $visitekaart    = '';
         $archivelink    = '';
@@ -363,6 +363,10 @@ function od_tip_custom_content() {
             $functietitel   = get_field( 'tipgever_functietitel', $acfid );
             $tipgever_mail  = get_field( 'tipgever_mail', $acfid );
             $tipgever_foon  = get_field( 'tipgever_telefoonnummer', $acfid );
+            
+            if ( ( ! $image ) && $tipgever_foto ) {
+              $image = $tipgever_foto;
+            }
 
             $acfid          = OD_CITAATAUTEUR . '_' . $theterm;
             $image_tag      = '';
@@ -373,7 +377,7 @@ function od_tip_custom_content() {
 
             // link naar archive als er meer dan 1 tip aan deze tax. hangt
             if ( ( $thetermdata->count > 1 ) && $naam ) {
-              $archivelink = ' <a href="' . get_term_link( $thetermdata->term_id ) . '">' . sprintf( __( 'Alle tips van %s', 'gebruikercentraal' ), $naam ) . '</a>';
+              $archivelink = ' <a href="' . get_term_link( $thetermdata->term_id ) . '" class="archivelink">' . sprintf( __( 'Meer tips <span class="visuallyhidden">van %s</span>', 'gebruikercentraal' ), $naam ) . '</a>';
             }
             
             if ( $tipgever_mail || $tipgever_foon ) {

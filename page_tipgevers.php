@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.2
-// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
+// @version 2.11.3a
+// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -36,7 +36,7 @@ function fn_od_wbvb_overzicht_tipgevers() {
   ) );
 
   if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-    echo '<div class="ding-met-kaartjes">';
+    echo '<div class="overzicht-tipgevers">';
 
 
     foreach ( $terms as $term ) {

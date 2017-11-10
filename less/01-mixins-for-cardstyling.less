@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.10.5
-// @desc.   CSS bug bij hover op single tip pagina in header.
+// @version 2.11.3a
+// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -158,24 +158,43 @@
 		}
 	} 
 	
-	body.@{classname}.single-tips main .onderwerp {
-  	* {
-      color: @txtkleur;
-  	} 
-
-    .linkedin {
-      .social_icon_hover_color('../images/icon-linkedin.svg', @txtkleur, @txt );
+	body.@{classname}.single-tips main {
+  	.visitekaartje {
+    	background: @kleur;
+    	*, a {
+      	color: @txtkleur;
+    	}
+    	a.archivelink {
+        background-image: url('images/arrow-halfwidth-right.png');			
+        .iconaddfill4('../images/arrow-halfwidth-right.svg', @txtkleur);
+        background-size: 6px 10px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 20px;
+        text-transform: uppercase;
+        text-align: right;
+        display: block;
+      }
+  	}
+  	
+  	.onderwerp {
+    	* {
+        color: @txtkleur;
+    	} 
+  
+      .linkedin {
+        .social_icon_hover_color('../images/icon-linkedin.svg', @txtkleur, @txt );
+      }
+      .twitter {
+        .social_icon_hover_color('../images/icon-twitter.svg', @txtkleur, @txt );
+      }
+      .mail {
+        .social_icon_hover_color('../images/icon-mail.svg', @txtkleur, @txt );
+      }
+      .print {
+        .social_icon_hover_color('../images/icon-print.svg', @txtkleur, @txt );
+      }
     }
-    .twitter {
-      .social_icon_hover_color('../images/icon-twitter.svg', @txtkleur, @txt );
-    }
-    .mail {
-      .social_icon_hover_color('../images/icon-mail.svg', @txtkleur, @txt );
-    }
-    .print {
-      .social_icon_hover_color('../images/icon-print.svg', @txtkleur, @txt );
-    }
-
   }
 
 	body.@{classname} .waaromwerktdit {
