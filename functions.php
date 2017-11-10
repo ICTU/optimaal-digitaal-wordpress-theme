@@ -8,7 +8,7 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.3a
+// @version 2.11.3
 // @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
@@ -46,8 +46,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.11.3a' );
-define( 'CHILD_THEME_DESCRIPTION', "2.11.3a Contactinfo: visitekaartje op single met achtergrondkleur." );
+define( 'CHILD_THEME_VERSION', '2.11.3' );
+define( 'CHILD_THEME_DESCRIPTION', "2.11.3 Contactinfo: visitekaartje op single met achtergrondkleur." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
