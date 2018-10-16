@@ -18,4 +18,3 @@
 // @codekit-append "tabs-functions.js";
 // @codekit-append "menu.js";
 // @codekit-append "sortfunctions.js";
-// @codekit-append "caroussels-slick.js";

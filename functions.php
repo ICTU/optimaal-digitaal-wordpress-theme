@@ -434,10 +434,15 @@ function fn_od_wbvb_get_filterbutton($term) {
 		}
 	
 	
-		$id = "filter-" . $term->slug;
+		$id             = "filter-" . $term->slug;
 		$value_checkbox = "." . $term->slug;
+		$label          = $term->name;
+  	$label          = preg_replace("/nformatiev/", "nformatie&shy;v", $label );
+  	$label          = preg_replace("/heid/", "&shy;heid", $label );
+  	$label          = preg_replace("/raagvlak/", "raag&shy;vlak", $label );
+  	$label          = preg_replace("/anaalsturing/", "anaal&shy;sturing", $label );
 
-		$returnstring .= '<label for="' . $id . '" class="checkbox ' . $term->slug . ' ' . $class .'"><input type="checkbox" id="' . $id . '"' . $disabled . '' . $checked . ' value="' . $value_checkbox . '" name="' . $name_btn . '">' . $term->name . '</label>';
+		$returnstring .= '<label for="' . $id . '" class="checkbox ' . $term->slug . ' ' . $class .'"><input type="checkbox" id="' . $id . '"' . $disabled . '' . $checked . ' value="' . $value_checkbox . '" name="' . $name_btn . '">' . $label . '</label>';
 
 		return $returnstring;	
 		
@@ -532,81 +537,43 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
   // ====================================================================================================
 
-	$theHTML = '';
+	$filterThemas       = '';
+	$filterVragen       = '';
+	$filterOrganisatie  = '';
+	$args               = array( 'hide_empty' => false );
 
-  $terms = get_terms( GC_TIPTHEMA );
-  
-  if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-    
-    foreach ( $terms as $term ) {
-      $return = fn_od_wbvb_get_filterbutton($term);
-      if ( $return ) {
-        $theHTML .= $return;
-      }
-    }
-    
-    if ( $theHTML ) {
-      echo '<fieldset class="filter-group checkboxes themas">';
-      echo "<legend>" . __( "Thema's:", 'gebruikercentraal' ) . "</legend>";
-      echo $theHTML;
-      echo '</fieldset>';
-    }
-    
-  }
-	
-
-	echo '<button id="toggle_more_filters" type="button" class="meer">' . __( "Meer filters", 'gebruikercentraal' ) . '</button>';
-
-  // ====================================================================================================
-
-	echo '<div id="more_filters">';
-	
-	$args = array( 'hide_empty' => false );
-
-
-	$theHTML = '';
-	
-	$terms = get_terms( GC_TIPVRAAG, $args );
-	
-	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-    	
-	    foreach ( $terms as $term ) {
-		    $theHTML .= fn_od_wbvb_get_filterbutton($term);
-	    }
-
-		if ( $theHTML ) {
-			echo '<fieldset class="filter-group checkboxes ' . GC_TIPVRAAG . '">';
-			echo "<legend>" . __( "Jouw vraag:", 'gebruikercentraal' ) . "</legend>";
-			echo $theHTML;
-			echo '</fieldset>';
-		}
-	}
-	
-  // ====================================================================================================
-	$theHTML = '';
-	
-	$terms = get_terms( GC_TIPORGANISATIE, $args );
-
-	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-	    foreach ( $terms as $term ) {
-		    $theHTML .= fn_od_wbvb_get_filterbutton($term);
-	    }
-		if ( $theHTML ) {
-			echo '<fieldset class="filter-group checkboxes ' . GC_TIPORGANISATIE . '">';
-			echo "<legend>" . __( "Jouw organisatie:", 'gebruikercentraal' ) . "</legend>";
-			echo $theHTML;
-			echo '</fieldset>';
-		}
-		
-	}
-
-	$filterkeyword    = fn_od_wbvb_filter_input_string( ( isset( $_POST['filtertrefwoord'] ) ) ? $_POST['filtertrefwoord'] : ( isset( $_GET['filtertrefwoord'] ) ) ? $_GET['filtertrefwoord'] : '' );
+	$filterkeyword      = fn_od_wbvb_filter_input_string( ( isset( $_POST['filtertrefwoord'] ) ) ? $_POST['filtertrefwoord'] : ( isset( $_GET['filtertrefwoord'] ) ) ? $_GET['filtertrefwoord'] : '' );
 
   if ( $filterkeyword !== '' ) {
     $dofilter = true;
-    echo 'keyword is niet leeg<br>';
   }
 
+  // ====================================================================================================
+  // thema's ophalen  
+	$terms  = get_terms( GC_TIPTHEMA, $args );
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+    foreach ( $terms as $term ) {
+	    $filterThemas .= fn_od_wbvb_get_filterbutton($term);
+    }
+	}
+
+  // ====================================================================================================
+  // vragen ophalen  
+	$terms  = get_terms( GC_TIPVRAAG, $args );
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+    foreach ( $terms as $term ) {
+	    $filterVragen .= fn_od_wbvb_get_filterbutton($term);
+    }
+	}
+
+  // ====================================================================================================
+  // thema;s ophalen  
+	$terms    = get_terms( GC_TIPORGANISATIE, $args );
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+    foreach ( $terms as $term ) {
+	    $filterOrganisatie .= fn_od_wbvb_get_filterbutton($term);
+    }
+	}
 
   // ====================================================================================================
 	echo '<fieldset class="filter-group search search-form">
@@ -617,10 +584,43 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 	      </fieldset>';
 
   // ====================================================================================================
+	
+
+	echo '<button id="toggle_more_filters" type="button" class="meer">' . __( "Meer filters", 'gebruikercentraal' ) . '</button>';
+
+  // ====================================================================================================
+
+	echo '<div id="more_filters">';
+
+
+	
+	
+
+  if ( $filterThemas ) {
+    echo '<fieldset class="filter-group checkboxes themas">';
+    echo '<legend><span class="visuallyhidden">' . __( "Filter op", 'gebruikercentraal' ) . '</span> ' . _x( "thema's:", 'legend in filter', 'gebruikercentraal' ) . "</legend>";
+    echo $filterThemas;
+    echo '</fieldset>';
+  }
+
+	if ( $filterVragen ) {
+		echo '<fieldset class="filter-group checkboxes ' . GC_TIPVRAAG . '">';
+    echo '<legend><span class="visuallyhidden">' . __( "Filter op", 'gebruikercentraal' ) . '</span> ' . _x( "jouw vraag:", 'legend in filter', 'gebruikercentraal' ) . "</legend>";
+		echo $filterVragen;
+		echo '</fieldset>';
+	}
+
+	if ( $filterOrganisatie ) {
+		echo '<fieldset class="filter-group checkboxes ' . GC_TIPORGANISATIE . '">';
+    echo '<legend><span class="visuallyhidden">' . __( "Filter op", 'gebruikercentraal' ) . '</span> ' . _x( "jouw organisatie:", 'legend in filter', 'gebruikercentraal' ) . "</legend>";
+		echo $filterOrganisatie;
+		echo '</fieldset>';
+	}
 
 	echo '</div>'; // '<div id="more_filters">';
 
-	echo '<button id="filter" name="filter" value="filter" type="submit">' . __( "Alle tips", 'gebruikercentraal' ) . '</button>';
+	echo '<button id="filter" name="filter" value="filter" type="submit">' . __( "Filter de tips", 'gebruikercentraal' ) . '</button>';
+	
 	if ( $dofilter ) {
   	echo '<a href="?selectie=leeg">' .  __( "Selectie wissen", 'gebruikercentraal' ) . '</a>';
 	}

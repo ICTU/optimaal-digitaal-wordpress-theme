@@ -1,0 +1,109 @@
+
+.deleteme() {
+
+  #filter_tips {
+    padding: 0 2em @padding 2em;
+    background: @light_gray;
+    overflow: hidden;
+    position: relative;
+    
+    legend {
+      .setfont(@ubunturegular, 18);
+    }
+    
+    fieldset {
+      margin-top: @padding;
+      padding-right: 140px;
+      &.themas {
+        padding-bottom: @padding;
+        border-bottom: 1px solid #cccccc;			
+      }
+    }
+    
+    #toggle_more_filters,
+    #reset {
+      text-transform: uppercase;
+      text-decoration: none;
+      background: none;
+      position: absolute;
+      right: @padding;
+      float: right;
+      margin: 0;
+      border-style: none;
+      margin-right: 4px;
+      padding: ( @padding / 2);
+      border: 1px solid transparent;
+      
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+        border-color: @txt;
+      }
+      
+      &:after {
+        font-size: 140%;
+        font-family: arial, sans-serif;
+      }
+    }
+    
+    #toggle_more_filters {
+      top: 45px;
+    }
+    
+    #reset {
+      bottom: @padding;
+    }
+    
+    button.meer {
+      &:after {
+        content: ' + ';
+      }
+    }
+    button.minder {
+      &:after {
+        content: ' - ';
+      }
+    }
+    
+    button.filter {
+      background: @wit url('images/checkbox-unchecked-zwart.png') no-repeat 15px center;
+      background-image: url('images/checkbox-unchecked-zwart.svg'), none;
+      padding-left: 40px;
+    }
+    button#filter {
+      padding: ( @padding / 2);
+      clear: both;
+      float: right;
+      display: block;
+    }
+    
+    label.checkbox {
+      padding: 8px 32px 8px 8px;
+      text-transform: uppercase;
+      display: inline-block;
+      input {
+        font-size: 100%;
+        border: 1px solid @txt;
+        margin: 0 .5em 0 0;
+        font-size:16px;
+        font-family:arial;
+      }
+    }
+    
+
+    
+
+    
+    button {
+      &.inactive {
+        background-image: url(images/checkbox-unchecked-zwart.png);
+      }
+      &.active {
+        background-image: url(images/checkbox-checked-wit.png);
+        background-image: url('images/checkbox-checked-wit.svg'), none;
+      }
+    }
+  }
+    
+}

@@ -205,7 +205,7 @@
 
 // font-stijlen en -groottes =======================================================
 
-@ubuntubold: 			'ubuntubold', Helvetica, Arial, sans-serif;
+@ubuntubold: 			  'ubuntubold', Helvetica, Arial, sans-serif;
 @ubunturegular:			'ubunturegular', Helvetica, Arial, sans-serif;
 @ubuntumedium: 			'ubuntumedium', Helvetica, Arial, sans-serif;
 @ubuntuitalic: 			'ubuntuitalic', Helvetica, Arial, sans-serif;
@@ -234,27 +234,35 @@
 
 
 // ten behoeve van het menu =========================================================
-
-@menubreedte:		350px;
-@menuhoogte:		650px;
-@contentbreedte:	700px;
-@grijs:				0;
-@padding:			16px;
-
-@timer: 			400ms;
+@menubreedte:                         350px;
+@menuhoogte:		                      650px;
+@contentbreedte:                      700px;
+@grijs:				                        0;
+@padding:                             16px;
+@timer: 			                        400ms;
 
 // search form op tip-pagina ========================================================
-@backlink_search_width: 30%;
-@backlink_anchor_width: ( 100% - @backlink_search_width );
+@backlink_search_width:               30%;
+@backlink_anchor_width:               ( 100% - @backlink_search_width );
 
 
 // instellingen voor tipgeverkaarten ================================================
-@tipgeverkaartbgkleur: @light_gray;
-@tipgeverkaartbgkleur_hover: @wit;
-@tipgeverkaartborderkleur: @wit;
-@tipgeverkaartborderwidth: 1px;
-@tipgeverkaartgutterwidth: 5px;
-@tipgeverkaarttxtkleur: @txt;
+@tipgeverkaartbgkleur:                @light_gray;
+@tipgeverkaartbgkleur_hover:          @wit;
+@tipgeverkaartborderkleur:            @wit;
+@tipgeverkaartborderwidth:            1px;
+@tipgeverkaartgutterwidth:            5px;
+@tipgeverkaarttxtkleur:               @txt;
+
+// form element instellingen ========================================================
+@filter_keywordsearch_width:          220px;
+@filter_keywordsearch_submit_width:   40px;
+@filter_keywordsearch_submit_height:  44px;
+
+@sarchform_bg_color:                  @wit;		
+@sarchform_border_color:              @menu_a_color;
+@sarchform_border_color_hover:        green;
+
 
 
 // ==================================================================================
@@ -517,6 +525,107 @@
         border-color: @hover_icon_ncolor !important;
     }
 }	        
+
+//=========================================================================================================
+
+/*
+Debug styles
+---------------------------------------------------------------------------------------------------- */
+.debugstyles() {
+
+	body {
+		&:before {
+			display: block;
+			float: none;
+			background: yellow;
+			color: black;
+			border: 1px solid black;
+			padding: .5em 1em;
+			width: 80%;
+			margin: 0 auto;
+			text-align: center;
+		}	
+	}
+
+	@media only screen and (max-width: ( @break_phone480 ) ) {
+		body {
+			&:before {
+				content: 'AFGEKAPT @{break_phone480_desing}: kleiner dan @{break_phone480}, dus afgekapt design voor @{break_phone480_desing}';
+			}		
+		}	
+	}
+	
+	@media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
+		body {
+			&:before {
+				content: 'RUIM @{break_phone480_desing}: kleiner dan @{break_phone600}, groter dan @{break_phone480}, dus design voor @{break_phone480_desing}';
+			}		
+		}	
+	}
+	
+	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+		body {
+			&:before {
+				content: 'TABLET @{break_tablet_desing}: groter dan @{@break_phone600} maar kleiner dan @{break_tablet}, dus design voor @{break_tablet_desing}';
+			}		
+		}	
+	}	
+	
+	@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+		body {
+			&:before {
+				content: 'DESKTOP @{break_fullwidth_desing}: groter dan @{break_tablet} dus design voor @{break_fullwidth_desing}, max breedte: @{max_width}';
+			}		
+		}	
+	}
+}
+
+//=========================================================================================================
+
+/*
+Styling skiplinks
+---------------------------------------------------------------------------------------------------- */
+
+.skiplinks() {
+
+  ul#skiplinks, ul#skiplinks li {
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul#skiplinks li {
+    background: none;
+  }
+  #skiplinks li a {
+    position: absolute;
+    top: -1000px;
+    left: 50px;
+  }
+  #wpadminbar .screen-reader-shortcut:focus, 
+  #skiplinks li a:focus {
+    left: 6px;
+    top: 7px;
+    height: auto;
+    width: auto;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 23px 14px;
+    background: #fff;
+    color: #000;
+    z-index: 100000;
+    line-height: normal;
+    text-decoration: none;
+    -webkit-box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+    box-shadow: 0 0 2px 2px rgba(0,0,0,.6)
+  }
+  #zoeken:focus label {
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+}
 
 //=========================================================================================================
 

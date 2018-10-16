@@ -612,7 +612,7 @@ function od_tip_custom_content() {
 				echo '<p>' . __( "Selecteer een contactformulier. <br /><strong>Via:</strong> Admin > Options", 'gebruikercentraal' ) . '</p>';
 			} 
 		}
-    }
+  }
 }
 
 
