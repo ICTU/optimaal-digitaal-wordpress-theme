@@ -19,6 +19,7 @@ find . -name ‘*.DS_Store’ -type f -delete
 find . -name ‘*.map’ -type f -delete
 
 # naar de dev server
+echo 'Naar dev server';
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/optimaal-digitaal/'
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/optimaal-digitaal-design/'
 
@@ -27,22 +28,27 @@ sed -i '.bak' 's/Theme Name: Optimaal Digitaal/Theme Name: Optimaal Digitaal Lat
 
 
 # naar de import server
+echo 'Naar import server';
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/gc_live_import/wp-content/themes/optimaal-digitaal/'
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/optimaal-digitaal-design/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/gc_live_import/wp-content/themes/optimaal-digitaal-design/'
 
 # naar de folder voor de live server bij savvii
+echo 'Naar savvii server';
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-(savvii)/wp-content/themes/optimaal-digitaal/'
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/optimaal-digitaal-design/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-(savvii)/wp-content/themes/optimaal-digitaal-design/'
 
 # naar de folder voor dutchlogic server
+echo 'Naar dutchlogic server';
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/themes/optimaal-digitaal/'
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/optimaal-digitaal-design/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/themes/optimaal-digitaal-design/'
 
 # naar sentia folders
+echo 'Naar sentia accept';
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/optimaal-digitaal/'
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/optimaal-digitaal-design/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/themes/optimaal-digitaal-design/'
 
 
+echo 'Naar sentia live';
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/optimaal-digitaal/'
 rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/themes/optimaal-digitaal-design/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/themes/optimaal-digitaal-design/'
 
@@ -50,3 +56,4 @@ rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/developmen
 # remove temp dir
 rm -rf '/shared-paul-files/Webs/temp/'
 
+echo 'Klaar';
