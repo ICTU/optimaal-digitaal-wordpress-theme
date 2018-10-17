@@ -7,7 +7,7 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1
+// @version 3.1.1a
 // @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
@@ -15,7 +15,6 @@
 
 @import "00-colors.less";
 @import "00-sizes.less";
-@import "00-fonts.less";
 @import "01-mixins-for-cardstyling.less";
 
 
@@ -188,8 +187,8 @@
 
 //========================================================================================================
 
-.setfont(@fontfamily, @fontsize: 16px) {
-  font-family: @fontfamily;
+.setfont( @fontfamily, @fontsize: 16px ) {
+//  font-family: @fontfamily;
   font-size: unit(@fontsize, px);
 }
 

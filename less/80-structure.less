@@ -7,26 +7,28 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.1
-// @desc.   Contactinfo van tipgevers toegevoegd.
+// @version 3.1.1a
+// @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
 .footer-widgets, .site-footer {
-	margin: 0;
-    background-position: center top;
-    background-size: cover;
-    background-image: url('images/footer-320w@2x.png');
+  margin: 0;
+/*  
+  background-position: center top;
+  background-size: cover;
+  background-image: url('images/footer-320w@2x.png');
+*/  
+  .widget-wrap {
+    padding: 0 ( 2 * @padding );
     
-    .widget-wrap {
-	    padding: 0 ( 2 * @padding );
-	    
-	    h4, a, p, li {
-			color: @wit;
-			text-decoration: none;
-	    }
+    h4, a, p, li {
+      color: @wit;
+      text-decoration: none;
     }
+  }
 }
+
 .site-footer {
 //    background-position: center bottom;
 }
@@ -271,6 +273,12 @@
 				margin-right: @padding_perc_links;
 				margin-left: @padding_perc_links;
 			}
+			header.site-header {
+  			border: 10px solid red;
+				margin-right: @padding_perc_links;
+				margin-left: @padding_perc_links;
+  		.content_margins(@cardmargin2, @padding_perc_rechts, 0, @padding_perc_links);
+			}
 		}
 	}
 	.entry-content {
@@ -279,40 +287,50 @@
 }
 
 //=========================================================================================================
-@media only screen and (min-width: @break_fullwidth ) {
+  @media only screen and (min-width: @break_fullwidth ) {
+    
+    .single-tips {
+      
+      & .content {
+        width: 900px;
+        margin: 0 auto;
+        float: none;
+        padding: 0;
+      }	
+    }	
+    
+    .site-container {
+      margin: 0 auto;
 
-	.single-tips {
-		
-		& .content {
-		    width: 900px;
-		    margin: 0 auto;
-		    float: none;
-		    padding: 0;
-		}	
-	}	
-	.site-container {
-		margin: 0 auto;
-		max-width: @max_width;
-	}
-
-    .content {
-    	padding: 0 ( 0 * @padding ) ( 2 * @padding ) ( 2 * @padding );
-    	margin-top: 0;
-    	margin-bottom: @padding;
-    	min-height: 650px;
-    }
-
-
-
-    body.page .content {
-    	padding-right: ( 2 * @padding );
+      nav,
+      .wrap {
+        max-width: @max_width;
+      }
     }
     
-}
- 
-@media only screen and (min-width: ( @break_tablet + 1 ) ) {
-	.site-header, .site-inner {
-		max-width: 	@max_width;
-	}
-}
+    .content {
+      padding: 0 ( 0 * @padding ) ( 2 * @padding ) ( 2 * @padding );
+      margin-top: 0;
+      margin-bottom: @padding;
+      min-height: 650px;
+    }
+  
+    body.page .content {
+      padding-right: ( 2 * @padding );
+    }
+  }
+  
+//=========================================================================================================
+  @media only screen and (min-width: ( @break_tablet + 1 ) ) {
+    .site-header {
+      background: red;
+      overflow: hidden;
+    }
+    .site-header .wrap, .site-inner {
+      max-width: 	@max_width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+//=========================================================================================================
     

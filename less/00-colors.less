@@ -7,10 +7,24 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1
+// @version 3.1.1a
 // @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
+
+@tamara_roze:           #C42D77;
+@tamara_roze_sub:       #B1266B;
+@tamara_paars:          #4D2B74;
+@tamara_paars_sub:      #361454;
+@tamara_blauw:          #0093D2;
+@tamara_blauw_sub:      #0086C0;
+@tamara_oranje:         #F89521;
+@tamara_oranje_sub:     #E58020;
+@tamara_groen:          #25B34B;
+@tamara_groen_sub:      #25B34B;
+@tamara_turquoise:      #00B5AD;
+@tamara_turquoise_sub:  #009F98;
+
 
 
 // koeleuren =======================================================================
@@ -21,41 +35,94 @@
 @test6:                 brown;
 @test7:                 black;
 
-@paars:                 #9c27b0;
-@paars_sub:             #7b1fa2;
+@prev_paars:                 #9c27b0;
+@prev_paars_sub:             #7b1fa2;
+  
+@prev_violet:                #C42C76;
+@prev_violet_sub:            #ad1457;
+  
+@prev_groen:                 #388e3c;
+@prev_groen_sub:             #1b5e20;
+  
+@prev_oranje:                #ef6c00;
+@prev_oranje_sub:            #e65100;
+  
+@prev_blauw:                 #1976d2;
+@prev_blauw_sub:             #0D47A1;
+  
+@prev_blauw2:                #004152;
+@prev_blauw3:                #002F3E;
+  
+@prev_turquoise:             #00838f;
+@prev_turquoise_sub:         #006064;
+  
+@prev_gmred:                 #D32F2F; // https://material.io/guidelines/style/color.html#color-color-palette
+@prev_gmred_sub:             #B71C1C;
 
-@violet:                #C42C76;
-@violet_sub:            #ad1457;
+// koeleuren =======================================================================
 
-@groen:                 #388e3c;
-@groen_sub:             #1b5e20;
+@gebruikercentraal_blauw:     #002F3E;
 
-@oranje:                #ef6c00;
-@oranje_sub:            #e65100;
+@tamara_roze:                 #C42D77;
+@tamara_roze_sub:             #B1266B;
+@tamara_paars:                #4D2B74;
+@tamara_paars_sub:            #361454;
+@tamara_blauw:                #007CBF; // was: #0093D2;
+@tamara_blauw_sub:            darken( @tamara_blauw, 5% ); // was: #0086C0;
+@tamara_oranje:               #F89521;
+@tamara_oranje_sub:           #E58020;
+@tamara_groen:                #138832; // was: #25B34B;
+@tamara_groen_sub:            darken( @tamara_groen, 5% ); // was: #1D9D42;
+@tamara_turquoise:            #00827C; // was: #00B5AD;
+@tamara_turquoise_sub:        darken( @tamara_turquoise, 5% ); // was: #009F98;
+@tamara_beige_bg:             #E8D8C7;
 
-@blauw:                 #1976d2;
-@blauw_sub:             #0D47A1;
+
+@goud:                        #FFD900; // https://material.io/guidelines/style/color.html#color-color-palette
+@goud_sub:                    #FCC101;
+@goud_txt:                    @txt;
+
+
+
+
+
+@paars:                 @tamara_paars;
+@paars_sub:             @tamara_paars_sub;
+@paars_txt:             @wit;
+
+@violet:                @tamara_roze;
+@violet_sub:            @tamara_roze_sub;
+@violet_txt: green; //             @wit;
+
+@groen:                 @tamara_groen;
+@groen_sub:             @tamara_groen_sub;
+@groen_txt:             @wit;
+
+@oranje:                @tamara_oranje;
+@oranje_sub:            @tamara_oranje_sub;
+@oranje_txt:            @txt;
+
+@blauw:                 @tamara_blauw;
+@blauw_sub:             @tamara_blauw_sub;
+@blauw_txt:             @wit;
 
 @blauw2:                #004152;
 @blauw3:                #002F3E;
 
-@turquoise:             #00838f;
-@turquoise_sub:         #006064;
+@turqs:                 @tamara_turquoise;
+@turqs_sub:             @tamara_turquoise_sub;
+@turqs_txt:             @wit;
 
 @gmred:                 #D32F2F; // https://material.io/guidelines/style/color.html#color-color-palette
 @gmred_sub:             #B71C1C;
-
-@goud:                  #FFD900; // https://material.io/guidelines/style/color.html#color-color-palette
-@goud_sub:              #FCC101;
-@goud_header:           @txt;
-
+@gmred_txt:             @wit;
 
 
 @kanaalsturing:         @oranje;
 @digitaaloporde:        @paars;
 @interndraagvlak:       @groen;
 @goedproces:            @blauw;
-@deelwerksamen:         @turquoise;
+@deelwerksamen:         @turqs;
 @informatieveiligheid:  @gmred;
 
 @active_color:          #d81b60;
@@ -80,8 +147,8 @@
 
 @code:                  #1C5BB7;
 
-@defaultkaarkleur:      @oranje;
-@defaultkaarkleur_sub:  @oranje_sub;
+@def_cardclr:           @oranje;      // default card color
+@def_cardclr_sub:       @oranje_sub;  // default dark card color
 
 @nuttigelinks_bg:       #fafafa;
 @nuttigelinks_bg_hover: #F0F0F0;
@@ -112,14 +179,14 @@
 @mess_ok_bg:            lighten( @mess_ok_color, 50% );
 @mess_ok_border:        @mess_ok_color;
 
-@mess_error_color:      red;
+@mess_error_color:      @prev_gmred;
 @mess_error_bg:         lighten( @mess_error_color, 50% );
 @mess_error_border:     @mess_error_color;
-@bodybgcolor:			@wit;
+@bodybgcolor:           @tamara_beige_bg;
 
 
 // tekst-koeleuren, best belangrijk ================================================
-@txt:                   #000;
+@txt:                   @gebruikercentraal_blauw; // #000;
 @wit:                   #fff;
 
 @meta_color:            lighten(@txt, 10%);

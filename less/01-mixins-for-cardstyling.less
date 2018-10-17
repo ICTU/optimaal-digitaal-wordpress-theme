@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.3
-// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
+// @version 3.1.1a
+// @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -90,10 +90,6 @@
 			}
 		}
 		.onderzoekvraag, .conclusie h3 {
-			color: @headerkleur;
-		}
-
-		nav#backlink a {
 			color: @headerkleur;
 		}
 
@@ -328,8 +324,11 @@
 //=========================================================================================================
 .iconaddfill(@src, @fill-new) {
     @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('class="st0"');
+//    @replace-default:   escape('class="st0"');
+    @replace-default:   escape('fill="#fff"');
     @replace-new:       escape('fill="@{fill-new}"');
+
+    
     @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
 
     background-image: e(@replacesrc1);

@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.4
-// @desc.   Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
+// @version 3.1.1a
+// @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -53,6 +53,7 @@
       float: none;
       clear: both;
       overflow: hidden;
+      color: @txt;
       
       a, .search-form {
         float: left;
@@ -63,7 +64,7 @@
       }
       a {
         text-decoration: none;
-        .setfont(@ubuntumedium, 14);
+        .setfont( @bodyfont, 14);
         text-transform: uppercase;
         height: 36px;
         line-height: 2.5;
@@ -307,20 +308,20 @@
 
 	.single-tips {
 
-		.setfont(@osansregular, 20);
+		.setfont( @bodyfont, 20);
 
 		h1 {
-			.setfont(@ubuntumedium, 32);
-			text-transform: none;
-            margin: 0;
-            padding: @padding 0;
-            line-height: 1;
+      .setfont( @bodyfont, 32);
+      text-transform: uppercase;
+      margin: 0;
+      padding: @padding 0;
+      line-height: 1;
 		}
 
 		h2 {
-			.setfont(@ubunturegular, 32);
-			text-transform: none;
-			font-weight: normal;
+      .setfont( @bodyfont, 32);
+      text-transform: uppercase;
+      font-weight: normal;
 		}
 		
 		.goedevoorbeelden,
@@ -412,7 +413,7 @@
 		}		
 
 		h3 {
-			.setfont(@ubunturegular, 24);
+			.setfont( @bodyfont, 24);
         }
 		
 		article.entry {
@@ -469,14 +470,14 @@
     }
 
     .goedvoorbeeld {
-      .setfont(@osansregular, 18);
+      .setfont( @bodyfont, 18);
       
       h2 {
-        .setfont(@ubunturegular, 32);
+        .setfont( @bodyfont, 32);
       }
       
       h3 {
-        .setfont(@ubuntumedium, 24);
+        .setfont( @bodyfont, 24);
       }
       
       img {
@@ -526,10 +527,10 @@
       
     .nuttigelink, .jumptosuggestie {
 
-      .setfont(@osansregular, 18);
+      .setfont( @bodyfont, 18);
       
       h2 {
-        .setfont(@osansregular, 24);
+        .setfont( @bodyfont, 24);
       }
 
       div.folder,
@@ -568,12 +569,12 @@
 		.opsomming {
 			
 			div {
-				.setfont(@ubuntuitalic, 20);
+				.setfont( @bodyfont, 20);
 //				margin-right: @padding;
 			}
 			h2 {
 				line-height: 1;
-				.setfont(@ubuntuitalic, 28);
+				.setfont( @bodyfont, 28);
 			}
 			ul {
 				padding-left: 1.2em;
@@ -588,14 +589,14 @@
 			p + p {
 				margin-top: @padding;
 			}
-			.setfont(@osansregular, 18);
+			.setfont( @bodyfont, 18);
 			h2 {
-				.setfont(@ubuntumedium, 24);
+				.setfont( @bodyfont, 24);
 			}
 		}
 	
 		.onderzoek {
-			.setfont(@osansregular, 18);
+			.setfont( @bodyfont, 18);
 			
 			.cijfers {
 				border-top: @borderwithflex solid @border-color;
@@ -618,17 +619,17 @@
 
 			div#cijfers {
 		        p.onderzoekvraag {
-					.setfont(@ubuntubold, 18);
+					.setfont( @bodyfont_bold, 18);
 					
 					.cijfers {
 						border: @borderwithflex solid @border-color;
 					}
 					
 					.cijfer {
-						.setfont(@ubuntubold, 72);
+						.setfont( @bodyfont_bold, 72);
 					}
 					.antwoord {
-						.setfont(@ubuntubold, 24);
+						.setfont( @bodyfont_bold, 24);
 					}
 				}
 			}
@@ -726,27 +727,27 @@
 			height: 25px;
 			background-size: contain;
 	
-			&.icon-digitaaloporde {
-			    .iconaddfill('../images/icon-digitaaloporde.svg', '#fff');
-			}
-			&.icon-goedproces {
-			    .iconaddfill('../images/icon-goedproces.svg', '#fff');
-			}
-			&.icon-interndraagvlak {
-			    .iconaddfill('../images/icon-interndraagvlak.svg', '#fff');
-			}
-			&.icon-kanaalsturing {
-			    .iconaddfill('../images/icon-kanaalsturing.svg', '#fff');
-			}
-			&.icon-deelenwerksamen {
-			    .iconaddfill('../images/icon-deelenwerksamen.svg', '#fff');
-			}
-			&.icon-informatieveiligheid {
-			    .iconaddfill('../images/icon-informatieveiligheid.svg', '#ffffff');
-			}
-			&.icon-gloeilamp {
-			    .iconaddfill('../images/icon-gloeilamp.svg', '#000000');
-			}
+      &.icon-digitaaloporde {
+        .iconaddfill('../images/icon-digitaaloporde.svg', '#fff');
+      }
+      &.icon-goedproces {
+        .iconaddfill('../images/icon-goedproces.svg', '#fff');
+      }
+      &.icon-interndraagvlak {
+        .iconaddfill('../images/icon-interndraagvlak.svg', '#fff');
+      }
+      &.icon-kanaalsturing {
+        .iconaddfill('../images/icon-kanaalsturing.svg', '#f00');
+      }
+      &.icon-deelenwerksamen {
+        .iconaddfill('../images/icon-deelenwerksamen.svg', '#fff');
+      }
+      &.icon-informatieveiligheid {
+        .iconaddfill('../images/icon-informatieveiligheid.svg', '#ffffff');
+      }
+      &.icon-gloeilamp {
+        .iconaddfill('../images/icon-gloeilamp.svg', '#000000');
+      }
 
 			span {
 				.visuallyhidden();
@@ -826,7 +827,7 @@
 	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
 
 		.single-tips {
-			.setfont(@osansregular, 16);
+			.setfont( @bodyfont, 16);
 
 			section {
 				.marge_top();
@@ -837,7 +838,7 @@
 
 
 			nav li a {
-				.setfont(@ubuntumedium, 13);
+				.setfont( @bodyfont, 13);
 				text-transform: uppercase;
 			}
 
@@ -853,7 +854,7 @@
 			}
 
 			#inleiding {
-				.setfont(@osansregular, 18);
+				.setfont( @bodyfont, 18);
 				h2, ul {
 					margin-bottom: 0;
 				}
@@ -864,7 +865,7 @@
 
 				.opsomming {
 					div {
-						.setfont(@osansregular, 18);
+						.setfont( @bodyfont, 18);
 					}
 					div + div {
 						max-width: 450px;
@@ -876,30 +877,30 @@
    				
 			}
 			.goedevoorbeelden, .nuttigelinks {
-				.setfont(@osansregular, 16);
+				.setfont( @bodyfont, 16);
 				h2 {
-					.setfont(@ubunturegular, 30);
+					.setfont( @bodyfont, 30);
 				}
 				h3 {
-					.setfont(@ubuntumedium, 30);
+					.setfont( @bodyfont, 30);
 				}
 				.auteur {
-					.setfont(@osansregular, 14);
+					.setfont( @bodyfont, 14);
 				}
 			}
 			.waaromwerktdit {
-				.setfont(@osansregular, 16);
+				.setfont( @bodyfont, 16);
 				padding: ( 2 * @padding ) ( ( @brainsize + @padding ) + 45px) ( 2 * @padding ) ( 2 * @padding );
 				h2 {
-					.setfont(@ubuntumedium, 30);
+					.setfont( @bodyfont, 30);
 					padding-top: 0;
 					margin-top: 0;
 				}
 			}
 			.jumptosuggestie {
-				.setfont(@osansregular, 16);
+				.setfont( @bodyfont, 16);
 				h2 {
-					.setfont(@osanssemibold, 20);
+					.setfont( @bodyfont, 20);
 					border-bottom: none;
 					margin: 0;
 				}
@@ -913,7 +914,7 @@
 			}
 			
 			.jumptosuggestie, .nuttigelink {
-				.setfont(@osansregular, 16);
+				.setfont( @bodyfont, 16);
 				
 				div {
 					background-position: left top;
@@ -923,13 +924,13 @@
 			}			
 
 			.onderzoek {
-				.setfont(@osansregular, 16);
+				.setfont( @bodyfont, 16);
 				
 				h2 {
-					.setfont(@ubunturegular, 30);
+					.setfont( @bodyfont, 30);
 				}			
 				h3 {
-					.setfont(@ubunturegular, 26);
+					.setfont( @bodyfont, 26);
 				}
 
 				div#cijfers {
@@ -954,7 +955,7 @@
 					    flex-grow: 1;
 						align-items: stretch;
 						border: @borderwithflex solid @border-color;
-						.setfont(@ubuntubold, 12);
+						.setfont( @bodyfont_bold, 12);
 		
 					    .cijfers {
 						    height: 100%;
@@ -962,10 +963,10 @@
 						    border-right-style: none;
 						    border-left-style: none;
 						    .cijfer {
-								.setfont(@ubuntubold, 36);
+								.setfont( @bodyfont_bold, 36);
 						    }
 						    .antwoord {
-								.setfont(@ubuntubold, 12);
+								.setfont( @bodyfont_bold, 12);
 						    }
 					    }
 					}
@@ -990,49 +991,49 @@
 				padding: ( @padding / 2 ) @padding;
 			}
 
-			.setfont(@osansregular, 14);
+			.setfont( @bodyfont, 14);
 
 			& .content {
 			    width: @singletip_width;
 			}	
 
 			.tipnummer {
-				.setfont(@ubuntubold, 13);
+				.setfont( @bodyfont_bold, 13);
 				margin-top: 1em;
 			}
 			h1 {
-				.setfont(@ubuntumedium, 36);
+				.setfont( @bodyfont, 36);
 			}
 			.waaromwerktdit,
 			.goedevoorbeelden,
 			.nuttigelinks {
 				h3 {
-					.setfont(@ubuntumedium, 18);
+					.setfont( @bodyfont, 18);
 				}
 			}
 
 			#inleiding {
 				&, .opsomming div {
-					.setfont(@osansregular, 18);
+					.setfont( @bodyfont, 18);
 				}
 			}
 			.waaromwerktdit {
 				h2 {
-					.setfont(@ubuntumedium, 18);
+					.setfont( @bodyfont, 18);
 				}
 			}
 			.onderzoek {
-				.setfont(@osansregular, 16);
+				.setfont( @bodyfont, 16);
 				div#cijfers {
 					p.onderzoekvraag {
-						.setfont(@ubuntubold, 10);
+						.setfont( @bodyfont_bold, 10);
 		
 					    .cijfers {
 						    .cijfer {
-								.setfont(@ubuntubold, 36);
+								.setfont( @bodyfont_bold, 36);
 						    }
 						    .antwoord {
-								.setfont(@ubuntubold, 12);
+								.setfont( @bodyfont_bold, 12);
 						    }
 					    }
 					}
@@ -1040,7 +1041,7 @@
 			}
 			
 	    .nuttigelink, .jumptosuggestie {
-				.setfont(@osansregular, 14);
+				.setfont( @bodyfont, 14);
 			}
 
 
@@ -1099,16 +1100,6 @@
           padding-top: 0;
           margin-top: 0;
         }
-  
-        .pagination-previous {
-          left: 0;    
-          border-radius: 0 @nextprev_borderradius @nextprev_borderradius 0;
-        }
-        .pagination-next {
-          right: 0;
-          border-radius: @nextprev_borderradius 0 0 @nextprev_borderradius;
-          text-align: left;
-        }
       	
         .pagination-previous,
         .pagination-next {
@@ -1122,6 +1113,7 @@
           display: table;
       
           &:hover {
+            background-color: @wit;
       			box-shadow: 1px 0px 5px 2px @boxshadow_color;
           }
           
@@ -1131,6 +1123,25 @@
             background-repeat: no-repeat;
           }
         }
+
+  
+        .pagination-previous {
+          left: 0;    
+//          border-radius: 0 @nextprev_borderradius @nextprev_borderradius 0;
+          -webkit-clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+          clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+          padding-right: 4em;
+          
+        }
+        .pagination-next {
+          right: 0;
+//          border-radius: @nextprev_borderradius 0 0 @nextprev_borderradius;
+          -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+          clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+          text-align: left;
+          padding-left: 4em;
+        }
+        
       }
     }
   }
