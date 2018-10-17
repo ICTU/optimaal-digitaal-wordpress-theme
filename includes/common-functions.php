@@ -8,8 +8,8 @@
 // @package gebruiker-centraal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.1
-// @desc.   Contactinfo van tipgevers toegevoegd.
+// @version 3.1.1
+// @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -509,6 +509,33 @@ function od_wbvb_custom_post_title( $title ) {
     $post_title = get_the_title( get_the_ID() );
     $title = '<h2 class="entry-title" itemprop="headline">' . $post_title . '</h2>';
   }
+  
+
+  $pattern      = '/erantwoordelijkh/i'; // verantwoordelijkheid
+  $replacement  = 'erant&shy;woorde&shy;lijkh';
+  $title        = preg_replace( $pattern, $replacement, $title );  
+
+  $pattern      = '/emeenscha/i'; // gemeenschappelijk,  gemeenschap
+  $replacement  = 'emeen&shy;scha';
+  $title        = preg_replace( $pattern, $replacement, $title );  
+
+  $pattern      = '/ersoonsge/i'; // persoonsgegevens
+  $replacement  = 'ersoons&shy;ge';
+  $title        = preg_replace( $pattern, $replacement, $title );  
+
+  $pattern      = '/informatiev/i'; // informatieveiligheid
+  $replacement  = 'informatie&shy;v';
+  $title        = preg_replace( $pattern, $replacement, $title );  
+
+  $pattern      = '/ortermijnd/i'; // kortetermijndenken
+  $replacement  = 'ortermijn&shy;d';
+  $title        = preg_replace( $pattern, $replacement, $title );  
+
+  $pattern      = '/ebruiksvrien/i';
+  $replacement  = 'ebruiks&shy;vrien';
+  $title        = preg_replace( $pattern, $replacement, $title );  
+
+  
 
   return $title;
 
