@@ -8,12 +8,12 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.1
-// @desc.   Contactinfo van tipgevers toegevoegd.
+// @version 3.1.2
+// @desc.   Pagina-templates voor diverse functies toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
-//* Template Name: Citaatoverzicht  
+//* Template Name: Pagina met citaten  
 
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'fn_od_wbvb_tips_archive_cards_home_met_filterx' );

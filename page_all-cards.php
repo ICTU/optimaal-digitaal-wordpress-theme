@@ -1,9 +1,9 @@
 <?php
 
 ///
-// Optimaal Digitaal - page_filter.php
+// Optimaal Digitaal - page_all-cards.php
 // ----------------------------------------------------------------------------------
-// Biedt mogelijkheid om een pagina aan te maken met toegevoegde filtermogelijkheid
+// Template voor het tonen van alle tips, zonder filter
 // ----------------------------------------------------------------------------------
 // @package optimaal-digitaal
 // @author  Paul van Buuren
@@ -12,10 +12,15 @@
 // @desc.   Pagina-templates voor diverse functies toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
+ 
+//* Template Name: Pagina met alle tips zonder filter
 
-//* Template Name: Pagina met tip-filter (oud)
+
+//remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
 //remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'fn_od_wbvb_tips_archive_cards_home_met_filter' );
+add_action( 'genesis_loop', 'fn_od_wbvb_tips_archive_cards_home_no_filter' );
+
+
 
 genesis();

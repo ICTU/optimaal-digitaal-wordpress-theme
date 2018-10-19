@@ -1,9 +1,9 @@
 <?php
 
 ///
-// Optimaal Digitaal - page_filter.php
+// Optimaal Digitaal - page_cards-aan-de-slag.php
 // ----------------------------------------------------------------------------------
-// Biedt mogelijkheid om een pagina aan te maken met toegevoegde filtermogelijkheid
+// Toont alle tips met een filter
 // ----------------------------------------------------------------------------------
 // @package optimaal-digitaal
 // @author  Paul van Buuren
@@ -13,9 +13,15 @@
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
-//* Template Name: Pagina met tip-filter (oud)
+//* Template Name: Pagina met tips voor aan de slag
 
 //remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'fn_od_wbvb_tips_archive_cards_home_met_filter' );
+add_action( 'genesis_loop', 'fn_od_wbvb_tips_archive_aan_de_slag' );
 
 genesis();
+
+//========================================================================================================
+
+
+//========================================================================================================
+
