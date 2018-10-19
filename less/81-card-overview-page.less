@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1
-// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 3.1.3
+// @desc.   Header-fonts aangepast.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -31,10 +31,8 @@
 
 
 .card-overview() {
-  
-  
+
   .tipkaart {
-  
     width: 220px;
     min-height: @cardheight;
     background-color: @defaultcardbg;
@@ -53,28 +51,28 @@
       min-height: @cardheight;
       padding-bottom: 100px;			
     }
-  
-  	h3 {
-      font-size: 22px;
+    
+    [itemprop="headline"] { // HEADER
+      font-size: 21px;
       margin-top: 0;
       padding-top: 0;
       white-space: normal;
       margin-left: 5px;
       margin-right: 5px;
       .bold-font();
-  	}
-  
-  	.tipnummer {
-  		display: block;
-  		text-align: center;
-  		margin-top: 1em;
-  		margin-bottom: 1em;
+      text-transform: none;
+    }
+    
+    .tipnummer {
+    	display: block;
+    	text-align: center;
+    	margin-top: 1em;
+    	margin-bottom: 1em;
       font-family: @headerfont;
       font-size: 20px;
-  	}
-  
+    }
+    
     .contentinfo {
-      
       height: 100px;			
       font-family: @headerfont;
       font-size: 20px;
@@ -110,8 +108,8 @@
         display: block;
       }
     }
-
-  
+    
+    
     &.check,
     &.icon-digitaaloporde,
     &.icon-goedproces,
@@ -130,7 +128,7 @@
       .boxshadow_hover();
       text-decoration: underline;
     }
-
+    
     &.check .contentinfo {
       .iconaddfill('../images/check.svg', '#fff');
     }
@@ -139,7 +137,7 @@
       .contentinfo {
         .iconaddfill('../images/icon-digitaaloporde-card-bg.svg',       @paars_txt );
       }
-
+    
       &:hover,&:focus,&:active {
         color: @paars_txt_hover;
         .contentinfo {
@@ -152,7 +150,7 @@
       .contentinfo {
         .iconaddfill('../images/icon-goedproces-card-bg.svg',           @turqs_txt );
       }
-
+    
       &:hover,&:focus,&:active {
         color: @turqs_txt_hover;
         .contentinfo {
@@ -165,7 +163,7 @@
       .contentinfo {
         .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg',      @blauw_txt );
       }
-
+    
       &:hover,&:focus,&:active {
         color: @blauw_txt_hover;
         .contentinfo {
@@ -179,7 +177,7 @@
       .contentinfo {
         .iconaddfill('../images/icon-interndraagvlak-card-bg.svg',      @groen_txt );
       }
-
+    
       &:hover,&:focus,&:active {
         color: @groen_txt_hover;
         .contentinfo {
@@ -192,7 +190,7 @@
       .contentinfo {
         .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', @gmred_txt );
       }
-
+    
       &:hover,&:focus,&:active {
         color: @gmred_txt_hover;
         .contentinfo {
@@ -200,12 +198,12 @@
         }
       }
     }
-
+    
     &.icon-kanaalsturing {
       .contentinfo {
         .iconaddfill('../images/icon-kanaalsturing-card-bg.svg', @oranje_txt );
       }
-
+    
       &:hover,&:focus,&:active {
         color: @oranje_txt_hover;
         .contentinfo {
@@ -213,8 +211,8 @@
         }
       }
     }
-
-
+    
+    
     &.icon-gloeilamp {
       .contentinfo {
         .iconaddfill('../images/icon-gloeilamp-card-bg.svg',        @goud_txt );
@@ -226,7 +224,6 @@
         }
       }
     }
-    
   }
 
   .tipkaart.goud {
