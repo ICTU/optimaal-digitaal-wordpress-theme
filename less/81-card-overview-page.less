@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1a
-// @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 3.1.1
+// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -111,31 +111,7 @@
       }
     }
 
-    &.check .contentinfo {
-      .iconaddfill('../images/check.svg', '#fff');
-    }
-  &.icon-digitaaloporde .contentinfo {
-    .iconaddfill('../images/icon-digitaaloporde-card-bg.svg',       @paars_txt );
-  }
-  &.icon-goedproces .contentinfo {
-    .iconaddfill('../images/icon-goedproces-card-bg.svg',           @turqs_txt );
-  }
-  &.icon-deelenwerksamen .contentinfo {
-    .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg',      @blauw_txt );
-  }
-  &.icon-kanaalsturing .contentinfo {
-    .iconaddfill('../images/icon-kanaalsturing-card-bg.svg',        @oranje_txt );
-  }
-  &.icon-interndraagvlak .contentinfo {
-    .iconaddfill('../images/icon-interndraagvlak-card-bg.svg',      @groen_txt );
-  }
-  &.icon-informatieveiligheid .contentinfo {
-    .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', @gmred_txt );
-  }
-  &.icon-gloeilamp .contentinfo {
-    .iconaddfill('../images/icon-gloeilamp-card-bg.svg',            @goud_txt );
-  }
-
+  
     &.check,
     &.icon-digitaaloporde,
     &.icon-goedproces,
@@ -150,10 +126,107 @@
     }
     
     &:hover,&:focus,&:active {
-      color: @wit !important;
+      color: @wit;
       .boxshadow_hover();
-      text-decoration: none;
+      text-decoration: underline;
     }
+
+    &.check .contentinfo {
+      .iconaddfill('../images/check.svg', '#fff');
+    }
+    
+    &.icon-digitaaloporde {
+      .contentinfo {
+        .iconaddfill('../images/icon-digitaaloporde-card-bg.svg',       @paars_txt );
+      }
+
+      &:hover,&:focus,&:active {
+        color: @paars_txt_hover;
+        .contentinfo {
+          .iconaddfill('../images/icon-digitaaloporde-card-bg.svg',     @paars_txt_hover );
+        }
+      }
+    }
+    
+    &.icon-goedproces {
+      .contentinfo {
+        .iconaddfill('../images/icon-goedproces-card-bg.svg',           @turqs_txt );
+      }
+
+      &:hover,&:focus,&:active {
+        color: @turqs_txt_hover;
+        .contentinfo {
+          .iconaddfill('../images/icon-goedproces-card-bg.svg',         @turqs_txt_hover );
+        }
+      }
+    }
+    
+    &.icon-deelenwerksamen {
+      .contentinfo {
+        .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg',      @blauw_txt );
+      }
+
+      &:hover,&:focus,&:active {
+        color: @blauw_txt_hover;
+        .contentinfo {
+          .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg',    @blauw_txt_hover );
+        }
+      }
+    }
+    
+    
+    &.icon-interndraagvlak {
+      .contentinfo {
+        .iconaddfill('../images/icon-interndraagvlak-card-bg.svg',      @groen_txt );
+      }
+
+      &:hover,&:focus,&:active {
+        color: @groen_txt_hover;
+        .contentinfo {
+          .iconaddfill('../images/icon-interndraagvlak-card-bg.svg',    @groen_txt_hover );
+        }
+      }
+    }
+    
+    &.icon-informatieveiligheid {
+      .contentinfo {
+        .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', @gmred_txt );
+      }
+
+      &:hover,&:focus,&:active {
+        color: @gmred_txt_hover;
+        .contentinfo {
+          .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', @gmred_txt_hover );
+        }
+      }
+    }
+
+    &.icon-kanaalsturing {
+      .contentinfo {
+        .iconaddfill('../images/icon-kanaalsturing-card-bg.svg', @oranje_txt );
+      }
+
+      &:hover,&:focus,&:active {
+        color: @oranje_txt_hover;
+        .contentinfo {
+          .iconaddfill('../images/icon-kanaalsturing-card-bg.svg', @oranje_txt_hover );
+        }
+      }
+    }
+
+
+    &.icon-gloeilamp {
+      .contentinfo {
+        .iconaddfill('../images/icon-gloeilamp-card-bg.svg',        @goud_txt );
+      }      
+      &:hover,&:focus,&:active {
+        color: @goud_txt_hover;
+        .contentinfo {
+          .iconaddfill('../images/icon-gloeilamp-card-bg.svg',      @goud_txt_hover );
+        }
+      }
+    }
+    
   }
 
   .tipkaart.goud {

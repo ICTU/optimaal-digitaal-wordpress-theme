@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1a
-// @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 3.1.1
+// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -68,140 +68,154 @@
 @tamara_paars:                #4D2B74;
 @tamara_paars_sub:            #361454;
 @tamara_blauw:                #007CBF; // was: #0093D2;
+//@tamara_blauw:                #0093D2;
 @tamara_blauw_sub:            darken( @tamara_blauw, 5% ); // was: #0086C0;
+//@tamara_blauw_sub:            #0086C0;
+
 @tamara_oranje:               #F89521;
 @tamara_oranje_sub:           #E58020;
+
 @tamara_groen:                #138832; // was: #25B34B;
+//@tamara_groen:                #25B34B;
 @tamara_groen_sub:            darken( @tamara_groen, 5% ); // was: #1D9D42;
+//@tamara_groen_sub:            #1D9D42;
+
 @tamara_turquoise:            #00827C; // was: #00B5AD;
+//@tamara_turquoise:            #00B5AD;
 @tamara_turquoise_sub:        darken( @tamara_turquoise, 5% ); // was: #009F98;
+//@tamara_turquoise_sub:        #009F98;
 @tamara_beige_bg:             #E8D8C7;
 
 
 @goud:                        #FFD900; // https://material.io/guidelines/style/color.html#color-color-palette
 @goud_sub:                    #FCC101;
 @goud_txt:                    @txt;
+@goud_txt_hover:              @txt;
+
+
+@blauw2:                      #004152;
+@blauw3:                      #002F3E;
+
+@paars:                       @tamara_paars;
+@paars_sub:                   @tamara_paars_sub;
+@paars_txt:                   @wit;
+@paars_txt_hover:             @wit;
+
+@violet:                      @tamara_roze;
+@violet_sub:                  @tamara_roze_sub;
+@violet_txt:                  @wit;
+@violet_txt_hover:            @wit;
+
+@groen:                       @tamara_groen;
+@groen_sub:                   @tamara_groen_sub;
+@groen_txt:                   @wit;
+@groen_txt_hover:             @wit;
+
+@oranje:                      @tamara_oranje_sub;
+@oranje_sub:                  @tamara_oranje;
+@oranje_txt:                  @wit;
+@oranje_txt_hover:            @txt;
+
+@blauw:                       @tamara_blauw;
+@blauw_sub:                   @tamara_blauw_sub;
+@blauw_txt:                   @wit;
+@blauw_txt_hover:             @wit;
+
+@turqs:                       @tamara_turquoise;
+@turqs_sub:                   @tamara_turquoise_sub;
+@turqs_txt:                   @wit;
+@turqs_txt_hover:             @wit;
+
+@gmred:                       #D32F2F; // https://material.io/guidelines/style/color.html#color-color-palette
+@gmred_sub:                   #B71C1C;
+@gmred_txt:                   @wit;
+@gmred_txt_hover:             @wit;
+
+
+@kanaalsturing:               @oranje;
+@digitaaloporde:              @paars;
+@interndraagvlak:             @groen;
+@goedproces:                  @blauw;
+@deelwerksamen:               @turqs;
+@informatieveiligheid:        @gmred;
+
+@active_color:                #d81b60;
+
+@od_roze1:                    #EC1561;
+
+@border-color:                #cacaca;
+@code-bg:                     @border-color;
+@light_gray:                  darken( @wit, 10%);
+@dark_gray:           	      darken( @light_gray, 20%);
+
+@defaultcardbg:               darken( @light_gray, 50%);
 
 
 
+@comment-list-odd:            @wit;
+@comment-list-even:           @wit;
+
+@sidebar_bg:                  @wit;
+@sidebarwidget:               @blauw3;
+@entry_bg:                    @wit;
+
+@code:                        #1C5BB7;
+
+@def_cardclr:                 @oranje;      // default card color
+@def_cardclr_sub:             @oranje_sub;  // default dark card color
+
+@nuttigelinks_bg:             #fafafa;
+@nuttigelinks_bg_hover:       #F0F0F0;
 
 
-@paars:                 @tamara_paars;
-@paars_sub:             @tamara_paars_sub;
-@paars_txt:             @wit;
+@boxshadow: 			            190;    
 
-@violet:                @tamara_roze;
-@violet_sub:            @tamara_roze_sub;
-@violet_txt: green; //             @wit;
+@boxshadow: 			            2;    
+@boxshadow_opacity:           .1;    
+@boxshadow_op_hover:	        1;    
 
-@groen:                 @tamara_groen;
-@groen_sub:             @tamara_groen_sub;
-@groen_txt:             @wit;
+@boxshadow_color: 		        rgba( @boxshadow, @boxshadow, @boxshadow, @boxshadow_opacity);    
+@boxshadow_color_hover:       rgba( @boxshadow, @boxshadow, @boxshadow, @boxshadow_op_hover);    
 
-@oranje:                @tamara_oranje;
-@oranje_sub:            @tamara_oranje_sub;
-@oranje_txt:            @txt;
+@menu_bg:                     #cfd8dc;
+@menu_a_color:                #546e7a;
 
-@blauw:                 @tamara_blauw;
-@blauw_sub:             @tamara_blauw_sub;
-@blauw_txt:             @wit;
-
-@blauw2:                #004152;
-@blauw3:                #002F3E;
-
-@turqs:                 @tamara_turquoise;
-@turqs_sub:             @tamara_turquoise_sub;
-@turqs_txt:             @wit;
-
-@gmred:                 #D32F2F; // https://material.io/guidelines/style/color.html#color-color-palette
-@gmred_sub:             #B71C1C;
-@gmred_txt:             @wit;
-
-
-@kanaalsturing:         @oranje;
-@digitaaloporde:        @paars;
-@interndraagvlak:       @groen;
-@goedproces:            @blauw;
-@deelwerksamen:         @turqs;
-@informatieveiligheid:  @gmred;
-
-@active_color:          #d81b60;
-
-@od_roze1:              #EC1561;
-
-@border-color:          #cacaca;
-@code-bg:               @border-color;
-@light_gray:            darken(@wit, 10%);
-@dark_gray:           	darken(@light_gray, 20%);
-
-@defaultcardbg:         darken(@light_gray, 50%);
-
-
-
-@comment-list-odd:      @wit;
-@comment-list-even:     @wit;
-
-@sidebar_bg:            @wit;
-@sidebarwidget:         @blauw3;
-@entry_bg:              @wit;
-
-@code:                  #1C5BB7;
-
-@def_cardclr:           @oranje;      // default card color
-@def_cardclr_sub:       @oranje_sub;  // default dark card color
-
-@nuttigelinks_bg:       #fafafa;
-@nuttigelinks_bg_hover: #F0F0F0;
-
-
-@boxshadow: 			      190;    
-
-@boxshadow: 			      2;    
-@boxshadow_opacity:     .1;    
-@boxshadow_op_hover:	  1;    
-
-@boxshadow_color: 		  rgba(@boxshadow,@boxshadow,@boxshadow, @boxshadow_opacity);    
-@boxshadow_color_hover: rgba(@boxshadow,@boxshadow,@boxshadow, @boxshadow_op_hover);    
-
-@menu_bg:               #cfd8dc;
-@menu_a_color:          #546e7a;
-
-@filter_form_bg:        #F5F5F5;
+@filter_form_bg:              #F5F5F5;
 
 
 //=========================================================================================================
 
 // koeleuren voor de navigatiedinges ===============================================
-@nav_bg:                @wit;
-@header-bg-color: 		  @od_roze1;
-@nav_wrap_bg:           darken( @od_roze1, 10% );
-@mess_ok_color:         @groen;
-@mess_ok_bg:            lighten( @mess_ok_color, 50% );
-@mess_ok_border:        @mess_ok_color;
+@nav_bg:                      @wit;
+@header-bg-color:             @od_roze1;
+@nav_wrap_bg:                 darken( @od_roze1, 10% );
+@mess_ok_color:               @groen;
+@mess_ok_bg:                  lighten( @mess_ok_color, 50% );
+@mess_ok_border:              @mess_ok_color;
 
-@mess_error_color:      @prev_gmred;
-@mess_error_bg:         lighten( @mess_error_color, 50% );
-@mess_error_border:     @mess_error_color;
-@bodybgcolor:           @tamara_beige_bg;
+@mess_error_color:            @prev_gmred;
+@mess_error_bg:               lighten( @mess_error_color, 50% );
+@mess_error_border:           @mess_error_color;
+@bodybgcolor:                 @tamara_beige_bg;
 
 
 // tekst-koeleuren, best belangrijk ================================================
-@txt:                   @gebruikercentraal_blauw; // #000;
-@wit:                   #fff;
+@txt:                         @gebruikercentraal_blauw; //       #000;
+@wit:                         #fff;
 
-@meta_color:            lighten(@txt, 10%);
+@meta_color:                  lighten( @txt, 10%);
 
-@a_hover:               @violet;
-@a-content-color:       @txt;
-@a-content-hover-color: @violet;
+@a_hover:                     @violet;
+@a-content-color:             @txt;
+@a-content-hover-color:       @violet;
 
 // en button-koeleuren, ook belangrijk =============================================
-@button-normal:         @wit;
-@button-hover:          @wit;
+@button-normal:               @wit;
+@button-hover:                @wit;
 
-@button-sidebar-normal: darken(@groen, 18%);
-@button-sidebar-hover:  @blauw3;
+@button-sidebar-normal:       darken( @groen, 18%);
+@button-sidebar-hover:        @blauw3;
 @button-sidebar-normal-color: @wit;
 
-@bbpress_badge_default: lighten(@txt,30%);
+@bbpress_badge_default:       lighten( @txt,30%);
 

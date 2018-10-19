@@ -8,8 +8,8 @@
 // @package gebruiker-centraal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1a
-// @desc.   Redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 3.1.1
+// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -534,8 +534,6 @@ function od_wbvb_custom_post_title( $title ) {
   $pattern      = '/ebruiksvrien/i';
   $replacement  = 'ebruiks&shy;vrien';
   $title        = preg_replace( $pattern, $replacement, $title );  
-
-  
 
   return $title;
 

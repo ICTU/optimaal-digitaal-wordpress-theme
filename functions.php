@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.4
-// @desc.   Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
+// @version 3.1.1
+// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -35,10 +35,7 @@ require_once( $opt_folder . '/includes/common-functions.php' );
 
 // does our beloved visitor allow for JavaScript?
 $genesis_js_no_js = new Genesis_Js_No_Js;
-$genesis_js_no_js->run();/**
- * Define child theme constants.
- */
-
+$genesis_js_no_js->run();
 
 
 //========================================================================================================
@@ -46,8 +43,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.11.4' );
-define( 'CHILD_THEME_DESCRIPTION', "2.11.4 Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen." );
+define( 'CHILD_THEME_VERSION', '3.1.1' );
+define( 'CHILD_THEME_DESCRIPTION', "3.1.1 Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );

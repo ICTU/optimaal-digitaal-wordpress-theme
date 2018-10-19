@@ -5,13 +5,14 @@
 Dit theme wordt gebruikt op [optimaaldigitaal.gebruikercentraal.nl](https://optimaaldigitaal.gebruikercentraal.nl)
 
 ## Version
-Current: 2.11.4 - Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
+Current: 3.1.1 - Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 
 ## Contact
 * Victor Zuydweg
 * Paul van Buuren: paul@wbvb.nl
 
 ## Version history
+* 3.1.1 - Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
 * 2.11.4 - Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
 * 2.11.3 - Contactinfo: visitekaartje op single met achtergrondkleur.
 * 2.11.2 - Contactinfo: overzichtspagina van tipgevers toegevoegd.
