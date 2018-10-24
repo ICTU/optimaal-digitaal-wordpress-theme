@@ -267,71 +267,69 @@
 //=========================================================================================================
 .iconaddfillbrain(@src, @fill-new) {
 
-
-    @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default: 	escape('class="st0"');
-    @replace-new: 		escape('fill="@{fill-new}"');
-    @replacesrc1: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replacesrc1);
+  @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default: 	escape('class="st0"');
+  @replace-new: 		escape('fill="@{fill-new}"');
+  @replacesrc1: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================
 .iconaddfill2(@src, @fill-new) {
 
-    @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-
-    @replace-default: 	escape('<path');
-    @replace-new: 		escape('<path fill="@{fill-new}"');
-    @replace-src: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replace-src);
+  @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  
+  @replace-default: 	escape('<path');
+  @replace-new: 		escape('<path fill="@{fill-new}"');
+  @replace-src: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replace-src);
 }
 
 //=========================================================================================================
 .iconaddfill3(@src, @fill-new) {
 
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('g id="icon-arrow" fill="#FFFFFF"');
-    @replace-new:       escape('g id="icon-arrow" fill="@{fill-new}"');
-    @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replace-src);
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('g id="icon-arrow" fill="#FFFFFF"');
+  @replace-new:       escape('g id="icon-arrow" fill="@{fill-new}"');
+  @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replace-src);
 }
 
 //=========================================================================================================
 .iconaddfill4(@src, @fill-new) {
-
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('fill="#000000"');
-    @replace-new:       escape('fill="@{fill-new}"');
-    @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replace-src);
+  
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('fill="#000000"');
+  @replace-new:       escape('fill="@{fill-new}"');
+  @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replace-src);
 }
 //=========================================================================================================
 .iconaddbullet(@src, @fill-new) {
-
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-    @replace-default:   escape('<g id="bullet" fill="#00838F"');
-    @replace-new:       escape('<g id="bullet" fill="@{fill-new}"');
-    @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-	list-style-image: e(@replace-src);
-
+  
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('<g id="bullet" fill="#00838F"');
+  @replace-new:       escape('<g id="bullet" fill="@{fill-new}"');
+  @replace-src:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  list-style-image: e(@replace-src);
 }
 
 //=========================================================================================================
 .iconaddfill(@src, @fill-new) {
-    @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-//    @replace-default:   escape('class="st0"');
-    @replace-default:   escape('fill="#fff"');
-    @replace-new:       escape('fill="@{fill-new}"');
 
-    
-    @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
-
-    background-image: e(@replacesrc1);
+  @data-uri:          data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-default:   escape('fill="#fff"');
+  @replace-new:       escape('fill="@{fill-new}"');
+  
+  
+  @replacesrc1:       replace("@{data-uri}", @replace-default, @replace-new, "g");
+  
+  background-image: e(@replacesrc1);
 }
 
 //=========================================================================================================

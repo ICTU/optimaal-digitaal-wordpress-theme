@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1
-// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 3.1.4a
+// @desc.   Cards styling op smallere schermen.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -97,14 +97,16 @@
 		.cardflex {
 			.content_margins(@cardmargin, @padding_perc_rechts, 0, @padding_perc_links);
 		}
-		#tab-panel-1 span, #tab-panel-2 span,
+//		#tab-panel-1 span, #tab-panel-2 span,
 		#filter_tips {
 			.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
 		}
+/*		
 		#tabs_list {
 			margin-right: @padding_perc_links;
 			margin-left: @padding_perc_links;
 		}
+*/		
 	}
 }
 
@@ -116,26 +118,6 @@
 	.content_margins(@cardmargin, @padding_perc_rechts, 0, @padding_perc_links);
 }
 
-
-//=========================================================================================================
-@media only screen and (max-width: ( @break_phone600 ) )  {
-  .title-area {
-    #nav-primary-button, .menu-button {
-      span.label {
-        visibility: hidden;
-        display: none;
-      }
-    }
-  }
-
-  #filter_tips,
-  #cardflex_tab1,
-  .tab-widget__list {
-    display: none;
-    visibility: hidden;			
-  }
-}
-  
 
 
 
@@ -161,15 +143,17 @@
 			.cardflex {
 				.content_margins(1em, @padding_perc_rechts, 0, @padding_perc_links);
 			}
-			#tab-panel-1 span, #tab-panel-2 span,
+//			#tab-panel-1 span, #tab-panel-2 span,
 			#filter_tips {
 				.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
 			}
+/*			
 			#tabs_list {
 				margin-right: @padding_perc_links;
 				margin-left: @padding_perc_links;
 			}
-	    }
+*/			
+    }
 	}    
 	.entry-content {
 		.content_margins(1em, @padding_perc_rechts, 0, @padding_perc_links);
@@ -226,14 +210,16 @@
 			.cardflex {
 				.content_margins(@cardmargin, @padding_perc_rechts, 0, @padding_perc_links);
 			}
-			#tab-panel-1 span, #tab-panel-2 span,
+//			#tab-panel-1 span, #tab-panel-2 span,
 			#filter_tips {
 				.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
 			}
+/*			
 			#tabs_list {
 				margin-right: @padding_perc_links;
 				margin-left: @padding_perc_links;
 			}
+*/			
 		}
 	}
 	.entry-content {
@@ -265,14 +251,16 @@
 			.cardflex {
 				.content_margins(@cardmargin2, @padding_perc_rechts, 0, @padding_perc_links);
 			}
-			#tab-panel-1 span, #tab-panel-2 span,
+//			#tab-panel-1 span, #tab-panel-2 span,
 			#filter_tips {
 				.content_margins(@cardmargin, @padding_perc_links, 0, @padding_perc_links);
 			}
+/*			
 			#tabs_list {
 				margin-right: @padding_perc_links;
 				margin-left: @padding_perc_links;
 			}
+*/			
 			header.site-header {
   			border: 10px solid red;
 				margin-right: @padding_perc_links;

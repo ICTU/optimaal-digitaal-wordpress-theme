@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.3
-// @desc.   Header-fonts aangepast.
+// @version 3.1.4a
+// @desc.   Cards styling op smallere schermen.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -43,8 +43,8 @@ $genesis_js_no_js->run();
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '3.1.3' );
-define( 'CHILD_THEME_DESCRIPTION', "3.1.3 Header-fonts aangepast." );
+define( 'CHILD_THEME_VERSION', '3.1.4a' );
+define( 'CHILD_THEME_DESCRIPTION', "3.1.4a Cards styling op smallere schermen." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
