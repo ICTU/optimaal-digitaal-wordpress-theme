@@ -29,16 +29,20 @@ $nuttigelinks		   = '';
 $onderzoek         = '';
 $contactformulier	 = '';
 
+/*
 
 remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 remove_action('genesis_entry_content','genesis_do_post_content');
 remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
-/** Remove Header and navigation */
 remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
 remove_action( 'genesis_header', 'genesis_do_header' );
 remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );
+
+*/
+
+/** Remove Header and navigation */
 
 remove_action( 'genesis_entry_header','genesis_do_post_title' );
 
@@ -46,7 +50,7 @@ remove_action( 'genesis_entry_header','genesis_do_post_title' );
 add_action('genesis_entry_header','od_tip_custom_content');
 
 // custom link
-add_action( 'genesis_header', 'od_pageheader_backlink', 1 );
+//add_action( 'genesis_header', 'od_pageheader_backlink', 1 );
 
 function od_pageheader_backlink() {
 	echo '<nav id="backlink" class="clearfix"><a href="/">&lt;&nbsp;alle&nbsp;tips</a>';

@@ -35,27 +35,6 @@ add_theme_support( 'genesis-responsive-viewport' );
 // Geen footer
 remove_action( 'genesis_footer', 'genesis_do_footer' );
 
-$siteURL = get_stylesheet_directory_uri();
-$siteURL =  preg_replace('|https://|i', '//', $siteURL );
-$siteURL =  preg_replace('|http://|i', '//', $siteURL );
-
-
-define( 'WBVB_THEMEFOLDER', $siteURL );
-
-
-/**
-* Constants
-*/
-
-define( 'ID_MAINCONTENT', 'maincontent' );
-define( 'ID_MAINNAV', 'mainnav' );
-define( 'ID_ZOEKEN', 'zoeken' );
-define( 'ID_SKIPLINKS', 'skiplinks' );
-
-
-
-
-
 //========================================================================================================
 
 $padding = 16;
@@ -118,22 +97,26 @@ add_filter( 'genesis_attr_site-inner', 'od_wbvb_theme_add_content_id', 15 );
 
 
 //========================================================================================================
-function showdebug($file = '', $extra = '') {
 
-  if ( WP_THEME_DEBUG && WP_DEBUG ) {
-    
-    $break = Explode('/', $file);
-    $pfile = $break[count($break) - 1]; 
-    
-    echo '<hr><span class="debugmessage" title="' . $file . '">' . $pfile;
-    if ( $extra ) {
-      echo ' - ' . $extra;
+if ( !function_exists( 'showdebug' ) ) {
+
+  function showdebug($file = '', $extra = '') {
+  
+    if ( WP_THEME_DEBUG && WP_DEBUG ) {
+      
+      $break = Explode('/', $file);
+      $pfile = $break[count($break) - 1]; 
+      
+      echo '<hr><span class="debugmessage" title="' . $file . '">' . $pfile;
+      if ( $extra ) {
+        echo ' - ' . $extra;
+      }
+      echo '<br/>R: ' . WP_THEME_DEBUG . ' / D: ' .  WP_DEBUG;
+      echo '</span>';
     }
-    echo '<br/>R: ' . WP_THEME_DEBUG . ' / D: ' .  WP_DEBUG;
-    echo '</span>';
   }
-}
 
+}
 
 //========================================================================================================
 
@@ -550,70 +533,14 @@ remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 add_filter ( 'genesis_edit_post_link' , '__return_false' );
 
 //========================================================================================================
-//* Display a custom Gravatar
-add_filter( 'avatar_defaults', 'sp_gravatar' );
-function sp_gravatar ($avatar) {
-  $custom_avatar = WBVB_THEMEFOLDER . '/images/gravatar.png';
-  $avatar[$custom_avatar] = "Custom Gravatar";
-  return $avatar;
-}
 
+//* Display a custom Gravatar
+add_filter( 'avatar_defaults', 'gc_shared_gravatar' );
 
 //========================================================================================================
 
-
 //* Password reset activation E-mail -> Body
-add_filter( 'retrieve_password_message', 'wpse_retrieve_password_message', 10, 2 );
-function wpse_retrieve_password_message( $message, $key ){
-    $user_data = '';
-    // If no value is posted, return false
-    if( ! isset( $_POST['user_login'] )  ){
-            return '';
-    }
-    // Fetch user information from user_login
-    if ( strpos( $_POST['user_login'], '@' ) ) {
-
-        $user_data = get_user_by( 'email', trim( $_POST['user_login'] ) );
-    } else {
-        $login = trim($_POST['user_login']);
-        $user_data = get_user_by('login', $login);
-    }
-    if( ! $user_data  ){
-        return '';
-    }
-    $user_login = $user_data->user_login;
-    $user_email = $user_data->user_email;
-    $hostname  = network_site_url();
-
-    // Setting up message for retrieve password
-    $message = '<p>' . _x( "Hallo,", 'begroeting inlogmail', 'gebruikercentraal' ) . '</p>';
-    $message .= "\n\n";
-    $message .= '<p>' . _x( "We kregen via de website het verzoek om een nieuw wachtwoord te sturen voor het account met de inlognaam:", 'inlogmail', 'gebruikercentraal' ) . '<br />';
-    $message .= "\n<em>" . $user_login . "</em></p>";
-    $message .= "\n\n";
-    $message .= '<p>' . _x( "Om je wachtwoord opnieuw in te stellen, klik je op deze link:", 'inlogmail', 'gebruikercentraal' ) . '<br />';
-    $message .= '<a href="';
-    $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
-    $message .= '">';
-    $message .= network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
-    $message .= "</a></p>\n\n";
-    
-    $message .= '<p>' . _x( "Deze link is maar 1 keer te gebruiken.", 'inlogmail', 'gebruikercentraal' ) . '<br />';
-    $message .= "\n";
-    $message .= _x( "Als je geen nieuw wachtwoord wilt, hoef je niets te doen.", 'inlogmail', 'gebruikercentraal' );
-    $message .= "</p>";
-    
-    $message .= '<p>' . _x( "Met vriendelijke groet,", 'afsluiting inlogmail', 'gebruikercentraal' ) . "<br />";
-    $message .= "\n";
-    $message .=  _x( "het Gebruiker Centraal-team", 'afsluiting inlogmail', 'gebruikercentraal' ) . "</p>";
-    $message .= "\n\n<a href=\"" . $hostname . "\">" . $_SERVER["HTTP_HOST"] . "</a><br />\n\n" . '<img src="' . $hostname . '/mailingassets/mailondertekening-meisje-gebruiker-centraal.png"/>';
-
-    // Return completed message for retrieve password
-    return $message;
-    
-}  
-
-
+add_filter( 'retrieve_password_message', 'gc_shared_retrieve_password_message', 10, 2 );
 
 //========================================================================================================
   

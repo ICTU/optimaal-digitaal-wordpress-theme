@@ -15,13 +15,90 @@
 
 .header-logo() {
 
+  .title-area {
+    margin: 0;
+    float: left;
+  }  
+  
+  .site-header {
+  
+    background-color: @header_bg_color;
+    padding-top: @padding;
+    
+    .wrap {
+      position: relative;
+    }
+  
+    #sitelogo {
+      float: left;
+      display: inline-block;
+      position: absolute;
+      width: @logowidth;
+      height: @logoheight;
+      top: ( @padding / 2 );
+      left: ( @padding / 2 );
+      background: transparent url('images/logo-mobile.png') no-repeat left top;
+      background-image: url('images/logo-mobile.svg'), none;
+  
+      a {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+      
+      img {
+        .visuallyhidden();
+      }
+    }
+  
+    .wrap {
+      a {
+        &, &:visited, &:hover, &:focus, &:active {
+          color: @wit;
+        }
+      }
+    }
+      
+    .site-title {
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: @headerfont;
+      margin: 0 0 0 @logowidth;
+    }
+  }
 
-home article,
-.site-header {
-  background: @blauw2;
-  color: @wit;
+
+  @media only screen and (min-width: @break_fullwidth ) {
+    .site-header {
+      #sitelogo {
+        width: @logo_desktop_width;
+        height: @logo_desktop_height;
+        
+        background-image: url('images/logo-desktop.svg');
+        background-image: url('images/logo-desktop.svg'), none;
+      
+      }
+      .site-title {
+        margin-left: @logo_desktop_width;
+      }
+    }
+    .breadcrumb {
+      .wrap {
+        padding-left: @logo_desktop_width;
+      }
+    }
+  }
+
 }  
   
+.header-logo2() {
+  
+  home article,
+  .site-header {
+    background: @blauw2;
+    color: @wit;
+  }  
+    
   .site-header {
     background: @blauw3;
     color: @wit;
@@ -38,23 +115,10 @@ home article,
       min-height: 77px;
       background-repeat: no-repeat;
       background-position: left top;
-/*
-      background-image: url('images/header-320w@2x.png');
-      padding-top: 48px;
-      padding-left: 55px;
-*/      
+
     }		    
   }
-  
-  .site-header .entry-title,
-  .site-header .title-area,
-  .home article {
-/*
-    background-position: center top;
-    background-size: cover;
-*/      
-  }
-  
+
   .site-header .entry-title,
   .home article {
 /*    

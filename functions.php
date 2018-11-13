@@ -33,6 +33,9 @@ require_once( $opt_folder . '/includes/acf-and-taxonomies.php' );
 require_once( $opt_folder . '/includes/nojs.php' );
 require_once( $opt_folder . '/includes/common-functions.php' );
 
+// shared code with GC theme
+require_once( $sharedfolder . '/includes/common-functions.php' );
+
 // does our beloved visitor allow for JavaScript?
 $genesis_js_no_js = new Genesis_Js_No_Js;
 $genesis_js_no_js->run();
@@ -54,6 +57,18 @@ define( 'child_template_directory', dirname( get_bloginfo('stylesheet_url')) );
 
 
 define( 'GC_TWITTERACCOUNT', 'GebrCentraal' );
+
+define( 'ID_MAINCONTENT', 'maincontent' );
+define( 'ID_MAINNAV', 'mainnav' );
+define( 'ID_ZOEKEN', 'zoeken' );
+define( 'ID_SKIPLINKS', 'skiplinks' );
+
+$siteURL = get_stylesheet_directory_uri();
+$siteURL =  preg_replace('|https://|i', '//', $siteURL );
+$siteURL =  preg_replace('|http://|i', '//', $siteURL );
+
+define( 'WBVB_THEMEFOLDER', $siteURL );
+
 
 //========================================================================================================
 // Image sizes
@@ -166,12 +181,14 @@ function fn_od_wbvb_append_body_class( $classes ) {
 //========================================================================================================
 
 function cleanstring($strinput){
-    $strinput = strtolower( $strinput );
-	$strinput = strip_tags( $strinput );
-	$strinput = preg_replace( '/&#?[a-z0-9]{2,8};/i', '',$strinput); // filter out &amp; etc
-	$strinput = preg_replace( '/[^a-z0-9 -]+/', '', $strinput );
-//    $z = str_replace(' ', '-', $z);
-    return trim($strinput, '-');
+
+  $strinput = strtolower( $strinput );
+  $strinput = strip_tags( $strinput );
+  $strinput = preg_replace( '/&#?[a-z0-9]{2,8};/i', '',$strinput); // filter out &amp; etc
+  $strinput = preg_replace( '/[^a-z0-9 -]+/', '', $strinput );
+  //    $z = str_replace(' ', '-', $z);
+  return trim($strinput, '-');
+
 }
 
 //========================================================================================================
@@ -325,10 +342,7 @@ function fn_od_wbvb_write_tip_kaart( $postobject, $plaatjes, $kleuren, $prefix =
   
 }
 
-
-
 //========================================================================================================
-
 
 function fn_od_wbvb_get_filterbutton($term) {
 
@@ -434,6 +448,7 @@ function fn_od_wbvb_get_filterbutton($term) {
 		return $returnstring;	
 		
 	}
+	
 }
 
 //========================================================================================================
@@ -930,10 +945,9 @@ function fn_od_wbvb_tips_archive_aan_de_slag() {
 	}
 	
 	echo '</div>'; // <!-- //tab-widget__tab-content tab-widget__link--not-yet-activated -->
-	// ============================================================================================================================================
+	// =====================================================================================================
 	// einde Aan de slag
-	// ============================================================================================================================================
-
+	// =====================================================================================================
 }
 
 //========================================================================================================
@@ -955,112 +969,102 @@ function fn_od_wbvb_tips_archive_cards_loop() {
 		
 	if ( have_posts() ) {
 		
-		while ( have_posts() ) {
-			the_post(); 
-	
-		    $tipnummer      = ''; 
-		    $themakleur		= ''; 
-		    $themaplaatje	= ''; 
-		    $classes		= array();
-		
-		    $taxonomie   	= get_the_terms( $post->ID, GC_TIPTHEMA );
-		
-        if ( $taxonomie && ! is_wp_error( $taxonomie ) ) {
-          foreach ( $taxonomie as $term ) {
+    while ( have_posts() ) {
+      
+      the_post(); 
+      
+      $tipnummer      = ''; 
+      $themakleur		= ''; 
+      $themaplaatje	= ''; 
+      $classes		= array();
+      
+      $taxonomie   	= get_the_terms( $post->ID, GC_TIPTHEMA );
+      
+      if ( $taxonomie && ! is_wp_error( $taxonomie ) ) {
+        foreach ( $taxonomie as $term ) {
+          
+          $classes[$term->term_id] = array();
+          $classes[$term->term_id]['name']	= $term->name;
+          
+          if ( function_exists( 'get_field' ) ) {
+            $themakleur			= get_field('thema-kleur', GC_TIPTHEMA . '_' . $term->term_id ); 
+            $themaplaatje		= get_field('thema-logo', GC_TIPTHEMA . '_' . $term->term_id ); 
             
-            $classes[$term->term_id] = array();
-            $classes[$term->term_id]['name']	= $term->name;
-            
-            if ( function_exists( 'get_field' ) ) {
-              $themakleur			= get_field('thema-kleur', GC_TIPTHEMA . '_' . $term->term_id ); 
-              $themaplaatje		= get_field('thema-logo', GC_TIPTHEMA . '_' . $term->term_id ); 
-              
-              $classes[$term->term_id]['kleur']	= $themakleur;
-              $classes[$term->term_id]['plaatje']	= $themaplaatje;
-            }
-          }
-        }	
-		
-		
-        if ( function_exists( 'get_field' ) ) {
-          $tipnummer      = get_field('tip-nummer'); 
-          if ( $tipnummer ) {
-            $tipnummer 		= __( "Tip", 'gebruikercentraal' ) . ' ' . $tipnummer;
+            $classes[$term->term_id]['kleur']	= $themakleur;
+            $classes[$term->term_id]['plaatje']	= $themaplaatje;
           }
         }
-		    
-		    do_action( 'genesis_before_entry' );
-		
-			$args = array(
-			    'orderby'           => 'name', 
-			    'order'             => 'ASC',
-			    'hide_empty'        => true, 
-			    'exclude'           => array(), 
-			    'exclude_tree'      => array(), 
-			    'include'           => array(),
-			    'number'            => '', 
-			    'fields'            => 'all', 
-			    'slug'              => '',
-			    'parent'            => '',
-			    'hierarchical'      => true, 
-			    'child_of'          => 0,
-			    'childless'         => false,
-			    'get'               => '', 
-			    'name__like'        => '',
-			    'description__like' => '',
-			    'pad_counts'        => false, 
-			    'offset'            => '', 
-			    'search'            => '', 
-			    'cache_domain'      => 'core'
-			);
-		
-		
-		    $lelink         = '<a href="' . get_permalink() . '" class="blocklink">';
-		
-		
-		    $kleuren	= '';
-		    $plaatjes	= '';
-		
-		    if ($classes) {
-				foreach ($classes as $key => $value) {
-			        $plaatjes	.= ' ' . $value['plaatje'];
-			        $kleuren	.= ' ' . $value['kleur'];
-			     }		    
-		    }
-		    
-		    echo '<section class="tipkaart' . $kleuren . $plaatjes . '">';
-		
-		
-		    echo $lelink;
-		    echo '<span class="tipnummer">' . $tipnummer . '</span>';
-		    
-		    
-			echo '<h2 class="entry-title" itemprop="headline">';
-			echo od_wbvb_custom_post_title( get_the_title() ) ;
-			echo '</h2>';
-		
-		    if ($classes) {
-			    echo '<div class="contentinfo">';
-				foreach ($classes as $key => $value) {
-			       echo '<span>' . $value['name'] . '</span>';
-			     }		    
-			    echo '</div>';
-		    }
-		    else {
-		        echo '<p>' . __( "Deze tip is niet gekoppeld aan een thema", 'gebruikercentraal' ) . '</p>';
-		    }
-		
-		//        echo '</div>';
-		    echo '</a></section>';
-			
+      }	
+      
+      
+      if ( function_exists( 'get_field' ) ) {
+        $tipnummer      = get_field('tip-nummer'); 
+        if ( $tipnummer ) {
+          $tipnummer 		= __( "Tip", 'gebruikercentraal' ) . ' ' . $tipnummer;
+        }
+      }
+      
+      do_action( 'genesis_before_entry' );
+      
+      $args = array(
+        'orderby'           => 'name', 
+        'order'             => 'ASC',
+        'hide_empty'        => true, 
+        'exclude'           => array(), 
+        'exclude_tree'      => array(), 
+        'include'           => array(),
+        'number'            => '', 
+        'fields'            => 'all', 
+        'slug'              => '',
+        'parent'            => '',
+        'hierarchical'      => true, 
+        'child_of'          => 0,
+        'childless'         => false,
+        'get'               => '', 
+        'name__like'        => '',
+        'description__like' => '',
+        'pad_counts'        => false, 
+        'offset'            => '', 
+        'search'            => '', 
+        'cache_domain'      => 'core'
+      );
 
-		};
+      $lelink         = '<a href="' . get_permalink() . '" class="blocklink">';
+
+      $kleuren	= '';
+      $plaatjes	= '';
+      
+      if ($classes) {
+        foreach ($classes as $key => $value) {
+          $plaatjes	.= ' ' . $value['plaatje'];
+          $kleuren	.= ' ' . $value['kleur'];
+        }		    
+      }
+      
+      echo '<section class="tipkaart' . $kleuren . $plaatjes . '">';
+      echo $lelink;
+      echo '<span class="tipnummer">' . $tipnummer . '</span>';
+
+      echo '<h2 class="entry-title" itemprop="headline">';
+      echo od_wbvb_custom_post_title( get_the_title() ) ;
+      echo '</h2>';
+      
+      if ($classes) {
+        echo '<div class="contentinfo">';
+        foreach ($classes as $key => $value) {
+          echo '<span>' . $value['name'] . '</span>';
+        }		    
+        echo '</div>';
+      }
+      else {
+        echo '<p>' . __( "Deze tip is niet gekoppeld aan een thema", 'gebruikercentraal' ) . '</p>';
+      }
+      
+      echo '</a></section>';
+
+    };
 	}
 
-
-	
-
-	
 	wp_reset_query();
 }
 
@@ -1092,73 +1096,73 @@ add_action('manage_posts_custom_column',  'admin_manage_theme_columns_tips');
 
 function admin_manage_theme_columns_tips($name) {
 
+  global $post;
+  global $column;
+  
+  $acfid      = $post->ID;
+  
+  switch ( $name ){
 
-    global $post;
-    global $column;
-
-    $acfid      = $post->ID;
+    // ---------------------------------------------------------------------------------------------------
+    case ('tipnummer'): 
     
-	switch ( $name ){
-		case ('tipnummer'): 
-
-            $tipnummer  = get_field('tip-nummer', $acfid);
-
-            if ($tipnummer) {
-                echo 'Tip ' . $tipnummer . '<br />';
-            }
-            else {
-                echo '<strong class="error">Geen tipnummer ingevoerd</strong><br />';
-            }
-
-			break;
-
-		case ('tipthema'): 
-            $thehoofdkoplijst = get_the_term_list( $acfid, GC_TIPTHEMA, '', ', ', '' );
-	    	if ( $thehoofdkoplijst && ! is_wp_error( $thehoofdkoplijst ) ) {
-                echo $thehoofdkoplijst;
-            }
-            else {
-                echo '<strong>Niet gekoppeld aan een thema</strong>';
-            }
-
-
-		    break;
-            
-		case ('tiporganisatie'): 
-
-            $thehoofdkoplijst = get_the_term_list( $acfid, GC_TIPORGANISATIE, '', ', ', '' );
-	    	if ( $thehoofdkoplijst && ! is_wp_error( $thehoofdkoplijst ) ) {
-                echo $thehoofdkoplijst;
-            }
-            else {
-                echo '-';
-            }
-
-
-		    break;
-            
-		case ('tipvraag'): 
-
-            $thehoofdkoplijst = get_the_term_list( $acfid, GC_TIPVRAAG, '', ', ', '' );
-	    	if ( $thehoofdkoplijst && ! is_wp_error( $thehoofdkoplijst ) ) {
-                echo $thehoofdkoplijst;
-            }
-            else {
-                echo '-';
-            }
-
-
-		    break;
-            
-
-		default:
-//			echo "Ja else: " . $column_name;
-			break;
-	}
-	if ("ID" == $column) echo $post->ID;
-	elseif ("title" == $column) echo "title : " . $post->post_content;
-
+      $tipnummer  = get_field('tip-nummer', $acfid);
+      
+      if ($tipnummer) {
+        echo 'Tip ' . $tipnummer . '<br />';
+      }
+      else {
+        echo '<strong class="error">Geen tipnummer ingevoerd</strong><br />';
+      }
+      
+      break;
     
+    // ---------------------------------------------------------------------------------------------------
+    case ('tipthema'): 
+    
+      $thehoofdkoplijst = get_the_term_list( $acfid, GC_TIPTHEMA, '', ', ', '' );
+      if ( $thehoofdkoplijst && ! is_wp_error( $thehoofdkoplijst ) ) {
+        echo $thehoofdkoplijst;
+      }
+      else {
+        echo '<strong>Niet gekoppeld aan een thema</strong>';
+      }
+
+      break;
+    
+    // ---------------------------------------------------------------------------------------------------
+    case ('tiporganisatie'): 
+    
+      $thehoofdkoplijst = get_the_term_list( $acfid, GC_TIPORGANISATIE, '', ', ', '' );
+      if ( $thehoofdkoplijst && ! is_wp_error( $thehoofdkoplijst ) ) {
+        echo $thehoofdkoplijst;
+      }
+      else {
+        echo '-';
+      }
+
+      break;
+    
+    // ---------------------------------------------------------------------------------------------------
+    case ('tipvraag'): 
+    
+      $thehoofdkoplijst = get_the_term_list( $acfid, GC_TIPVRAAG, '', ', ', '' );
+      if ( $thehoofdkoplijst && ! is_wp_error( $thehoofdkoplijst ) ) {
+        echo $thehoofdkoplijst;
+      }
+      else {
+        echo '-';
+      }
+
+      break;
+
+    default:
+      //			echo "Ja else: " . $column_name;
+      break;
+  }
+  if ("ID" == $column) echo $post->ID;
+    elseif ("title" == $column) echo "title : " . $post->post_content;
+  
 }
 
 //========================================================================================================
@@ -1211,6 +1215,7 @@ function cf7_add_custom_class($error) {
   $error=str_replace('class=\"','value="SUKKER!" class=\"', $error);
   return $error;
 }
+
 add_filter('wpcf7_validation_error', 'cf7_add_custom_class');
 
 function fn_od_wbvb_cf7_check_email_veld($result, $tag) {
@@ -1250,19 +1255,14 @@ function fn_od_wbvb_cf7_check_send_additional_mail($cf7) {
   
   return $cf7;
 }
+
 add_action('wpcf7_before_send_mail','fn_od_wbvb_cf7_check_send_additional_mail');
 
 //========================================================================================================
 
-if ( WP_DEBUG ) {
-//    add_action( 'wp_enqueue_scripts', 'wbvb_debug_css' );
-}
-else {
-}
-
-//========================================================================================================
 // == load extra scripts
 add_action( 'wp_print_scripts', 'fn_od_wbvb_get_menu_scripts'); // now just run the function
+
 function fn_od_wbvb_get_menu_scripts() {
 
 	if ( !is_admin() ) { // don't add to any admin pages
@@ -1327,65 +1327,29 @@ function fn_od_wbvb_get_menu_scripts() {
 //		wp_enqueue_script("jquery");
 	}
 }
-//========================================================================================================
-//* Add menu button option
-add_action( 'genesis_site_description', 'fn_od_wbvb_menubutton' );
-
-function fn_od_wbvb_menubutton() {
-    echo '<div id="oc-trigger"><button id="nav-primary-button" data-effect="oc-push"><span class="label">' . __( "Menu", 'gebruikercentraal' ) . '</span><span class="icon">&nbsp;</span></button></div>';
-}
 
 //========================================================================================================
 
 //* Add class to .site-container
 add_filter( 'genesis_attr_site-container', 'fn_od_wbvb_add_attribute_site_container');
+
 function fn_od_wbvb_add_attribute_site_container($attributes) {
 	$attributes['id'] = 'site-container';
 	return $attributes;
 }
 
-
-//* Add class to .site-container
-add_filter( 'genesis_attr_site-header', 'fn_od_wbvb_add_pusher_class');
-add_filter( 'genesis_attr_site-inner', 'fn_od_wbvb_add_pusher_class');
-function fn_od_wbvb_add_pusher_class($attributes) {
-	$attributes['class'] .= ' oc-pusher';
-	return $attributes;
-}
-
 //========================================================================================================
-
-add_filter( 'genesis_do_nav', 'fn_od_wbvb_add_open_menu_button', 10, 3 );
 
 function fn_od_wbvb_add_menu_search_form($nav_output, $nav, $args) {
-
-    if( 'primary' == $args['theme_location'] ) {
-        $nav = $nav . get_search_form();
-	}
-
-	return $nav;
-
+  
+  if( 'primary' == $args['theme_location'] ) {
+    $nav = $nav . get_search_form();
+  }
+  
+  return $nav;
+  
 }
 
-//========================================================================================================
-
-function fn_od_wbvb_add_open_menu_button($nav_output, $nav, $args) {
-	
-    if( 'primary' == $args['theme_location'] ) {
-
-        $vind       = 'class="nav-primary"';
-        $vervang    = 'class="nav-primary oc-menu oc-push" id="nav-primary"';
-        $nav_output = str_replace($vind, $vervang, $nav_output);
-
-        $vind       = '</nav>';
-        $vervang    = '<div id="nav-primary-closebutton-placeholder">&nbsp;</div></nav>';
-        $nav_output = str_replace($vind, $vervang, $nav_output);
-
-    }
-
-	return $nav_output;
-
-}
 //========================================================================================================
 
 //* Unregister secondary navigation menu
@@ -1399,41 +1363,41 @@ function fn_od_wbvb_frontend_load_scripts() {
 		wp_register_script('yourscript', ( get_stylesheet_directory_uri() . '/js/tips-functions.js'), false); // register script
 		wp_enqueue_script('yourscript'); // load script		
 	}
+	
 }
 
 //========================================================================================================
 
 function fn_od_wbvb_no_posts_content_header() {
+  
+  if ( is_search() ) {
+    $titel404	=  __( 'Helaas. We konden niet vinden wat u zocht', 'optimaaldigitaal' );
+  }
+  else {
+    $titel404	= ( get_field('titel404', 'option') ) ? get_field('titel404', 'option') :  _x( 'Excuses. De pagina waarnaar u verwezen bent bestaat niet', 'optimaaldigitaal' );
+  }
 
-if ( is_search() ) {
-	$titel404	=  __( 'Helaas. We konden niet vinden wat u zocht', 'optimaaldigitaal' );
+  printf( '<h1 class="entry-title">%s</h1>',$titel404 );
+  
 }
-else {
-	$titel404	= ( get_field('titel404', 'option') ) ? get_field('titel404', 'option') :  _x( 'Excuses. De pagina waarnaar u verwezen bent bestaat niet', 'optimaaldigitaal' );
-}
 
-
-
-	printf( '<h1 class="entry-title">%s</h1>',$titel404 );
-
-}
 //========================================================================================================
 
 function fn_od_wbvb_no_posts_content() {
+  
+  $description404	= ( get_field('description404', 'option') ) ? get_field('description404', 'option') :  '';
 
-	$description404	= ( get_field('description404', 'option') ) ? get_field('description404', 'option') :  '';
-	if ( $description404 ) {
-		echo $description404;
-	}
-
-if ( is_search() ) {
-	echo '<p>Misschien kunt u het opnieuw proberen met een andere zoekterm. <br>' . get_search_form(false) . '</p>';
-}
-else {
-	echo '<p>' . sprintf( __( '<a href="%s">Ga naar de homepage</a>.', 'gebruikercentraal' ), home_url() ) . '</p>';
-	echo '<p>' . get_search_form() . '</p>';
-}
-
+  if ( $description404 ) {
+    echo $description404;
+  }
+  
+  if ( is_search() ) {
+    echo '<p>Misschien kunt u het opnieuw proberen met een andere zoekterm. <br>' . get_search_form(false) . '</p>';
+  }
+  else {
+    echo '<p>' . sprintf( __( '<a href="%s">Ga naar de homepage</a>.', 'gebruikercentraal' ), home_url() ) . '</p>';
+    echo '<p>' . get_search_form() . '</p>';
+  }
 
 }
 
@@ -1447,7 +1411,6 @@ remove_action( 'genesis_loop_else', 'genesis_do_noposts' );
 add_action( 'genesis_loop_else', 'fn_od_wbvb_no_posts_content_header', 13 );
 add_action( 'genesis_loop_else', 'fn_od_wbvb_no_posts_content', 14 );
 add_action( 'genesis_loop_else', 'fn_od_wbvb_toon_sitemap', 15 );
-
 
 //========================================================================================================
 
@@ -1499,23 +1462,31 @@ function fn_od_wbvb_toon_sitemap() {
 }
 
 //========================================================================================================
-function dovardump($data) {
+if ( !function_exists( 'dovardump' ) ) {
+  
+  function dovardump( $data ) {
+
     echo '<pre>';
     var_dump($data);
     echo '</pre>';
+
+  }	    
+
 }	    
+
 //========================================================================================================
+
 function fn_od_wbvb_add_header_css() {
-	
-	wp_enqueue_style(
-		ID_SKIPLINKS,
-		WBVB_THEMEFOLDER . '/css/blanco.css'
-	);
-
-    $custom_css = '';
-
-    wp_add_inline_style( ID_SKIPLINKS, $custom_css );
-
+  
+  wp_enqueue_style(
+    ID_SKIPLINKS,
+    WBVB_THEMEFOLDER . '/css/blanco.css'
+  );
+  
+  $custom_css = '';
+  
+  wp_add_inline_style( ID_SKIPLINKS, $custom_css );
+  
 }
 
 //========================================================================================================
@@ -1596,31 +1567,23 @@ add_action( 'init', 'admin_append_editor_styles' );
 
 if (!function_exists('fn_od_wbvb_remove_css_styles')) :
 
-	function fn_od_wbvb_remove_css_styles() {
+  function fn_od_wbvb_remove_css_styles() {
+    
+    wp_deregister_style( 'open-sans' );
+    wp_register_style( 'open-sans', false );
 
-		wp_deregister_style( 'open-sans' );
-		wp_register_style( 'open-sans', false );
-		
+    wp_deregister_script( 'contact-form-7' );
 
-		wp_deregister_script( 'contact-form-7' );
-		
-		
-//		wp_deregister_script( 'jquery' ); 
+    // all actions related to emojis
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 
-		// all actions related to emojis
-		remove_action( 'admin_print_styles', 'print_emoji_styles' );
-		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-		remove_action( 'wp_print_styles', 'print_emoji_styles' );
-		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-		
-		// filter to remove TinyMCE emojis
-//		add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );		
-		
-		
-	}
+  }
 
 	add_action('wp_enqueue_scripts', 'fn_od_wbvb_remove_css_styles');
 	
@@ -1630,7 +1593,6 @@ if (!function_exists('fn_od_wbvb_remove_css_styles')) :
 endif;
 
 //========================================================================================================
-
 
 function fn_od_wbvb_get_tipnummer_formatted( $atts ) {
 	global $post;
@@ -1651,13 +1613,15 @@ add_shortcode( 'gettipnummer', 'fn_od_wbvb_get_tipnummer_formatted' );
 
 //========================================================================================================
 //* Customize the entry meta in the entry header (requires HTML5 theme support)
+
 add_filter( 'genesis_post_info', 'od_correct_postinfo' ); 
+
 function od_correct_postinfo($post_info) {
-    global $wp_query;
-    global $post;
-    
-	return '';
-	
+  global $wp_query;
+  global $post;
+  
+  return '';
+  
 }
 
 //========================================================================================================
@@ -1666,78 +1630,85 @@ add_filter( 'genesis_post_title_output', 'fn_od_wbvb_append_tipnummer_to_title',
 
 function fn_od_wbvb_append_tipnummer_to_title( $title ) {
 
-	if ( ( GC_TIP_CPT == get_post_type() ) && ( is_search() ) ) {
-        $tipnummer      = get_field('tip-nummer'); 
-        if ( $tipnummer ) {
-            $tiplabel 		= __( "Tip", 'gebruikercentraal' ) . ' ' . $tipnummer;
-        }
-        $title = sprintf( '<h2 class="tax-entry-title"><a href="%s">' . $tiplabel . ' - %s</a></h2>', 
-        	get_permalink(),
-        	apply_filters( 'genesis_post_title_text', get_the_title() )
-        	 );
+  if ( ( GC_TIP_CPT == get_post_type() ) && ( is_search() ) ) {
+    $tipnummer      = get_field('tip-nummer'); 
+
+    if ( $tipnummer ) {
+      $tiplabel 		= __( "Tip", 'gebruikercentraal' ) . ' ' . $tipnummer;
     }
-    return $title;
+    $title = sprintf( '<h2 class="tax-entry-title"><a href="%s">' . $tiplabel . ' - %s</a></h2>', 
+                      get_permalink(),
+                      apply_filters( 'genesis_post_title_text', get_the_title() )
+                    );
+  }
+  return $title;
 }
 
 //========================================================================================================
 add_action( 'genesis_after_entry_content', 'fn_od_wbvb_append_readmore_link' );
+
 function fn_od_wbvb_append_readmore_link() { 
-
-    global $post;
-    
-    $ankeiler = __( "Lees het hele bericht", 'gebruikercentraal' );
-
-	if ( GC_TIP_CPT == get_post_type() ) {
-	    $ankeiler = __( "Bekijk tip", 'gebruikercentraal' );
-    }
-    elseif ( 'page' == get_post_type() ) {
-	    $ankeiler = __( "Bekijk pagina", 'gebruikercentraal' );
-    }
-
-
-    if ( ! is_singular() ) {
-       echo '<div class="read-more"><a href="' . get_permalink() . '" tabindex="-1">' . $ankeiler . '</a></div>';
-    }
+  
+  global $post;
+  
+  $ankeiler = __( "Lees het hele bericht", 'gebruikercentraal' );
+  
+  if ( GC_TIP_CPT == get_post_type() ) {
+    $ankeiler = __( "Bekijk tip", 'gebruikercentraal' );
+  }
+  elseif ( 'page' == get_post_type() ) {
+    $ankeiler = __( "Bekijk pagina", 'gebruikercentraal' );
+  }
+  
+  
+  if ( ! is_singular() ) {
+    echo '<div class="read-more"><a href="' . get_permalink() . '" tabindex="-1">' . $ankeiler . '</a></div>';
+  }
+  
 }
 
 //========================================================================================================
 // sidebar
 function fn_od_wbvb_footer_widget() {
-    if ( !dynamic_sidebar( fn_od_wbvb_footer_widget ) ) {
-        // do nothing
-    }     
+  if ( !dynamic_sidebar( fn_od_wbvb_footer_widget ) ) {
+    // do nothing
+  }     
 }
 
 genesis_register_sidebar(   
-    array(
-        'name'              => __( "Footer-widget", 'gebruikercentraal' ),
-        'id'                => fn_od_wbvb_footer_widget,
-        'description'       => __( "Widget in de footer voor custom menu", 'gebruikercentraal' ),
-		'before_widget' => genesis_markup( array(
-			'html5' => '<div id="%1$s" class="widget %2$s side-bar '.fn_od_wbvb_footer_widget . '"><div class="widget-wrap">',
-			'xhtml' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
-			'echo'  => false,
-		) ),
-		'after_widget'  => genesis_markup( array(
-			'html5' => '</div></div>' . "\n",
-			'xhtml' => '</div></div>' . "\n",
-			'echo'  => false
-		) ),
-		'before_title'  => '<h2 class="widget-title widgettitle">',
-		'after_title'   => "</h2>\n",
-    )
+  array(
+    'name'              => __( "Footer-widget", 'gebruikercentraal' ),
+    'id'                => fn_od_wbvb_footer_widget,
+    'description'       => __( "Widget in de footer voor custom menu", 'gebruikercentraal' ),
+    'before_widget'     => genesis_markup( array(
+                'html5' => '<div id="%1$s" class="widget %2$s side-bar '.fn_od_wbvb_footer_widget . '"><div class="widget-wrap">',
+                'xhtml' => '<div id="%1$s" class="widget %2$s"><div class="widget-wrap">',
+                'echo'  => false,
+    ) ),
+    'after_widget'      => genesis_markup( array(
+                'html5' => '</div></div>' . "\n",
+                'xhtml' => '</div></div>' . "\n",
+                'echo'  => false
+    ) ),
+    'before_title'      => '<h2 class="widget-title widgettitle">',
+    'after_title'       => "</h2>\n",
+  )
 
 );
 
 remove_action( 'genesis_footer', 'genesis_do_footer' );
+
 add_action( 'genesis_footer', 'fn_od_wbvb_append_footer_widget' );
+
 function fn_od_wbvb_append_footer_widget() {
-	fn_od_wbvb_footer_widget();
+  fn_od_wbvb_footer_widget();
 }
 
 //========================================================================================================
 
-add_filter( 'wp_nav_menu_items', 'theme_menu_extras', 10, 2 );/**
+add_filter( 'wp_nav_menu_items', 'theme_menu_extras', 10, 2 );
+
+/**
  * Filter menu items, appending either a search form or today's date.
  *
  * @param string   $menu HTML string of list items.
@@ -1746,29 +1717,27 @@ add_filter( 'wp_nav_menu_items', 'theme_menu_extras', 10, 2 );/**
  * @return string Amended HTML string of list items.
  */
 function theme_menu_extras( $menu, $args ) {
-	//* Change 'primary' to 'secondary' to add extras to the secondary navigation menu
-	if ( 'primary' !== $args->theme_location )
-		return $menu;
-	//* Uncomment this block to add a search form to the navigation menu
+  
+  //* Change 'primary' to 'secondary' to add extras to the secondary navigation menu
+  if ( 'primary' !== $args->theme_location )
+    return $menu;
+  //* Uncomment this block to add a search form to the navigation menu
+  
+  ob_start();
+  get_search_form();
+  $search = ob_get_clean();
+  $menu  .= '<li class="right search">' . $search . '</li>';
 
-	ob_start();
-	get_search_form();
-	$search = ob_get_clean();
-	$menu  .= '<li class="right search">' . $search . '</li>';
+  return $menu;
 
-	//* Uncomment this block to add the date to the navigation menu
-	/*
-	$menu .= '<li class="right date">' . date_i18n( get_option( 'date_format' ) ) . '</li>';
-	*/
-	return $menu;
 }
 
 //========================================================================================================
 
 function fn_od_wbvb_filter_input_string( $string ) {
-
+  
   $text = htmlspecialchars( $string );
-
+  
   $text = preg_replace("/</", "-", $text);
   $text = preg_replace("/>/", "-", $text);
   $text = preg_replace("/script/", "ja doei", $text);
@@ -1782,20 +1751,21 @@ function fn_od_wbvb_filter_input_string( $string ) {
 
 }
 
-
 //========================================================================================================
 // function to strip out unwanted text characters
 
 function fn_od_wbvb_make_safe_url($string) {
-    //Lower case everything
-    $string = strtolower($string);
-    //Make alphanumeric (removes all other characters)
-    $string = preg_replace("/[^a-z0-9_\s-]/", " ", $string);
-    //Clean up multiple dashes or whitespaces
-    $string = preg_replace("/[\s-]+/", " ", $string);
-    //Convert whitespaces and underscore to dash
-    $string = preg_replace("/[\s_]/", " ", $string);
-    return $string;
+
+  //Lower case everything
+  $string = strtolower($string);
+  //Make alphanumeric (removes all other characters)
+  $string = preg_replace("/[^a-z0-9_\s-]/", " ", $string);
+  //Clean up multiple dashes or whitespaces
+  $string = preg_replace("/[\s-]+/", " ", $string);
+  //Convert whitespaces and underscore to dash
+  $string = preg_replace("/[\s_]/", " ", $string);
+  return $string;
+
 }
 
 //========================================================================================================
@@ -1803,134 +1773,133 @@ function fn_od_wbvb_make_safe_url($string) {
 //Social Buttons
 
 function fn_od_wbvb_socialmediabuttons( $post_info ) {
-	
-    $thelink    = urlencode(get_permalink($post_info->ID));
-    $thetitle   = urlencode($post_info->post_title);
-    $sitetitle  = urlencode(get_bloginfo('name'));
-    $summary    = urlencode($post_info->post_excerpt);
-    $comment    = '';
-    $print      = '';
-        
-
-    $thetag     = 'a';
-    $hrefattr   = 'href';
-    $popup      = ' onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"';
-
-    $mailshare  = __('E-mail', 'gebruikercentraal' );
-    $mail_alt   = __('Deel dit via e-mail', 'gebruikercentraal' );
-    $mailbody   = __('Bekijk deze pagina eens', 'gebruikercentraal' );
-
-
-    $mail       = "<script type=\"text/javascript\">
-<!-- Begin
-function isPPC() {
-if (navigator.appVersion.indexOf(\"PPC\") != -1) return true;
-else return false;
-}
-if(isPPC()) {
-document.write('<a class=\"mail\" HREF=\\\"mailto:\?subject\=" . $mailbody . ", ' + document.title + '?body=Link: ' + window.location + '\" onMouseOver=\"window.status=\'" . $mail_alt . "\'; return true\" title=\"" . $mail_alt . "\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
-}
-else { 
-document.write('<a class=\"mail\" HREF=\\\"mailto:\?body\=" . $mailbody . ": ' + document.title + '. Link: ' + window.location + '\\\" onMouseOver=\"window.status=\\'" . $mail_alt . "\\'; return true\" title=\"" . $mail_alt . "\" rel=\"nofollow\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
-}
-// End -->
-</script>";
-
-//  $print = '<a href="#" class="print"><span class="visuallyhidden">print</span></a>';
-
-  $share = '<li><' . $thetag . ' ' . $hrefattr . '="https://twitter.com/share?url=' . $thelink . '&via=' . GC_TWITTERACCOUNT . '&text=' . $thetitle . '" class="twitter" data-url="' . $thelink . '" data-text="' . $thetitle . '" data-via="' . GC_TWITTERACCOUNT . '"' . $popup . '><span class="visuallyhidden">' . __('Deel op Twitter', 'gebruikercentraal') . '</span></' . $thetag . '></li>
-        <li><' . $thetag . ' class="linkedin" ' . $hrefattr . '="http://www.linkedin.com/shareArticle?mini=true&url=' . $thelink . '&title=' . $thetitle . '&summary=' . $summary . '&source=' . $sitetitle . '"' . $popup . '><span class="visuallyhidden">' . __('Deel op LinkedIn', 'gebruikercentraal') . '</span></' . $thetag . '></li>';
+  
+  $thelink    = urlencode(get_permalink($post_info->ID));
+  $thetitle   = urlencode($post_info->post_title);
+  $sitetitle  = urlencode(get_bloginfo('name'));
+  $summary    = urlencode($post_info->post_excerpt);
+  $comment    = '';
+  $print      = '';
     
-    if ( $thelink ) {
-      return $comment . '<ul class="social-media share-buttons">' .$share . '<li>' .$mail . '</li>
-        <li>' .$print . '</li>
-        </ul>';    
-            
-    }
+  
+  $thetag     = 'a';
+  $hrefattr   = 'href';
+  $popup      = ' onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"';
+  
+  $mailshare  = __('E-mail', 'gebruikercentraal' );
+  $mail_alt   = __('Deel dit via e-mail', 'gebruikercentraal' );
+  $mailbody   = __('Bekijk deze pagina eens', 'gebruikercentraal' );
+  
+  
+  $mail       = "<script type=\"text/javascript\">
+  <!-- Begin
+  function isPPC() {
+  if (navigator.appVersion.indexOf(\"PPC\") != -1) return true;
+  else return false;
+  }
+  if(isPPC()) {
+  document.write('<a class=\"mail\" HREF=\\\"mailto:\?subject\=" . $mailbody . ", ' + document.title + '?body=Link: ' + window.location + '\" onMouseOver=\"window.status=\'" . $mail_alt . "\'; return true\" title=\"" . $mail_alt . "\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
+  }
+  else { 
+  document.write('<a class=\"mail\" HREF=\\\"mailto:\?body\=" . $mailbody . ": ' + document.title + '. Link: ' + window.location + '\\\" onMouseOver=\"window.status=\\'" . $mail_alt . "\\'; return true\" title=\"" . $mail_alt . "\" rel=\"nofollow\"><span class=\"visuallyhidden\">" . $mailshare . "<\/span><\/a>');
+  }
+  // End -->
+  </script>";
+  
+  //  $print = '<a href="#" class="print"><span class="visuallyhidden">print</span></a>';
+  
+  $share = '<li><' . $thetag . ' ' . $hrefattr . '="https://twitter.com/share?url=' . $thelink . '&via=' . GC_TWITTERACCOUNT . '&text=' . $thetitle . '" class="twitter" data-url="' . $thelink . '" data-text="' . $thetitle . '" data-via="' . GC_TWITTERACCOUNT . '"' . $popup . '><span class="visuallyhidden">' . __('Deel op Twitter', 'gebruikercentraal') . '</span></' . $thetag . '></li>
+    <li><' . $thetag . ' class="linkedin" ' . $hrefattr . '="http://www.linkedin.com/shareArticle?mini=true&url=' . $thelink . '&title=' . $thetitle . '&summary=' . $summary . '&source=' . $sitetitle . '"' . $popup . '><span class="visuallyhidden">' . __('Deel op LinkedIn', 'gebruikercentraal') . '</span></' . $thetag . '></li>';
+  
+  if ( $thelink ) {
+    return $comment . '<ul class="social-media share-buttons">' .$share . '<li>' .$mail . '</li>
+      <li>' .$print . '</li>
+      </ul>';    
+      
+  }
+
 }
 
 //========================================================================================================
 
 function rhswp_add_taxonomy_description() {
   
-    global $wp_query;
-    if ( ! is_category() && ! is_tag() && ! is_tax() )
-        return;
+  global $wp_query;
+  if ( ! is_category() && ! is_tag() && ! is_tax() )
+    return;
+  
+  $prefix = '';
+  
+  if ( is_tag() ) {
+    $prefix = __( "Tag", 'wp-rijkshuisstijl' ) . ': ';  
+  }
+  
+  $headline   = '';
+  $intro_text = '';
 
-    $prefix = '';
+  $term = is_tax() ? get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ) : $wp_query->get_queried_object();
 
-    if ( is_tag() ) {
-      $prefix = __( "Tag", 'wp-rijkshuisstijl' ) . ': ';  
-    }
-
-    $headline   = '';
-    $intro_text = '';
-
-
-    $term = is_tax() ? get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ) : $wp_query->get_queried_object();
-    if ( ! $term || ! isset( $term->meta ) )
-        return;
-
-    $acfid          = $term->taxonomy . '_' . $term->term_id;
-    $tipgever_foto  = get_field('tipgever_foto', $acfid);
-    $image_tag      = '';
-    $functietitel   = get_field( 'tipgever_functietitel', $acfid );
-    $tipgever_mail  = get_field( 'tipgever_mail', $acfid );
-    $tipgever_foon  = get_field( 'tipgever_telefoonnummer', $acfid );
-
-    if ( $tipgever_foto ) {
-
-      $size       = 'thumbnail';
-      $thumb      = $tipgever_foto['sizes'][ $size ];
-      $width      = $tipgever_foto['sizes'][ $size . '-width' ];
-      $height     = $tipgever_foto['sizes'][ $size . '-height' ];
-      $alt        = $tipgever_foto['alt'];
-
-      $image_tag  = '<img src="' . $thumb . '" alt="' . $alt . '" width="' . $width . '" height="' . $height . '" class="alignleft" />';
-                      
-    }    
-
-    if ( $functietitel ) {
-      $image_tag .= $functietitel;
-    }
-                  
-    if ( $tipgever_mail ) {
-      $image_tag .= '<br><a href="mailto:' . $tipgever_mail . '">' . $tipgever_mail . '</a>';
-    }
+  if ( ! $term || ! isset( $term->meta ) )
+    return;
+  
+  $acfid          = $term->taxonomy . '_' . $term->term_id;
+  $tipgever_foto  = get_field('tipgever_foto', $acfid);
+  $image_tag      = '';
+  $functietitel   = get_field( 'tipgever_functietitel', $acfid );
+  $tipgever_mail  = get_field( 'tipgever_mail', $acfid );
+  $tipgever_foon  = get_field( 'tipgever_telefoonnummer', $acfid );
+  
+  if ( $tipgever_foto ) {
     
-    if ( $tipgever_foon ) {
-      $image_tag .= '<br><a href="tel:' . preg_replace("/[^0-9+]/", "", $tipgever_foon) . '">' . $tipgever_foon . '</a>';
-    }
+    $size       = 'thumbnail';
+    $thumb      = $tipgever_foto['sizes'][ $size ];
+    $width      = $tipgever_foto['sizes'][ $size . '-width' ];
+    $height     = $tipgever_foto['sizes'][ $size . '-height' ];
+    $alt        = $tipgever_foto['alt'];
+    
+    $image_tag  = '<img src="' . $thumb . '" alt="' . $alt . '" width="' . $width . '" height="' . $height . '" class="alignleft" />';
+            
+  }    
 
-        
-    if ( $term->name ) {
-        $headline = sprintf( '<h1 class="archive-title">%s</h1>', $prefix . strip_tags( $term->name ) );
-    }
-        
-    if ( isset( $term->meta['headline'] ) && $term->meta['headline'] ) {
-        $headline = sprintf( '<h1 class="archive-title">%s</h1>', $prefix . strip_tags( $term->meta['headline'] ) );
-    }
-        
-    if ( isset( $term->meta['intro_text'] ) && $term->meta['intro_text'] ) {
-        $intro_text .= apply_filters( 'genesis_term_intro_text_output', $term->meta['intro_text'] );
-    }
-        
-    if ( $term->description ) {
-        $intro_text .= apply_filters( 'genesis_term_intro_text_output', $term->description );
-    }
+  if ( $functietitel ) {
+    $image_tag .= $functietitel;
+  }
 
+  if ( $tipgever_mail ) {
+    $image_tag .= '<br><a href="mailto:' . $tipgever_mail . '">' . $tipgever_mail . '</a>';
+  }
 
-    if( $image_tag ) {
-      $intro_text .= $image_tag;
-    }
+  if ( $tipgever_foon ) {
+    $image_tag .= '<br><a href="tel:' . preg_replace("/[^0-9+]/", "", $tipgever_foon) . '">' . $tipgever_foon . '</a>';
+  }
 
+  if ( $term->name ) {
+    $headline = sprintf( '<h1 class="archive-title">%s</h1>', $prefix . strip_tags( $term->name ) );
+  }
+  
+  if ( isset( $term->meta['headline'] ) && $term->meta['headline'] ) {
+    $headline = sprintf( '<h1 class="archive-title">%s</h1>', $prefix . strip_tags( $term->meta['headline'] ) );
+  }
+  
+  if ( isset( $term->meta['intro_text'] ) && $term->meta['intro_text'] ) {
+    $intro_text .= apply_filters( 'genesis_term_intro_text_output', $term->meta['intro_text'] );
+  }
+  
+  if ( $term->description ) {
+    $intro_text .= apply_filters( 'genesis_term_intro_text_output', $term->description );
+  }
 
-    if ( $headline || $intro_text ) {
-        printf( '<div class="taxonomy-description">%s</div>', $headline . $intro_text );
-    }
-    else {
-        return;
-    }
+  if( $image_tag ) {
+    $intro_text .= $image_tag;
+  }
+  
+  
+  if ( $headline || $intro_text ) {
+    printf( '<div class="taxonomy-description">%s</div>', $headline . $intro_text );
+  }
+  else {
+    return;
+  }
 }
 
 //========================================================================================================
@@ -1988,4 +1957,10 @@ function op_do_show_cards_for_thema() {
 }
 
 //========================================================================================================
+
+// logo structure shared with OD theme
+add_filter('genesis_seo_title', 'gc_shared_add_site_title_and_logo' );
+
+//========================================================================================================
+
 

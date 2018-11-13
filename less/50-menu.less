@@ -22,6 +22,352 @@
 	
 }
 
+.menustyling() {
+
+  .blog, .tag, .category, .single-post {
+    .genesis-nav-menu {
+      li.blog > a {
+        .active-menu();
+      }        
+    }
+  }
+  
+
+  .dojs {
+    
+    
+    .menu-met-js.active {
+      position: relative;
+    }
+    
+    
+    .site-header {
+
+      .wrap {
+        margin: 0 auto;
+        max-width: @break_fullwidth_desing;
+      }      
+      
+      .wrap.menu-met-js {
+        position: relative;
+        
+        padding: 0;
+        
+        
+        section.widget {
+          padding:  1em;
+        }
+        
+        .nav-primary {
+          margin: 0 0 0 @logowidth;
+        }
+        
+        li.right.search {
+          float: right;
+          padding-right: 1em;
+        }
+        
+        nav {
+          display: inline;
+          overflow: hidden;
+          padding: 0;
+          float: left;
+          clear: none;
+          
+          ul {
+            display: inline;
+            float: left;
+            clear: none;
+            margin: 0;
+            padding: 0;
+          }
+          
+          li {
+//            margin-right: 1em;
+//            margin-bottom: 1em;
+          }
+        }
+        
+        #menu-button {
+          padding: 0 4px;
+          position: absolute;
+          right: ( @padding / 2 );
+          top: ( @padding / 2 );
+          overflow: hidden;
+          min-width: 75px;
+          border: 1px solid @blauw2;
+          background: @blauw2;
+          color: @wit;
+          
+          &:hover,
+          &:active,
+          &:focus {
+            background: @txt;
+            color: @wit;
+            border-color: @wit;
+          }
+          
+          i,
+          b {
+            padding: 0;
+            line-height: 1;
+            display: inline-block;
+            float: left;
+            clear: none;
+            font-style: normal;
+          }
+          
+          i {
+            font-size: 22px;
+          }
+          b {
+            padding-top: 3px;
+            font-size: 16px;
+          }
+        }
+
+        @media only screen and (max-width: 400px ) {
+          #menu-button {
+            min-width: 0;
+            text-align: center;
+            height: 36px;
+            i {
+              width: 36px;
+              display: block;
+            }
+            b {
+              .visuallyhidden();
+            }
+          }
+        }
+        
+        nav[aria-hidden="true"] {
+          display: none;
+        }
+        
+        nav[aria-hidden="false"] {
+          display: block;
+        }
+      }
+    }
+  }  
+  
+  .genesis-nav-menu {
+    clear: both;
+    color: @wit;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: @break_fullwidth_desing;
+    
+    .menu-item {
+      display: inline-block;
+      text-align: left;
+    }
+    
+    .menu-item-has-children {
+      span[itemprop="name"] {
+        padding-right: 1.25em;
+        position: relative;
+        &:after {
+          content: ' ';
+          background: url('images/pijltje-wit-down.svg');
+          background-repeat: no-repeat;
+          background-position: center center;
+          color: white;
+          display: block;
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          right: 0;
+          top: 2px;
+        }
+      }
+      .sub-menu {
+        a {
+          padding-left: 1.25em;
+          background-image: url('images/pijltje-wit.svg');
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-size: 16px 16px;
+        }
+        span[itemprop="name"] {
+          padding-right: 0;
+          &:after {
+            content: '';
+            display: none;
+          }
+        }
+      }
+    }
+    
+    a {
+      border: none;
+      color: @wit;
+      display: block;
+      padding: ( @padding / 2 ) 0;
+      border-bottom: 4px solid @nav_wrap_bg;
+    }
+    
+    a {
+      &:active,
+      &:focus,
+      &:hover {
+        .active-menu();
+      }
+    }
+    
+    
+    .current-page-ancestor > a,
+    .current-menu-item > a,
+    .sub-menu .current-menu-item > a:hover {
+      .active-menu();
+    }
+    
+    .current-page-ancestor > a,
+    .current-menu-item > a {
+      font-family: @bodyfont_bold;
+    }
+    
+    .sub-menu .current-menu-item > a {
+      color: @wit;
+    }
+    
+    .sub-menu {
+      left: -9999px;
+      opacity: 0;
+      position: absolute;
+      width: 200px;
+      z-index: 99;
+
+      li {
+        border-bottom-style: none;
+      }
+    }
+    
+    li.sfHover {
+      .sub-menu {
+        left: auto;
+        opacity: inherit;
+      }
+    }
+    
+    .sub-menu a {
+      background-color: @header_bg_color;
+      border-top: none;
+      position: relative;
+      width: 200px;
+    }
+    
+    .sub-menu .sub-menu {
+      margin: -54px 0 0 199px;
+    }
+    
+    .menu-item:hover {
+      position: static;
+    }
+    
+    .menu-item:hover > .sub-menu {
+      left: auto;
+      opacity: 1;
+    }
+    
+    & >  .first > a {
+      padding-left: 0;
+    }
+    
+    & >  .last > a {
+      padding-right: 0;
+    }
+    
+    & >  .right {
+      display: inline-block;
+      float: right;
+      list-style-type: none;
+      padding: ( 2 * @padding ) 0;
+      text-transform: uppercase;
+    }
+    
+    & >  .right > a {
+      display: inline;
+      padding: 0;
+    }
+    
+    & >  .rss > a {
+      margin-left: ( 3 * @padding );
+    }
+    
+    & >  .search {
+      padding: @padding 0 0;
+    }
+  }
+  
+  
+  
+  
+  /* Site Header Navigation
+  --------------------------------------------- */
+  
+  .site-header .sub-menu .sub-menu {
+    margin-top: -55px;
+  }
+  
+  /* Primary Navigation
+  --------------------------------------------- */
+  
+  .nav-primary {
+    
+    display: block;
+    background-color: @nav_wrap_bg;
+
+    ul li a {
+      color: @wit;
+      text-decoration: none;
+    }
+    
+    a:hover,
+    .current-menu-item > a {
+      color: @wit;
+    }
+  }
+  
+  
+  /* Secondary Navigation
+  --------------------------------------------- */
+  
+  .nav-secondary {
+    background-color: @wit;
+  }
+
+
+
+  @media only screen and (min-width: @break_show_menu_button ) {
+    .site-header {
+      .nav-primary {
+        max-width: ( @break_fullwidth - 300px );
+        
+        .genesis-nav-menu {
+          line-height: 1.5;
+
+          li {
+            margin: 0;
+            padding: 0 @padding;
+            
+            .sub-menu {
+              &, li {
+                padding-left: 0;
+                padding-right: 0;
+              }
+            }
+            
+          }
+
+        }
+      }
+    }
+  }
+
+}
 
 /*
 ---------------------------------------------------------------------------------------------------- */
