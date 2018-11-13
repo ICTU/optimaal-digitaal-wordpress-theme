@@ -39,6 +39,7 @@
       left: ( @padding / 2 );
       background: transparent url('images/logo-mobile.png') no-repeat left top;
       background-image: url('images/logo-mobile.svg'), none;
+      z-index: 100;
   
       a {
         display: block;
@@ -63,24 +64,42 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       font-family: @headerfont;
-      margin: 0 0 0 @logowidth;
+      margin: 0;
+      display: block;
+      background: rgba(256, 0, 0, .3 );
     }
   }
 
 
   @media only screen and (min-width: @break_fullwidth ) {
     .site-header {
+      height: @logo_desktop_height;
+      padding-top: 0;
+        
       #sitelogo {
         width: @logo_desktop_width;
         height: @logo_desktop_height;
         
         background-image: url('images/logo-desktop.svg');
         background-image: url('images/logo-desktop.svg'), none;
+        border: 1px solid red;
+        background-size: contain;
       
       }
       .site-title {
-        margin-left: @logo_desktop_width;
+        height: @logo_desktop_height;
+        font-size: 125%;
+        z-index: 999;
+        a {
+          display: block;
+          height: 100%;
+          width: 100%;
+          padding-left: ( @logo_desktop_width + @padding );
+          border: 1px solid @wit;
+        }
       }
+
+
     }
     .breadcrumb {
       .wrap {
