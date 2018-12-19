@@ -597,9 +597,12 @@ function od_tip_custom_content() {
 
       prev_next_post_nav();
 
+// to do: recaptcha check.
+// op dit moment (19 dec 2018) werkt de recaptcha niet goed meer
+// CF7 vereist een nieuwe versie voor Google recaptcha (v3 in plaats van v2)
+// wegens een spamrun heb ik vandaag (20181219) het contactformulier uberhaupt uitgezet
 
-
-    if ( $contactformulier ) {
+    if ( $contactformulier && ( 22 == 33 ) ) {
 			echo '<section class="suggestie" id="' . ID_reactieformulier . '">';
 			echo '<h2>' . __( "Vraag, idee, reactie of suggestie?", 'gebruikercentraal' ) . '</h2>';
 			echo do_shortcode('[contact-form-7 id="' . $contactformulier . '" title="Vraag, reactie of suggestie?"]');
