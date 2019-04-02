@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.3
-// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
+// @version 3.1.4
+// @desc.   Contactformulier is nu optioneel.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -28,7 +28,7 @@ $waaromwerktdit	   = '';
 $nuttigelinks		   = '';
 $onderzoek         = '';
 $contactformulier	 = '';
-
+$contactformulier_tonen = '';
 
 remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 remove_action('genesis_entry_content','genesis_do_post_content');
@@ -200,6 +200,9 @@ function od_tip_custom_content() {
     global $nuttigelinks; 
     global $onderzoek; 
     global $contactformulier; 
+    global $contactformulier_tonen; 
+
+
 
     $niks 			= '';
     $taxonomie  = get_the_terms( $post->ID, GC_TIPTHEMA );
@@ -602,7 +605,7 @@ function od_tip_custom_content() {
 // CF7 vereist een nieuwe versie voor Google recaptcha (v3 in plaats van v2)
 // wegens een spamrun heb ik vandaag (20181219) het contactformulier uberhaupt uitgezet
 
-    if ( $contactformulier && ( 22 == 33 ) ) {
+    if ( $contactformulier && ( $contactformulier_tonen == 'ja' ) ) {
 			echo '<section class="suggestie" id="' . ID_reactieformulier . '">';
 			echo '<h2>' . __( "Vraag, idee, reactie of suggestie?", 'gebruikercentraal' ) . '</h2>';
 			echo do_shortcode('[contact-form-7 id="' . $contactformulier . '" title="Vraag, reactie of suggestie?"]');
@@ -671,6 +674,7 @@ function od_get_field_data( ) {
     global $nuttigelinks; 
     global $onderzoek; 
     global $contactformulier; 
+    global $contactformulier_tonen; 
 
 
     if ( function_exists( 'get_field' ) ) {
@@ -681,7 +685,8 @@ function od_get_field_data( ) {
         $tipnummer      	= get_field('tip-nummer'); 
         $onderzoek      	= get_field('inleiding-onderzoek'); 
         $soortinleiding		= get_field('soort_inleiding'); 
-    		$contactformulier	= get_field('contactformulier', 'option');
+    		$contactformulier       = get_field('contactformulier', 'option');
+    		$contactformulier_tonen = get_field('contactformulier_tonen', 'option');
 
 
         $inlinelinks = '';
@@ -703,7 +708,7 @@ function od_get_field_data( ) {
             $inlinelinks .= '<li><a href="#' . ID_nuttigelinks . '">' .  __( "Links", 'gebruikercentraal' ) . '</a></li>';
             $skiplinks .= '<li><a href="#' . ID_nuttigelinks . '">' . _x('Direct naar nuttige links', 'Skiplinks', 'gebruikercentraal') . '</a></li>';
         }
-        if ( $contactformulier ) {
+        if ( $contactformulier && ( $contactformulier_tonen == 'ja' ) ) {
             $inlinelinks .= '<li><a href="#' . ID_reactieformulier . '">' .  __( "Vraag / reactie / suggestie", 'gebruikercentraal' ) . '</a></li>';
 	        $skiplinks .= '<li><a href="#' . ID_reactieformulier . '">' . _x('Direct naar het reactieformulier', 'Skiplinks', 'gebruikercentraal') . '</a></li>'; 
         }

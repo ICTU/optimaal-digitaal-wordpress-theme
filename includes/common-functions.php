@@ -563,7 +563,7 @@ function sp_gravatar ($avatar) {
 
 
 //* Password reset activation E-mail -> Body
-add_filter( 'retrieve_password_message', 'wpse_retrieve_password_message', 10, 2 );
+// add_filter( 'retrieve_password_message', 'wpse_retrieve_password_message', 10, 2 );
 function wpse_retrieve_password_message( $message, $key ){
     $user_data = '';
     // If no value is posted, return false

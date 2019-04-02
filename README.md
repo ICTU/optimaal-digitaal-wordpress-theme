@@ -5,13 +5,14 @@
 Dit theme wordt gebruikt op [optimaaldigitaal.gebruikercentraal.nl](https://optimaaldigitaal.gebruikercentraal.nl)
 
 ## Version
-Current: 3.1.3 - Header-fonts aangepast.
+Current: 3.1.4 - Contactformulier is nu optioneel.
 
 ## Contact
 * Victor Zuydweg
 * Paul van Buuren: paul@wbvb.nl
 
 ## Version history
+* 3.1.4 - Contactformulier is nu optioneel.
 * 3.1.3 - Header-fonts aangepast.
 * 3.1.2 - Pagina-templates voor diverse functies toegevoegd.
 * 3.1.1 - Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
