@@ -7,64 +7,43 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1
-// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 2.11.2
+// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
 
 .header-logo() {
-
-
-home article,
-.site-header {
-  background: @blauw2;
-  color: @wit;
-}  
+  
   
   .site-header {
-    background: @blauw3;
-    color: @wit;
-    padding: .5em 1em;
     .title-area, .entry-title , .site-description {
       width: 100%;
       padding: 0;
       margin: 0;
     }		    
     .title-area {
-      background-image: url('images/optimaal-digitaal-logo.svg');
-      background-size: 94px 77px;
-      padding-left: 110px;
-      min-height: 77px;
-      background-repeat: no-repeat;
-      background-position: left top;
-/*
       background-image: url('images/header-320w@2x.png');
       padding-top: 48px;
       padding-left: 55px;
-*/      
     }		    
   }
   
   .site-header .entry-title,
   .site-header .title-area,
   .home article {
-/*
     background-position: center top;
     background-size: cover;
-*/      
   }
   
   .site-header .entry-title,
   .home article {
-/*    
     background-position: center top;
     background-size: cover;
     background-image: url('images/header-320w-slice@2x.png');
     padding-top: 83px;
     padding-bottom: 1rem;
-*/    
-    background: @blauw2;
+    
     color: @wit;
     text-align: center;
     font-size: 1.5rem;
@@ -111,7 +90,6 @@ home article,
       height: 0;
       
       .title-area {
-/*        
         background-image: url('images/header-320w-geen-bg@2x.png');
         background-size: 100% 147px;
         height: 147px;
@@ -121,7 +99,6 @@ home article,
         height: 100%;
         position: absolute;
         left: 0;			    
-*/        
       }
     }
   }
@@ -201,14 +178,10 @@ home article,
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .site-header {
       .title-area {
-/*        
         background-image: url('images/header-320w@2x.png');
-*/        
       }
       .entry-title {
-/*        
         background-image: url('images/header-320w-slice@2x.png');
-*/        
       }
     }
   }
@@ -217,17 +190,12 @@ home article,
     
     .site-header .entry-title,
     .home article {
-/*
       background-image: url('images/header-480w-slice@2x.png');
-*/        
     }
     
     .site-header {
       .title-area {
-/*
         background-image: url('images/header-480w@2x.png');
-*/
-        
       }
     }
     
@@ -236,16 +204,12 @@ home article,
     .archive,
       .error404 {		
       .site-header {
-/*
-        
         padding-bottom: 220px;
         .title-area {
           background-image: url('images/header-480w-geen-bg@2x.png');
           background-size: 100% 220px;
           height: 220px;
         }
-*/
-        
       }
     }	
     
@@ -261,7 +225,6 @@ home article,
   
   @media only screen and (min-width: ( @break_phone600 + 1 ) ) {
     
-/*
     .site-header {
       .title-area {
         background-image: url('images/header-720w@2x.png');
@@ -284,13 +247,10 @@ home article,
         }
       }
     }
-*/
-    
   }
 
   @media only screen and (min-width: ( @break_tablet + 1 ) ) {
     
-/*
     .site-header .entry-title,
     .home article {
       background-image: url('images/header-1280w-slice@2x.png');
@@ -301,7 +261,6 @@ home article,
         background-image: url('images/header-1280w@2x.png');
       }
     }
-*/
     
     .search .content,
     .error404 .content,
@@ -319,24 +278,21 @@ home article,
     .search,
     .archive,
     .error404 {		
-      .entry-content {
-        margin-left: 0;	
-        margin-right: 0;	
-      }
+    .entry-content {
+      margin-left: 0;	
+      margin-right: 0;	
     }
     
+    }
     .archive,
     .error404 {		
       .site-header {
-        
-/*
         padding-bottom: 232px;
         .title-area {
           height: 232px;
           background-image: url('images/header-1280w-geen-bg@2x.png');
           background-size: 100% 232px;
         }
-*/
       }
     }
     
@@ -344,7 +300,7 @@ home article,
       font-size: 44px;
     }
     .site-description {
-      .setfont( @bodyfont, 17);
+      .setfont(@ubuntumedium, 17);
     }
 
     header.onderwerp {

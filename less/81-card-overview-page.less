@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.3
-// @desc.   Header-fonts aangepast.
+// @version 2.10.5
+// @desc.   CSS bug bij hover op single tip pagina in header.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -23,59 +23,58 @@
 
 @aantalcards:         5;
 
-@cardwidth:           120px;
-@cardheight:          320px;
+@cardwidth:				   120px;
+@cardheight:			   320px;
 
-@boxshadowwidth:      2px;
+@boxshadowwidth: 		 2px;
 @boxshadowspread:     10px;
 
 
 .card-overview() {
+  
+  
+	.tipkaart {
 
-  .tipkaart {
-    width: 220px;
-    min-height: @cardheight;
-    background-color: @defaultcardbg;
-    color: green; // @wit;
-    margin: 0 1em 1em 0;
-    position: relative;
-    text-align: center;
-    
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    padding-bottom: @padding;
-    
+		width: 220px;
+		min-height: @cardheight;
+		background-color: @defaultcardbg;
+		color: @wit;
+		margin: 0 1em 1em 0;
+		position: relative;
+		text-align: center;
+
+	    text-decoration: none;
+	    display: block;
+	    overflow: hidden;
+	    padding-bottom: @padding;
+	    		
     .inner {
       overflow: hidden;
       min-height: @cardheight;
       padding-bottom: 100px;			
     }
-    
-    [itemprop="headline"] { // HEADER
-      font-size: 21px;
-      margin-top: 0;
-      padding-top: 0;
-      white-space: normal;
-      margin-left: 5px;
-      margin-right: 5px;
-      .bold-font();
-      text-transform: none;
-    }
-    
-    .tipnummer {
-    	display: block;
-    	text-align: center;
-    	margin-top: 1em;
-    	margin-bottom: 1em;
-      font-family: @headerfont;
-      font-size: 20px;
-    }
-    
+	
+		h3 {
+			font-size: 22px;
+			margin-top: 0;
+			padding-top: 0;
+			white-space: normal;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+
+		.tipnummer {
+			display: block;
+			text-align: center;
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+	
     .contentinfo {
+      
+      font-size: 13px;
       height: 100px;			
-      font-family: @headerfont;
-      font-size: 20px;
+      
       position: absolute;
       bottom: 0;
       left: 0;
@@ -89,9 +88,6 @@
       min-height: 0;
       text-transform: uppercase;
       
-      -webkit-clip-path: polygon(0 15%, 100% 2%, 100% 100%, 0% 100%);
-      clip-path: polygon(0 15%, 100% 2%, 100% 100%, 0% 100%);
-      
       span {
         display: block;
         position: absolute;
@@ -103,131 +99,78 @@
       }
       
       &:after {
-        content: 'Style is missing';
+        content: 'nog geen stijl ingesteld voor dit thema';
         font-size: 1rem;
         display: block;
       }
     }
-    
-    
-    &.check,
-    &.icon-digitaaloporde,
-    &.icon-goedproces,
-    &.icon-deelenwerksamen,
-    &.icon-kanaalsturing,
-    &.icon-interndraagvlak,
-    &.icon-informatieveiligheid,
-    &.icon-gloeilamp {
-      .contentinfo:after {
-        content: '';
-      }
-    }
-    
-    &:hover,&:focus,&:active {
-      color: @wit;
-      .boxshadow_hover();
-      text-decoration: underline;
-    }
-    
-    &.check .contentinfo {
-      .iconaddfill('../images/check.svg', '#fff');
-    }
-    
-    &.icon-digitaaloporde {
-      .contentinfo {
-        .iconaddfill('../images/icon-digitaaloporde-card-bg.svg',       @paars_txt );
-      }
-    
-      &:hover,&:focus,&:active {
-        color: @paars_txt_hover;
-        .contentinfo {
-          .iconaddfill('../images/icon-digitaaloporde-card-bg.svg',     @paars_txt_hover );
-        }
-      }
-    }
-    
-    &.icon-goedproces {
-      .contentinfo {
-        .iconaddfill('../images/icon-goedproces-card-bg.svg',           @turqs_txt );
-      }
-    
-      &:hover,&:focus,&:active {
-        color: @turqs_txt_hover;
-        .contentinfo {
-          .iconaddfill('../images/icon-goedproces-card-bg.svg',         @turqs_txt_hover );
-        }
-      }
-    }
-    
-    &.icon-deelenwerksamen {
-      .contentinfo {
-        .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg',      @blauw_txt );
-      }
-    
-      &:hover,&:focus,&:active {
-        color: @blauw_txt_hover;
-        .contentinfo {
-          .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg',    @blauw_txt_hover );
-        }
-      }
-    }
-    
-    
-    &.icon-interndraagvlak {
-      .contentinfo {
-        .iconaddfill('../images/icon-interndraagvlak-card-bg.svg',      @groen_txt );
-      }
-    
-      &:hover,&:focus,&:active {
-        color: @groen_txt_hover;
-        .contentinfo {
-          .iconaddfill('../images/icon-interndraagvlak-card-bg.svg',    @groen_txt_hover );
-        }
-      }
-    }
-    
-    &.icon-informatieveiligheid {
-      .contentinfo {
-        .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', @gmred_txt );
-      }
-    
-      &:hover,&:focus,&:active {
-        color: @gmred_txt_hover;
-        .contentinfo {
-          .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', @gmred_txt_hover );
-        }
-      }
-    }
-    
-    &.icon-kanaalsturing {
-      .contentinfo {
-        .iconaddfill('../images/icon-kanaalsturing-card-bg.svg', @oranje_txt );
-      }
-    
-      &:hover,&:focus,&:active {
-        color: @oranje_txt_hover;
-        .contentinfo {
-          .iconaddfill('../images/icon-kanaalsturing-card-bg.svg', @oranje_txt_hover );
-        }
-      }
-    }
-    
-    
-    &.icon-gloeilamp {
-      .contentinfo {
-        .iconaddfill('../images/icon-gloeilamp-card-bg.svg',        @goud_txt );
-      }      
-      &:hover,&:focus,&:active {
-        color: @goud_txt_hover;
-        .contentinfo {
-          .iconaddfill('../images/icon-gloeilamp-card-bg.svg',      @goud_txt_hover );
-        }
-      }
-    }
-  }
+	
+		&.check .contentinfo {
+		    .iconaddfill('../images/check.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-digitaaloporde .contentinfo {
+		    .iconaddfill('../images/icon-digitaaloporde-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-goedproces .contentinfo {
+		    .iconaddfill('../images/icon-goedproces-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-deelenwerksamen .contentinfo {
+		    .iconaddfill('../images/icon-deelenwerksamen-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-kanaalsturing .contentinfo {
+		    .iconaddfill('../images/icon-kanaalsturing-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-interndraagvlak .contentinfo {
+		    .iconaddfill('../images/icon-interndraagvlak-card-bg.svg', '#fff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-informatieveiligheid .contentinfo {
+		    .iconaddfill('../images/icon-informatieveiligheid-card-bg.svg', '#ffffff');
+	
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-gloeilamp .contentinfo {
+	    .iconaddfill('../images/icon-gloeilamp-card-bg.svg', '#000000');
+	
+			&:after {
+				content: '';
+			}
+		}
+	
+		&:hover,&:focus,&:active {
+			color: @wit !important;
+			.boxshadow_hover();
+			text-decoration: none;
+		}
+	}
 
-  .tipkaart.goud {
-  
+	.tipkaart.goud {
+
     .inner:after {
       content: "";
       position: absolute;
@@ -248,10 +191,10 @@
       );  
     }  	
   	
-  	&:hover,&:focus,&:active {
-  		color: @txt !important;
-  
-  		
+		&:hover,&:focus,&:active {
+			color: @txt !important;
+
+			
       .inner:after {
         opacity: 1;
         top: -40%;
@@ -261,116 +204,115 @@
         transition-timing-function: ease;  			
     	}
   	}
-  }
-  
-  
+	}
+
+
   .containstip.slick-current a {
-  		color: @wit !important;
-  		.boxshadow_hover();
-  		text-decoration: none;
+			color: @wit !important;
+			.boxshadow_hover();
+			text-decoration: none;
   }
-  
-  
-  
-  .cardflex {
-  	.containstip {
-  		float: left;
-  		
-  		a {
-  			width: 90%; /* fallback if needed */
-  			width: ~"calc(100% - 1em)";
-  		}
-  	}
-  	.containstip[data-bound] {
-  		display: none;
-  	}
-  }
-  
-  .cardgallery {
-  	background: @wit;
-  	padding-left: 2em;
-  	padding-bottom: 2em;
-  	border-top: 3px solid @active_color;
-  	margin-top: 2em;
-  	overflow: hidden;
-  	
-  	p {
-//  		color: lighten(@txt, 50%);
-//  		font-size: 120%;
-  		padding-right: 1em; /* HOOOOIII Trevor!!1! */
-//  		line-height: 1.4;
-  	}
-  	h2 {
-  		text-transform: none;
-  		color: @active_color;
-  	}
-  
-  	nav {
-  		a {
-  		    width: 15px;
-  		    height: 15px;
-  		    font-size: 0;
-  		    border-radius: 50%;
-  		    background: #ccc;
-  		    display: inline-block;
-  		    border: 3px solid #e6e6e6;
-  			box-sizing:content-box;
-  		}
-  		a + a {
-  		    margin-left: 10px;
-  		}
-  		li + li {
-  			margin-left: 1.5em;
-  		}
-  		li, a, ul {
-  			display: inline-block;
-  			float: left;
-  		}
-  	}
-  	.rolcontainer {
-  	    width: 100%;
-  		overflow-x: scroll;		    
-  	    padding: 0;
-  	    
-  	    div {
-  		    display: block;
-  		    white-space: nowrap;
-  	    }
-  
-  		.scrollbaar {
-  			
-  			.tipkaart {
-  				height: 320px;
-  				width: 220px;
-  				display: inline-block;
-  			    white-space: normal;
-  			    clear: none;
-  			    vertical-align: top;
-  			}
-  
-  
-  			.containstip {
-  				display: inline-block;
-  			}
-  			
-  		}
-  	}
-  	.rolcontainer::-webkit-scrollbar {
-  	    display: block;
-  	}
-  }
-  
-  .tipsstyling(type-tips, @def_cardclr, @def_cardclr_sub, @def_cardclr_sub, @wit,         @def_cardclr );
-  .tipsstyling(oranje,    @oranje,      @oranje_sub,      @oranje_sub,      @oranje_txt,  @oranje );
-  .tipsstyling(groen,     @groen,       @groen_sub,       @groen_sub,       @groen_txt,   @groen );
-  .tipsstyling(paars,     @paars,       @paars_sub,       @paars_sub,       @paars_txt,   @paars );
-  .tipsstyling(blauw,     @blauw,       @blauw_sub,       @blauw_sub,       @blauw_txt,   @blauw );
-  .tipsstyling(turquoise, @turqs,       @turqs_sub,       @turqs_sub,       @turqs_txt,   @turqs );
-  .tipsstyling(bruin,     @gmred,       @gmred_sub,       @gmred_sub,       @gmred_txt,   @gmred );
-  .tipsstyling(goud,      @goud,        @goud_sub,        @goud_sub,        @goud_txt,    @goud_txt );
-  
+
+
+
+	.cardflex {
+		.containstip {
+			float: left;
+			
+			a {
+				width: 90%; /* fallback if needed */
+				width: ~"calc(100% - 1em)";
+			}
+		}
+		.containstip[data-bound] {
+			display: none;
+		}
+	}
+
+	.cardgallery {
+		background: @light_gray;
+		padding-left: 2em;
+		border-top: 3px solid @active_color;
+		margin-top: 2em;
+		overflow: hidden;
+		
+		p {
+			color: lighten(@txt, 50%);
+			font-size: 120%;
+			padding-right: 1em; /* HOOOOIII Trevor!!1! */
+			line-height: 1.4;
+		}
+		h2 {
+			text-transform: none;
+			color: @active_color;
+		}
+
+		nav {
+			a {
+			    width: 15px;
+			    height: 15px;
+			    font-size: 0;
+			    border-radius: 50%;
+			    background: #ccc;
+			    display: inline-block;
+			    border: 3px solid #e6e6e6;
+				box-sizing:content-box;
+			}
+			a + a {
+			    margin-left: 10px;
+			}
+			li + li {
+				margin-left: 1.5em;
+			}
+			li, a, ul {
+				display: inline-block;
+				float: left;
+			}
+		}
+		.rolcontainer {
+		    width: 100%;
+			overflow-x: scroll;		    
+		    padding: 0;
+		    
+		    div {
+			    display: block;
+			    white-space: nowrap;
+		    }
+
+			.scrollbaar {
+				
+				.tipkaart {
+					height: 320px;
+					width: 220px;
+					display: inline-block;
+				    white-space: normal;
+				    clear: none;
+				    vertical-align: top;
+				}
+
+
+				.containstip {
+					display: inline-block;
+				}
+				
+			}
+		}
+		.rolcontainer::-webkit-scrollbar {
+		    display: block;
+		}
+	}
+
+	.tipsstyling(type-tips, @defaultkaarkleur, @defaultkaarkleur_sub, @defaultkaarkleur_sub, @wit, @defaultkaarkleur );
+	.tipsstyling(oranje, @oranje, @oranje_sub, @oranje_sub, @wit, @oranje );
+	.tipsstyling(groen, @groen, @groen_sub, @groen_sub, @wit, @groen );
+	.tipsstyling(paars, @paars, @paars_sub, @paars_sub, @wit, @paars );
+	.tipsstyling(blauw, @blauw, @blauw_sub, @blauw_sub, @wit, @blauw );
+	.tipsstyling(turquoise, @turquoise, @turquoise_sub, @turquoise_sub, @wit, @turquoise );
+	.tipsstyling(bruin, @gmred, @gmred_sub, @gmred_sub, @wit, @gmred );
+	.tipsstyling(goud, @goud, @goud_sub, @goud_sub, @txt, @goud_header );
+
   .single-tips.goud {
-  
+
     header.onderwerp {
       position: relative;
       
@@ -383,7 +325,7 @@
           cursor: pointer;
         }
       }
-  
+
       &:after {
         content: "";
         z-index: 8888;
@@ -404,7 +346,7 @@
           rgba(255, 255, 255, 0.0) 100%
         );  
       }  	
-  
+
       &:hover {
         &:after {
           opacity: 1;
@@ -416,79 +358,79 @@
       	}
     	}
   	}
-  
+
   	
   	
   }
-  
-  
-  .archive.tax-tiporganisatie,
-  .archive.tax-tipvraag,
-  .archive.tax-tipthema {
+
+	
+	.archive.tax-tiporganisatie,
+	.archive.tax-tipvraag,
+	.archive.tax-tipthema {
   	#cardflex {
     	.containstip {
       	display: inline-block;
       	float: left;
     	}
   	}
-  }
-  
-  
-  //=========================================================================================================
-  @media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
-  	// groter dan 480, kleiner dan 600
-  
-  }
-  
-  //=========================================================================================================
-  @media only screen and (min-width: ( @break_phone600 + 1 ) ) {
-  	// groter dan 600
-  
-  	.cardflex {
-  //		.rolcontainer .scrollbaar {
-  		.containstip {
-  			width: 33%;
-  			
-  			a {
-  				width: 90%; /* fallback if needed */
-  				width: ~"calc(100% - 1em)";
-  			}
-  		}
-  	}
-  }
-  	
-  //=========================================================================================================
-  @media only screen and (min-width: ( @break_tablet + 1 ) ) {
-  
-  	.cardflex {
-  //		.rolcontainer .scrollbaar {
-  		.containstip {
-  			width: 25%;
-  			
-  			a {
-  				width: 90%; /* fallback if needed */
-  				width: ~"calc(100% - 1em)";
-  			}
-  		}
-  	}
-  }
-  
-  //=========================================================================================================
-  @media only screen and (min-width: ( @break_fullwidth) ) {
-  	.cardflex {
-  //		.rolcontainer .scrollbaar {
-  		.containstip {
-  			width: 20%;
-  			
-  			a {
-  				width: 90%; /* fallback if needed */
-  				width: ~"calc(100% - 1em)";
-  			}
-  		}
-  	}
-  }
-  
-  //=========================================================================================================
-  
-  }
+	}
+	
+	
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_phone480 ) )  and (max-width: ( @break_phone600 ) ) {
+		// groter dan 480, kleiner dan 600
+
+	}
+
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_phone600 + 1 ) ) {
+		// groter dan 600
+
+		.cardflex {
+//		.rolcontainer .scrollbaar {
+			.containstip {
+				width: 33%;
+				
+				a {
+					width: 90%; /* fallback if needed */
+					width: ~"calc(100% - 1em)";
+				}
+			}
+		}
+	}
+		
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_tablet + 1 ) ) {
+
+		.cardflex {
+//		.rolcontainer .scrollbaar {
+			.containstip {
+				width: 25%;
+				
+				a {
+					width: 90%; /* fallback if needed */
+					width: ~"calc(100% - 1em)";
+				}
+			}
+		}
+	}
+
+	//=========================================================================================================
+	@media only screen and (min-width: ( @break_fullwidth) ) {
+		.cardflex {
+//		.rolcontainer .scrollbaar {
+			.containstip {
+				width: 20%;
+				
+				a {
+					width: 90%; /* fallback if needed */
+					width: ~"calc(100% - 1em)";
+				}
+			}
+		}
+	}
+
+	//=========================================================================================================
+	
+}
 

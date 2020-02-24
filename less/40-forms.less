@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1
-// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 2.10.3
+// @desc.   CSS bugjes vanwege .goud class op homepage
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -360,12 +360,12 @@
 	
 	#filter_tips {
 		padding: 0 2em @padding 2em;
-		background: @wit;
+		background: @light_gray;
 		overflow: hidden;
 		position: relative;
 
 		legend {
-			.setfont( @bodyfont, 18);
+			.setfont(@ubunturegular, 18);
 		}
 
 		fieldset {
@@ -382,7 +382,7 @@
 //			}
 			&.themas {
 				padding-bottom: @padding;
-//				border-bottom: 1px solid #cccccc;			
+				border-bottom: 1px solid #cccccc;			
 			}
 			
 		}

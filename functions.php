@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.4
-// @desc.   Contactformulier is nu optioneel.
+// @version 2.11.4
+// @desc.   Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -35,7 +35,10 @@ require_once( $opt_folder . '/includes/common-functions.php' );
 
 // does our beloved visitor allow for JavaScript?
 $genesis_js_no_js = new Genesis_Js_No_Js;
-$genesis_js_no_js->run();
+$genesis_js_no_js->run();/**
+ * Define child theme constants.
+ */
+
 
 
 //========================================================================================================
@@ -43,8 +46,8 @@ $genesis_js_no_js->run();
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '3.1.4' );
-define( 'CHILD_THEME_DESCRIPTION', "3.1.4 Contactformulier is nu optioneel." );
+define( 'CHILD_THEME_VERSION', '2.11.4' );
+define( 'CHILD_THEME_DESCRIPTION', "2.11.4 Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
@@ -177,152 +180,157 @@ function cleanstring($strinput){
 //========================================================================================================
 
 
-function fn_od_wbvb_write_tip_kaart( $postobject, $plaatjes, $kleuren, $prefix = '', $suffix = '', $idprefix = '', $headertag = 'h2' ) {
-  
-  global $tipcounter;
-  
-  $tipnummer      = ''; 
-  $tiplabel       = ''; 
-  $themakleur     = ''; 
-  $themaplaatje   = '';
-  $filters        = ''; 
-  $tiporganisatie = ''; 
-  $tipvraag       = ''; 
-  $tipcounter++;
-  
-  if ( function_exists( 'get_field' ) ) {
-    $tipnummer      = get_field('tip-nummer'); 
-    if ( $tipnummer ) {
-      $tiplabel 		= __( "Tip", 'gebruikercentraal' ) . ' ' . $tipnummer;
-    }
-  }
+function fn_od_wbvb_write_tip_kaart($postobject, $plaatjes, $kleuren, $prefix = '', $suffix = '', $idprefix = '') {
 
-  do_action( 'genesis_before_entry' );
-  
-  $args = array(
-    'orderby'           => 'name', 
-    'order'             => 'ASC',
-    'hide_empty'        => true, 
-    'exclude'           => array(), 
-    'exclude_tree'      => array(), 
-    'include'           => array(),
-    'number'            => '', 
-    'fields'            => 'all', 
-    'slug'              => '',
-    'parent'            => '',
-    'hierarchical'      => true, 
-    'child_of'          => 0,
-    'childless'         => false,
-    'get'               => '', 
-    'name__like'        => '',
-    'description__like' => '',
-    'pad_counts'        => false, 
-    'offset'            => '', 
-    'search'            => '', 
-    'cache_domain'      => 'core'
-  );
-  
-  
-  $title			      = get_the_title( );
-  $keywords	   	    = $title;
-  $keywords		     .= " " . get_the_excerpt();
-  
-  $card_unique_id     = preg_replace("/[^A-Za-z0-9 -]/", "", trim($title));
-  $card_unique_id     = strtolower( $idprefix . $tipnummer . '-' . preg_replace("/[^A-Za-z0-9]/", "-", $card_unique_id));
-  
-  // tipvraag ===========================================================================
-  $themas		= get_the_terms( $postobject->ID, GC_TIPTHEMA );
-  $counter 		= 0;
-  
-  if ( ! empty( $themas ) && ! is_wp_error( $themas ) ){
-    foreach ( $themas as $term ) {
-      $counter++;
-      if ( $counter > 1 ) {
-        $filters 		.= " " . $term->slug;
+  	global $tipcounter;
+
+    $tipnummer      = ''; 
+    $tiplabel      	= ''; 
+    $themakleur		= ''; 
+    $themaplaatje	= '';
+    $filters		= ''; 
+    $tiporganisatie	= ''; 
+    $tipvraag		= ''; 
+//    $temp_string 	= '';
+    $tipcounter++;
+
+    if ( function_exists( 'get_field' ) ) {
+      $tipnummer      = get_field('tip-nummer'); 
+      if ( $tipnummer ) {
+        $tiplabel 		= __( "Tip", 'gebruikercentraal' ) . ' ' . $tipnummer;
       }
-      else {
-        $filters 		= $term->slug;
-      }
-      $keywords 		.= " " . $term->name;
     }
-  }
-  
-  // tipvraag ===========================================================================
-  $tipvragen		= get_the_terms( $postobject->ID, GC_TIPVRAAG );
-  
-  $counter 		= 0;
-  
-  if ( ! empty( $tipvragen ) && ! is_wp_error( $tipvragen ) ){
-    $tipvraag = ' data-tipvraag="[';
-    foreach ( $tipvragen as $term ) {
-      $counter++;
-      if ( $counter > 1 ) {
-        $tipvraag .= ", ";
-      }
-      $tipvraag 		.= "'" . $term->name . "'";
-      $filters 		  .= " " . $term->slug;
-      $keywords 		.= " " . $term->name;
+
+
+    
+    do_action( 'genesis_before_entry' );
+
+	$args = array(
+	    'orderby'           => 'name', 
+	    'order'             => 'ASC',
+	    'hide_empty'        => true, 
+	    'exclude'           => array(), 
+	    'exclude_tree'      => array(), 
+	    'include'           => array(),
+	    'number'            => '', 
+	    'fields'            => 'all', 
+	    'slug'              => '',
+	    'parent'            => '',
+	    'hierarchical'      => true, 
+	    'child_of'          => 0,
+	    'childless'         => false,
+	    'get'               => '', 
+	    'name__like'        => '',
+	    'description__like' => '',
+	    'pad_counts'        => false, 
+	    'offset'            => '', 
+	    'search'            => '', 
+	    'cache_domain'      => 'core'
+	);
+
+
+	$title			      = get_the_title( );
+	$keywords	   	    = $title;
+	$keywords		     .= " " . get_the_excerpt();
+
+	$card_unique_id     = preg_replace("/[^A-Za-z0-9 -]/", "", trim($title));
+	$card_unique_id     = strtolower( $idprefix . $tipnummer . '-' . preg_replace("/[^A-Za-z0-9]/", "-", $card_unique_id));
+
+	// tipvraag ===========================================================================
+	$themas		= get_the_terms( $postobject->ID, GC_TIPTHEMA );
+	$counter 		= 0;
+
+	if ( ! empty( $themas ) && ! is_wp_error( $themas ) ){
+		foreach ( $themas as $term ) {
+			$counter++;
+			if ( $counter > 1 ) {
+				$filters 		.= " " . $term->slug;
+			}
+			else {
+				$filters 		= $term->slug;
+			}
+			$keywords 		.= " " . $term->name;
+		}
+	}
+
+	// tipvraag ===========================================================================
+	$tipvragen		= get_the_terms( $postobject->ID, GC_TIPVRAAG );
+
+	$counter 		= 0;
+
+	if ( ! empty( $tipvragen ) && ! is_wp_error( $tipvragen ) ){
+		$tipvraag = ' data-tipvraag="[';
+		foreach ( $tipvragen as $term ) {
+			$counter++;
+			if ( $counter > 1 ) {
+				$tipvraag .= ", ";
+			}
+			$tipvraag 		.= "'" . $term->name . "'";
+			$filters 		  .= " " . $term->slug;
+			$keywords 		.= " " . $term->name;
+		}
+		$tipvraag .= ']"';
+	}
+
+	$counter 		= 0;
+
+	$tiporganisaties	= get_the_terms( $postobject->ID, GC_TIPORGANISATIE );
+
+	if ( ! empty( $tiporganisaties ) && ! is_wp_error( $tiporganisaties ) ){
+		$tiporganisatie = ' data-tiporganisatie="[';
+		foreach ( $tiporganisaties as $term ) {
+			$counter++;
+			if ( $counter > 1 ) {
+				$tiporganisatie .= ", ";
+			}
+			$tiporganisatie .= "'" . $term->name . "'";
+			$filters 		.= " " . $term->slug;
+			$keywords 		.= " " . $term->name;
+		}
+		$tiporganisatie .= ']"';
+	}
+
+	$pattern = '/containstip/';
+	$prefix =  preg_replace($pattern, 'containstip ' . $filters, $prefix);
+
+	$pattern = '/class=/';
+	$prefix =  preg_replace($pattern, 'data-titel="' . cleanstring( $keywords ) . '" class=', $prefix);
+
+    				
+	
+    $lelink         = $prefix . '<a id="' . $card_unique_id . '" href="' . get_permalink() . '"
+    				class="tipkaart ' . $plaatjes . ' ' . $kleuren . '"
+    				' . $tiporganisatie . '
+    				' . $tipvraag . '
+    				data-volgorde="' . $tipcounter . '"
+    				data-tipnummer="' . $tipnummer . '"
+    				data-thema="' . $plaatjes . '">
+    				<div class="inner">';
+
+    echo $lelink;
+
+    if ( $tiplabel ) {
+	    echo '<span class="tipnummer">' . $tiplabel . '</span>';
     }
-    $tipvraag .= ']"';
-  }
-  
-  $counter 		= 0;
-  
-  $tiporganisaties	= get_the_terms( $postobject->ID, GC_TIPORGANISATIE );
-  
-  if ( ! empty( $tiporganisaties ) && ! is_wp_error( $tiporganisaties ) ){
-    $tiporganisatie = ' data-tiporganisatie="[';
-    foreach ( $tiporganisaties as $term ) {
-      $counter++;
-      if ( $counter > 1 ) {
-        $tiporganisatie .= ", ";
-      }
-      $tiporganisatie .= "'" . $term->name . "'";
-      $filters 		.= " " . $term->slug;
-      $keywords 		.= " " . $term->name;
-    }
-    $tiporganisatie .= ']"';
-  }
-  
-  $pattern = '/containstip/';
-  $prefix =  preg_replace($pattern, 'containstip ' . $filters, $prefix);
-  
-  $pattern = '/class=/';
-  $prefix =  preg_replace($pattern, 'data-titel="' . cleanstring( $keywords ) . '" class=', $prefix);
-  
-  	
-  
-  $lelink         = $prefix . '<a id="' . $card_unique_id . '" href="' . get_permalink() . '"
-                  	class="tipkaart ' . $plaatjes . ' ' . $kleuren . '"
-                  	' . $tiporganisatie . '
-                  	' . $tipvraag . '
-                  	data-volgorde="' . $tipcounter . '"
-                  	data-tipnummer="' . $tipnummer . '"
-                  	data-thema="' . $plaatjes . '">
-                  	<div class="inner">';
-  
-  echo $lelink;
-  
-  if ( $tiplabel ) {
-    echo '<span class="tipnummer">' . $tiplabel . '</span>';
-  }
-  
-  echo '<' . $headertag . ' itemprop="headline">';
-  echo od_wbvb_custom_post_title( $title ) ;
-  echo '</' . $headertag . '>';
-  echo '<div class="contentinfo">';
-  
-  $themas   		= get_the_terms( $postobject->ID, GC_TIPTHEMA );
-  if ( $themas ) {					
-    foreach ( $themas as $term ) {
-      echo '<span>' . $term->name . '</span>';
-    }
-  }
-  
-  echo '</div></div></a>' . $suffix;	
-  
-  return $card_unique_id;
-  
+//    echo '<p>tipcounter: ' . $tipcounter . '</p>';
+    
+	echo '<h3 itemprop="headline">';
+	echo od_wbvb_custom_post_title( $title ) ;
+	echo '</h3>';
+
+    echo '<div class="contentinfo">';
+
+	$themas   		= get_the_terms( $postobject->ID, GC_TIPTHEMA );
+	if ( $themas ) {					
+		foreach ( $themas as $term ) {
+	       echo '<span>' . $term->name . '</span>';
+		}
+	}
+
+    echo '</div></div></a>' . $suffix;	
+	
+	return $card_unique_id;
+	
 }
 
 
@@ -436,110 +444,6 @@ function fn_od_wbvb_get_filterbutton($term) {
 	}
 }
 
-//========================================================================================================
-
-function fn_od_wbvb_tips_archive_cards_display_homepage_text($theCPT = '') {
-
-	$homepage	= ( get_field('tekst_op_homepage', 'option') ) ? get_field('tekst_op_homepage', 'option') : _x('Tips met praktijkvoorbeelden om de digitale weg naar de overheid te stimuleren onder burgers en bedrijven. Samengesteld op basis van onderzoek en gedragspyschologie.', 'Tekst op homepage', 'gebruikercentraal');
-
-	echo '<article class="entry" itemscope="" itemtype="http://schema.org/CreativeWork">';
-	echo $homepage;
-	echo '</article>';
-
-}
-
-//========================================================================================================
-
-function fn_od_wbvb_tips_archive_cards_home_no_filter($theCPT = '') {
-
-	global $loop_counter;
-
-	$loop_counter   = 0;
-  $classes				= array();
-		
-	$terms = get_terms( GC_TIPTHEMA );
-
-	foreach($terms as $term) {
-		// settings per thema ophalen
-
-		$classes[$term->slug] = array();
-		$classes[$term->slug]['name']	= $term->name;
-
-    if ( function_exists( 'get_field' ) ) {
-
-			$themakleur			= get_field('thema-kleur', GC_TIPTHEMA . '_' . $term->term_id ); 
-			$themaplaatje		= get_field('thema-logo', GC_TIPTHEMA . '_' . $term->term_id ); 
-
-			$classes[$term->slug]['kleur']	  = $themakleur;
-			$classes[$term->slug]['plaatje']	= $themaplaatje;
-
-		}
-		else {
-      //  no ACF available
-		}
-
-    $classes =  array_filter($classes);
-	}
-
-
-	echo '<div class="cardscontainer">';
-
-	// ============================================================================================================================================
-	// einde Alle tips
-	// ============================================================================================================================================
-
-	echo '<section class="cardflex" id="cardflex_tab1">';
-
-
-	  // er moet serverside gefilterd worden
-		$args=array(
-			'post_type' 		  =>	GC_TIP_CPT,
-			'post_status' 		=>	'publish',
-			'posts_per_page' 	=>	-1,
-			'post_password'		=>	''
-		);
-		
-		$my_query = null;
-		$my_query = new WP_Query($args);
-
-	
-    if( $my_query->have_posts() ) {
-
-      global $tipcounter;
-      
-      $tipcounter = 0;
-
-      while ( $my_query->have_posts() ) {
-
-        $my_query->the_post(); 
-        
-        $term_list  = get_the_terms( $my_query->ID, GC_TIPTHEMA );
-        $theslug    = $term_list[0]->slug;
-        
-        $loop_counter++;
-        
-        $kleuren	  = $classes[$term_list[0]->slug]['kleur'];
-        $plaatjes   = $classes[$term_list[0]->slug]['plaatje'];
-
-        fn_od_wbvb_write_tip_kaart($my_query, $plaatjes, $kleuren, '<div aria-hidden="true" class="containstip">', '</div>', 'tipcard-');
-
-      }
-    }
-
-
-	// ============================================================================================================================================
-	// einde Alle tips
-	// ============================================================================================================================================
-
-	echo '</section>'; // #cardflex_tab1
-
-	echo '</div>'; // .cardscontainer
-
-
-	wp_reset_query();
-
-
-}
 
 //========================================================================================================
 
@@ -557,7 +461,15 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
 	global $loop_counter;
 
-	$loop_counter   = 0;
+	$loop_counter = 0;
+	
+	$homepage	= ( get_field('tekst_op_homepage', 'option') ) ? get_field('tekst_op_homepage', 'option') : _x('Tips met praktijkvoorbeelden om de digitale weg naar de overheid te stimuleren onder burgers en bedrijven. Samengesteld op basis van onderzoek en gedragspyschologie.', 'Tekst op homepage', 'gebruikercentraal');
+
+	echo '<article class="entry" itemscope="" itemtype="http://schema.org/CreativeWork">';
+	echo $homepage;
+	echo '</article>';
+
+
   $classes				= array();
 		
 	$terms = get_terms( GC_TIPTHEMA );
@@ -578,7 +490,7 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
 		}
 		else {
-      //  no ACF available
+//  		echo 'ACF is stuk';
 		}
 
     $classes =  array_filter($classes);
@@ -586,11 +498,30 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
 
 	echo '<div class="cardscontainer">';
-	
+
+
+
+	echo '<div class="tab-widget js-tab-widget">
+
+		<span id="tab-widget-description" class="visuallyhidden">Gebruik de linker- en rechterpijltjestoetsen om tussen de tabs te navigeren</span>
+
+		<ul class="tab-widget__list" id="tabs_list">
+			<li class="tab-widget__item">
+				<a href="#tab-panel-1" class="tab-widget__link">' . __( "Alle tips", 'gebruikercentraal' ) . '</a>
+			</li>
+			<li class="tab-widget__item">
+				<a href="#tab-panel-2" class="tab-widget__link">' . __( "Aan de slag", 'gebruikercentraal' ) . '</a>
+			</li>
+		</ul>
+
+  <div class="tab-widget__tabs">';
+
+
 
 	// ============================================================================================================================================
-	// start alle tips
+	// start Alle tips
 	// ============================================================================================================================================
+	echo '<div class="tab-widget__tab-content tab-widget__link--not-yet-activated" id="tab-panel-2" tabindex="-1">';
 	echo '<h2 id="tab-panel-2-h2" tabindex="-1"><span>' . __( "Alle tips", 'gebruikercentraal' ) . '</span></h2>';
 
 	$theurl	=	strtok($_SERVER["REQUEST_URI"],'?');	
@@ -676,6 +607,7 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
     echo 'keyword is niet leeg<br>';
   }
 
+
   // ====================================================================================================
 	echo '<fieldset class="filter-group search search-form">
 	      <label class="search-form-label screen-reader-text" for="filtertrefwoord">Filter op trefwoord</label>
@@ -728,10 +660,7 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
     if( $my_query->have_posts() ) {
 
       
-      echo '<div class="select-message">
-              <p class="filtercounter">' . $select_message . '</p>
-              <button type="button" class="reset">' . $wis_label . '</button>
-            </div>';
+      echo '<div class="select-message"><p class="filtercounter">' . $select_message . '</p><button type="button" class="reset">' . $wis_label . '</button></div>';
       
       global $tipcounter;
       
@@ -741,8 +670,10 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
 
         $my_query->the_post(); 
         
-        $term_list  = get_the_terms( $my_query->ID, GC_TIPTHEMA );
-        $theslug    = $term_list[0]->slug;
+        $term_list = get_the_terms( $my_query->ID, GC_TIPTHEMA );
+/*        if ( is_object( $term_list ) ) { */
+          
+        $theslug = $term_list[0]->slug;
         
         // als er een zoekterm is gezet gaan we hier checken of die gevonden wordt.
         if ( $filterkeyword ) {
@@ -792,6 +723,8 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
           fn_od_wbvb_write_tip_kaart($my_query, $plaatjes, $kleuren, '<div aria-hidden="true" class="containstip">', '</div>', 'tipcard-');
 
         }
+        /* } */
+        
       }
     }
 
@@ -799,58 +732,31 @@ function fn_od_wbvb_tips_archive_cards_home_met_filter($theCPT = '') {
       echo '<p>' . $failmessage . '</p>';
     }
 
+
+  	echo '</section>'; // '<section class="cardflex">';
+  	echo '</div>'; // <!-- //tab-widget__tab-content tab-widget__link--not-yet-activated -->';
+
 	// ============================================================================================================================================
 	// einde Alle tips
 	// ============================================================================================================================================
 
-	echo '</section>'; // #cardflex_tab1
-
-	echo '</div>'; // .cardscontainer
 
 
-	wp_reset_query();
 
-}
 
-//========================================================================================================
 
-function fn_od_wbvb_tips_archive_aan_de_slag() {
 
 	// ============================================================================================================================================
 	// start Aan de slag
 	// ============================================================================================================================================
+	echo '<div class="tab-widget__tab-content tab-widget__link--not-yet-activated" tabindex="-1">';
+	echo '<p id="tab-panel-1" tabindex="-1"><span>' . __( "Aan de slag", 'gebruikercentraal' ) . '</span></p>';
 
 	global $tipcounter;
-
-	$loop_counter   = 0;
-  $classes				= array();
-	$terms          = get_terms( GC_TIPTHEMA );
-
-	foreach($terms as $term) {
-		// settings per thema ophalen
-
-		$classes[$term->slug] = array();
-		$classes[$term->slug]['name']	= $term->name;
-
-    if ( function_exists( 'get_field' ) ) {
-
-			$themakleur			= get_field('thema-kleur', GC_TIPTHEMA . '_' . $term->term_id ); 
-			$themaplaatje		= get_field('thema-logo', GC_TIPTHEMA . '_' . $term->term_id ); 
-
-			$classes[$term->slug]['kleur']	  = $themakleur;
-			$classes[$term->slug]['plaatje']	= $themaplaatje;
-
-		}
-		else {
-      //  no ACF available
-		}
-
-    $classes =  array_filter($classes);
-	}
-	
 	$tipcounter       = 0;
 	$carousselcounter = 0;
-	$terms            = get_terms( GC_TIPVRAAG ); // niet meer tips tonen voor alle thema's (GC_TIPTHEMA) maar tips per vraag
+
+	$terms = get_terms( GC_TIPVRAAG ); // niet meer tips tonen voor alle thema's (GC_TIPTHEMA) maar tips per vraag
 
 	foreach($terms as $term) {
 
@@ -879,6 +785,9 @@ function fn_od_wbvb_tips_archive_aan_de_slag() {
 			'posts_per_page' 	=>	-1,
     );
 
+    
+ 
+    
 		// The Query
 		$the_query = new WP_Query( $args );
 		
@@ -934,7 +843,23 @@ function fn_od_wbvb_tips_archive_aan_de_slag() {
 	// einde Aan de slag
 	// ============================================================================================================================================
 
+
+
+
+
+
+
+
+	
+	echo '</div>'; // <!-- //tab-widget__tabs -->
+	echo '</div>'; // <!-- //tab-widget js-tab-widge -->
+	echo '</div>'; // <!-- //.cardscontainer -->
+
+
+	wp_reset_query();
+
 }
+
 
 //========================================================================================================
 
@@ -1603,9 +1528,6 @@ if (!function_exists('fn_od_wbvb_remove_css_styles')) :
 		
 
 		wp_deregister_script( 'contact-form-7' );
-		
-		
-//		wp_deregister_script( 'jquery' ); 
 
 		// all actions related to emojis
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
@@ -1615,11 +1537,7 @@ if (!function_exists('fn_od_wbvb_remove_css_styles')) :
 		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-		
-		// filter to remove TinyMCE emojis
-//		add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );		
-		
-		
+
 	}
 
 	add_action('wp_enqueue_scripts', 'fn_od_wbvb_remove_css_styles');
