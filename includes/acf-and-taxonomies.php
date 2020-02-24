@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.4
-// @desc.   Contactformulier is nu optioneel.
+// @version 2.11.1
+// @desc.   Contactinfo van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 
 
@@ -1324,32 +1324,6 @@ if( function_exists('acf_add_local_field_group') ):
 		'key' => 'group_56a73cbfdf435',
 		'title' => 'Instellingen voor contactformulier',
 		'fields' => array (
-
-  		array(
-  			'key' => 'field_5c1a2bb267fb2',
-  			'label' => 'Contactformulier tonen?',
-  			'name' => 'contactformulier_tonen',
-  			'type' => 'radio',
-  			'instructions' => '',
-  			'required' => 1,
-  			'conditional_logic' => 0,
-  			'wrapper' => array(
-  				'width' => '',
-  				'class' => '',
-  				'id' => '',
-  			),
-  			'choices' => array(
-  				'ja' => 'Ja',
-  				'nee' => 'Neen',
-  			),
-  			'allow_null' => 0,
-  			'other_choice' => 0,
-  			'default_value' => 'nee',
-  			'layout' => 'vertical',
-  			'return_format' => 'value',
-  			'save_other_choice' => 0,
-  		),
-  		
 			array (
 				'key' => 'field_56a73cbfe31be',
 				'label' => 'Contactformulier',
@@ -1357,15 +1331,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'type' => 'post_object',
 				'instructions' => '',
 				'required' => 0,
-  			'conditional_logic' => array(
-  				array(
-  					array(
-  						'field' => 'field_5c1a2bb267fb2',
-  						'operator' => '==',
-  						'value' => 'ja',
-  					),
-  				),
-  			),
+				'conditional_logic' => 0,
 				'wrapper' => array (
 					'width' => '',
 					'class' => '',
@@ -1388,15 +1354,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'type' => 'text',
 				'instructions' => 'Foutboodschap als naam leeg is',
 				'required' => 0,
-  			'conditional_logic' => array(
-  				array(
-  					array(
-  						'field' => 'field_5c1a2bb267fb2',
-  						'operator' => '==',
-  						'value' => 'ja',
-  					),
-  				),
-  			),
+				'conditional_logic' => 0,
 				'wrapper' => array (
 					'width' => '',
 					'class' => '',
@@ -1417,15 +1375,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'type' => 'text',
 				'instructions' => 'Foutboodschap als er geen suggestie of vraag is ingevuld',
 				'required' => 0,
-  			'conditional_logic' => array(
-  				array(
-  					array(
-  						'field' => 'field_5c1a2bb267fb2',
-  						'operator' => '==',
-  						'value' => 'ja',
-  					),
-  				),
-  			),
+				'conditional_logic' => 0,
 				'wrapper' => array (
 					'width' => '',
 					'class' => '',
@@ -1446,15 +1396,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'type' => 'text',
 				'instructions' => 'Foutboodschap als er geen e-mailadres is ingevuld',
 				'required' => 0,
-  			'conditional_logic' => array(
-  				array(
-  					array(
-  						'field' => 'field_5c1a2bb267fb2',
-  						'operator' => '==',
-  						'value' => 'ja',
-  					),
-  				),
-  			),
+				'conditional_logic' => 0,
 				'wrapper' => array (
 					'width' => '',
 					'class' => '',

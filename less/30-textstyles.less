@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.3
-// @desc.   Header-fonts aangepast.
+// @version 2.11.1
+// @desc.   Contactinfo van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -18,425 +18,450 @@ Basisgrootte
 ---------------------------------------------------------------------------------------------------- */
 
 .basefont() {
-  color: @txt;
-  font-family: @bodyfont;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 1.625;    
+	color: @txt;
+    font-family: @bodyfont;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 1.625;    
 }
 
 /*
 ---------------------------------------------------------------------------------------------------- */
 .textstyles() {
-  // wordt gebruikt in 
-  // - editor-styles.less
-  // - style.less
-  // - login-form.less
-  
-  .write-defaults();
-  .write-table();
-  .write-headings();    
+    // wordt gebruikt in 
+    // - editor-styles.less
+    // - style.less
+    // - login-form.less
+
+    .write-defaults();
+    .write-table();
+    .write-headings();    
 }
 
 /*
 ---------------------------------------------------------------------------------------------------- */
 .write-defaults() {
-  
-  // wordt gebruikt in 
-  // - mailtemplate.less
-  // .textstyles()     
-  
-  a {
-  	color: @a-content-color;
-  	text-decoration: underline;
-  }
-  
-  a img {
-  	margin-bottom: -4px;
-  	margin-bottom: -0.4rem;
-  }
-  
-  a:hover {
-  	color: @a-content-hover-color;
-  }
-  
-  p {
-  	margin: 0 0 @padding 0;
-  	padding: 0;
-  }
-  
-  
-  ul {
-  	padding: 0 0 0 20px;
-  }
-  
-  ol {
-  	padding: 0 0 0 24px;
-  }
-  
-  blockquote,
-  blockquote::before {
-  	color: @txt;
-  }
-  
-  blockquote {
-  	margin: @padding;
-  }
-  
-  blockquote::before {
-  	content: "\201C";
-  	display: block;
-  	.font-size(30);
-  	height: 0;
-  	left: ( -1 * @padding );
-  	position: relative;
-  	top: ( -1 * @padding );
-  }
-  
-  .entry-content {
-    code {
-    	background-color: @code-bg;
+
+    // wordt gebruikt in 
+    // - mailtemplate.less
+    // .textstyles()     
+    
+    a {
+    	color: @a-content-color;
+    	text-decoration: underline;
+    }
+    
+    a img {
+    	margin-bottom: -4px;
+    	margin-bottom: -0.4rem;
+    }
+    
+    a:hover {
+    	color: @a-content-hover-color;
+    }
+    
+    p {
+    	margin: 0 0 @padding 0;
+    	padding: 0;
+    }
+    
+    
+    ul {
+    	padding: 0 0 0 20px;
+    }
+
+    ol {
+    	padding: 0 0 0 24px;
+    }
+    
+    blockquote,
+    blockquote::before {
     	color: @txt;
     }
-  }
-  
-  cite {
-  	font-style: normal;
-  }
-  
-  
-  p {
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    -o-hyphens: auto;
-    hyphens: auto;
-  }
-  
-  .attachment a,
-  .gallery a {
-  	border: none;
-  }
-  
-  
-  ol li {
-  	list-style-type: decimal;
-  }
-  
-  ul {
-  list-style-image: url('images/bullet.png');			
-  }
-  
-  ol ol,
-  ul ul {
-  	margin-bottom: 0;
-  }
-  
-  .infoblock {
-    background: @light_gray;
-    border: 1px solid darken(@light_gray, 20%);
-    padding: 1em;
-    margin: 1em 0;
-  }
-  
-  
-  img.centered,
-  .aligncenter {
-  	display: block;
-  	margin: 0 auto @padding;
-  }
-  
-  .alignleft {
-  	float: left;
-  	text-align: left;
-  }
-  
-  .alignright {
-  	float: right;
-  	text-align: right;
-  }
-  
-  img.alignleft,
-  .wp-caption.alignleft {
-  	margin: ( @padding / 3 ) ( @padding / 2 ) @padding 0;
-  }
-  
-  img.alignright,
-  .wp-caption.alignright {
-  	margin: ( @padding / 3 ) 0 @padding ( @padding / 2 );
-  }
-  
-  .wp-caption.alignnone {
-  	margin: ( @padding / 3 ) 0 0 0;
-  }
-  
-  .wp-caption-text {
-  	.font-size(12);
-  	font-weight: normal;
-  	text-align: left;
-  	border-bottom: 1px solid #ddd;
-  	line-height: 1.4;
-  	padding: ( @padding / 2 ) 0;
-  }
-  
-  .alignright .wp-caption-text {
-      margin-left: 10px;
-      margin-bottom: 0 !important;
-  }
-  .alignleft .wp-caption-text {
-      margin-right: 10px;
-      margin-bottom: 0 !important;
-  }
-  .gallery-caption {
-  	border-bottom: none;
-  }
-
-  a.blocklink {
-    text-decoration: none;
-    display: block;
-    overflow: hidden;
-    border: 1px solid @wit;
-    border-bottom: 2px solid @light_gray;
-    padding-bottom: @padding;
-  
-    img {
-        margin: ( @padding / 3 ) @padding ( @padding / 2 ) 0;
+    
+    blockquote {
+    	margin: @padding;
     }
-  
+    
+    blockquote::before {
+    	content: "\201C";
+    	display: block;
+    	.font-size(30);
+    	height: 0;
+    	left: ( -1 * @padding );
+    	position: relative;
+    	top: ( -1 * @padding );
+    }
+    
     .entry-content {
-      display: block;
-      overflow: hidden;
+	    code {
+	    	background-color: @code-bg;
+	    	color: @txt;
+	    }
     }
-  
-    .entry-meta {
-      display: block;
-      float: none;
-    }
-  
-    .read-more {
-      text-align: left;
-      margin-top: ( @padding / 2 );
-      
-      span {
-          visibility: hidden;
-      }
-      
-      &:after {
-        border: 1px solid @txt !important;
-        content: ' ';
-        display: inline-block;
-        float: right;
-        width: ( 1.5 * @padding );
-        height: ( 2 * @padding );
-        margin-left: ( @padding / 2 );
-      }
-    }
-  
     
-    &:hover,
-    &:active,
-    &:focus {
-      
-      &, .entry-meta {
-        color: @a_hover !important;
-      }
-      
-      .entry-title, .read-more {
-        text-decoration: underline;
-      } 
-      
-      .read-more {
-        span {
-          visibility:visible;
-        }
-      }
+    cite {
+    	font-style: normal;
     }
-  }
-  
-  article + article a.blocklink {
-    h2 {
-        padding: 0;
-    }
-  }
-  
-  
-  div.related {
+    
 
-    h2, h3 {
-      margin-top: 0;
-      padding-top: 0;
+    p {
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -o-hyphens: auto;
+        hyphens: auto;
     }
     
-    section {
-      padding: @padding @padding ( 1.5 * @padding ) @padding;        
-      word-break: break-word;
-      position: relative;
-      color: @txt;
-      border: 1px solid @light_gray;
-      position: relative;
-      
-      a {
-        text-decoration: none;
-        
-        .read-more {
-          position: absolute;
-          right: @padding;
-          bottom: @padding;
-          text-align: right;
-          span {
-            visibility: hidden;
-          }
-        
-          &:after {
-            content: ' ';
-            display: inline-block;
-            float: right;
-            width: ( 2 * @padding );
-            height: ( 1.5 * @padding );
-            margin-left: ( @padding / 2 );
-          }
-        }
-        
-        
-        &:hover,
-        &:active,
-        &:focus {
-          text-decoration: underline;
-        
-          .read-more {
-            span {
-              visibility:visible;
-            }
-          }
-        }
-      }
-      
-      &:hover,
-      &:active,
-      &:focus {
-        border-color: @txt;
-      }
+    .attachment a,
+    .gallery a {
+    	border: none;
     }
-  }
+    
+    
+    ol li {
+    	list-style-type: decimal;
+    }
+    
+    ul {
+		list-style-image: url('images/bullet.png');			
+    }
+    
+    ol ol,
+    ul ul {
+    	margin-bottom: 0;
+    }
+    
+    .infoblock {
+        background: @light_gray;
+        border: 1px solid darken(@light_gray, 20%);
+        padding: 1em;
+        margin: 1em 0;
+    }
+
+    
+    img.centered,
+    .aligncenter {
+    	display: block;
+    	margin: 0 auto @padding;
+    }
+    
+    .alignleft {
+    	float: left;
+    	text-align: left;
+    }
+    
+    .alignright {
+    	float: right;
+    	text-align: right;
+    }
+    
+    img.alignleft,
+    .wp-caption.alignleft {
+    	margin: ( @padding / 3 ) ( @padding / 2 ) @padding 0;
+    }
+    
+    img.alignright,
+    .wp-caption.alignright {
+    	margin: ( @padding / 3 ) 0 @padding ( @padding / 2 );
+    }
+
+    .wp-caption.alignnone {
+    	margin: ( @padding / 3 ) 0 0 0;
+    }
+    
+    .wp-caption-text {
+    	.font-size(12);
+    	font-weight: normal;
+    	text-align: left;
+    	border-bottom: 1px solid #ddd;
+    	line-height: 1.4;
+    	padding: ( @padding / 2 ) 0;
+    }
+
+    .alignright .wp-caption-text {
+        margin-left: 10px;
+        margin-bottom: 0 !important;
+    }
+    .alignleft .wp-caption-text {
+        margin-right: 10px;
+        margin-bottom: 0 !important;
+    }
+    .gallery-caption {
+    	border-bottom: none;
+    }
+	
+	
+	a.blocklink {
+	    text-decoration: none;
+	    display: block;
+	    overflow: hidden;
+	    border: 1px solid @wit;
+	    border-bottom: 2px solid @light_gray;
+	    padding-bottom: @padding;
+	
+	    img {
+	        margin: ( @padding / 3 ) @padding ( @padding / 2 ) 0;
+	    }
+	
+	    .entry-content {
+	        display: block;
+	        overflow: hidden;
+	    }
+	
+	    .entry-meta {
+	
+	        display: block;
+	        float: none;
+	    }
+	
+	    .read-more {
+	        text-align: left;
+	        margin-top: ( @padding / 2 );
+	        
+	        span {
+	            visibility: hidden;
+	        }
+	        
+	        &:after {
+	            border: 1px solid @txt !important;
+	            content: ' ';
+	            display: inline-block;
+	            float: right;
+	            width: ( 1.5 * @padding );
+	            height: ( 2 * @padding );
+	            margin-left: ( @padding / 2 );
+	//            background: @wit url('pijltje-txt.png') no-repeat -7px center;
+	//            background-image: url('images/pijltje-txt.svg'), none;
+	        }
+	    }
+	
+	    
+	    &:hover,
+	    &:active,
+	    &:focus {
+	
+	        &, .entry-meta {
+	            color: @a_hover !important;
+	        }
+	
+	        .entry-title, .read-more {
+	            text-decoration: underline;
+	        } 
+	
+	        .read-more {
+		        /*
+	
+	            &:after {
+	                background: @txt url('pijltje-wit.png') no-repeat -7px center;
+	                background-image: url('images/pijltje-wit.svg'), none;
+	            }
+	            */
+	            span {
+	                visibility:visible;
+	            }
+	        }
+	    }
+	}
+	
+	article + article a.blocklink {
+	    h2 {
+	        padding: 0;
+	    }
+	}
+	
+	
+	div.related {
+	
+	
+	    h2, h3 {
+	        margin-top: 0;
+	        padding-top: 0;
+	    }
+	    
+	    section {
+	        padding: @padding @padding ( 1.5 * @padding ) @padding;        
+	        word-break: break-word;
+	        position: relative;
+	        color: @txt;
+	        border: 1px solid @light_gray;
+	        position: relative;
+	
+	        a {
+	            text-decoration: none;
+	        
+	            .read-more {
+	                position: absolute;
+	                right: @padding;
+	                bottom: @padding;
+	        
+	                text-align: right;
+	                span {
+	                    visibility: hidden;
+	                }
+	                
+	                &:after {
+	                    content: ' ';
+	                    display: inline-block;
+	                    float: right;
+	                    width: ( 2 * @padding );
+	                    height: ( 1.5 * @padding );
+	                    margin-left: ( @padding / 2 );
+	                    
+	                    /*
+	        
+	                    background: @wit url('pijltje-txt.png') no-repeat left center;
+	                    background-image: url('images/pijltje-txt.svg'), none;
+	                    
+	                    */
+	        
+	                }
+	            }
+	        
+	            
+	            &:hover,
+	            &:active,
+	            &:focus {
+	                text-decoration: underline;
+	        
+	                .read-more {
+	                    /*
+	                    &:after {
+		                    background: @txt url('pijltje-wit.png') no-repeat left center;
+		                    background-image: url('images/pijltje-wit.svg'), none;
+	                    }
+	                    */
+	                    span {
+	                        visibility:visible;
+	                    }
+	                }
+	        
+	            }
+	        }
+	
+	        &:hover,
+	        &:active,
+	        &:focus {
+	            border-color: @txt;
+	        }
+	    }
+	}
 }
 
 
 /*
 ---------------------------------------------------------------------------------------------------- */
 .write-headings() {
-  
-  b,strong {
-  font-weight: bold;
-  -webkit-hyphens: manual;
-  -moz-hyphens: manual;
-  -ms-hyphens: manual;
-  -o-hyphens: manual;
-  hyphens: manual;
-  }
-  
-  
-  /* Headings
-  --------------------------------------------- */
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: normal; 
-    line-height: 1.2;
-    margin: ( @gutter / 2 ) 0 ( @gutter / 4 );
-    padding: 1em 0 .3em 0;
-    
-    a {
-      color: @txt;
-      text-decoration: none;
-    
-      &:hover, &:focus, &:active {
-        color: @a_hover;
-        text-decoration: underline;
-      }
+
+    b,strong {
+        font-weight: bold;
+        -webkit-hyphens: manual;
+        -moz-hyphens: manual;
+        -ms-hyphens: manual;
+        -o-hyphens: manual;
+        hyphens: manual;
     }
-  }
-  
-  h1 {
-    .font-size( @fontsize_title_h1 );
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: @headerfont;
-    font-weight: normal;
-  }
-  
-  .content h2 {
-    letter-spacing: 1px;
-    .font-size( @fontsize_title_h2 );
-    text-transform: uppercase;
-    font-family: @headerfont;
-    font-weight: normal;
-  }
-  
-  h3, .sidebar h2 {
-    .font-size( @fontsize_title_h3 );
-    font-family: @headerfont_bold;
-  }
-  
-  h4 {
-    .font-size( @fontsize_title_h4 );
-    font-family: @headerfont_bold;
-  }
-  
-  h5 {
-    .font-size( @fontsize_title_h5 );
-    font-family: @headerfont_bold;
-  }
-  
-  h6 {
-    .font-size( @fontsize_title_h6 );
-    font-family: @headerfont_bold;
-  }
+
+
+    /* Headings
+    --------------------------------------------- */
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+//    	color: @header_color;
+    	font-weight: normal; 
+    	line-height: 1.2;
+    	margin: ( @gutter / 2 ) 0 ( @gutter / 4 );
+        padding: 1em 0 .3em 0;
+        
+        a {
+            color: @txt;
+            text-decoration: none;
+            
+            &:hover, &:focus, &:active {
+                color: @a_hover;
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    h1 {
+        .font-size( @fontsize_title_h1 );
+        letter-spacing: 1px;
+    	text-transform: uppercase;
+        font-family: @headerfont;
+        font-weight: normal;
+    }
+    
+    .content h2 {
+    	letter-spacing: 1px;
+    	.font-size( @fontsize_title_h2 );
+    	text-transform: uppercase;
+        font-family: @headerfont;
+        font-weight: normal;
+    }
+    
+    h3, .sidebar h2 {
+    	.font-size( @fontsize_title_h3 );
+    }
+    
+    h4 {
+    	.font-size( @fontsize_title_h4 );
+    }
+    
+    h5 {
+    	.font-size( @fontsize_title_h5 );
+    }
+    
+    h6 {
+    	.font-size( @fontsize_title_h6 );
+    }
 }
 
 /*
 ---------------------------------------------------------------------------------------------------- */
 .write-table() {
-  
-  /* Tables
-  --------------------------------------------- */
-  
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    line-height: 1.4;
-    margin-bottom: @padding;
-    width: 100%;
+
+    /* Tables
+    --------------------------------------------- */
     
-    .time {
-      width: 20%;
-      min-width: 80px;
-    }
-    .topic, .presentor {
-      width: 30%;
-    }
-    .topic {
-      width: 45%;
-    }
+    table {
+    	border-collapse: collapse;
+    	border-spacing: 0;
+    	line-height: 1.4;
+    	margin-bottom: @padding;
+    	width: 100%;
+    	
+    	.time {
+        	width: 20%;
+        	min-width: 80px;
+    	}
+    	.topic, .presentor {
+        	width: 30%;
+    	}
+    	.topic {
+        	width: 45%;
+    	}
     
-    tbody {
-      border-top: 1px solid @border-color;
+        tbody {
+        	border-top: 1px solid @border-color;
+        }
+        
+        th,
+        td {
+          text-align: left;
+          vertical-align: top;
+          padding: .4em;
+        }
+        
+        th {
+            .bold-font();
+        	text-transform: uppercase;
+        }
     }
-    
-    th,
-    td {
-      text-align: left;
-      vertical-align: top;
-      padding: .4em;
-    }
-    
-    th {
-      .bold-font();
-      text-transform: uppercase;
-    }
-  }
 }
 

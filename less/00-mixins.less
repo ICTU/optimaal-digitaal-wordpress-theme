@@ -7,108 +7,332 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.1
-// @desc.   Aanzet voor redesign obv ontwerp Tamara de Haas voor Optimaal Digitaal Spel.
+// @version 2.11.2
+// @desc.   Contactinfo: overzichtspagina van tipgevers toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
 
-@import "00-colors.less";
-@import "00-sizes.less";
 @import "01-mixins-for-cardstyling.less";
 
 
+// break points ====================================================================
+
+@break_phone480:           	480px;
+@break_phone600:           	600px;
+@break_phone480_desing:    	480px;
+
+@break_tablet:              960px;
+@break_tablet_desing:       720px;
+
+@break_fullwidth:       	  1280px;
+@break_fullwidth_desing:    1280px;
+
+
+@max_width:                 1440px;
+
+// koeleuren =======================================================================
+@test2:                 blue;
+@test3:                 yellow;
+@test4:                 green;
+@test5:                 silver;
+@test6:                 brown;
+@test7:                 black;
+
+@paars:                 #9c27b0;
+@paars_sub:             #7b1fa2;
+
+@violet:                #C42C76;
+@violet_sub:            #ad1457;
+
+@groen:                 #388e3c;
+@groen_sub:             #1b5e20;
+
+@oranje:                #ef6c00;
+@oranje_sub:            #e65100;
+
+@blauw:                 #1976d2;
+@blauw_sub:             #0D47A1;
+
+@blauw2:                #004152;
+@blauw3:                #002F3E;
+
+@turquoise:             #00838f;
+@turquoise_sub:         #006064;
+
+@gmred:                 #D32F2F; // https://material.io/guidelines/style/color.html#color-color-palette
+@gmred_sub:             #B71C1C;
+
+@goud:                  #FFD900; // https://material.io/guidelines/style/color.html#color-color-palette
+@goud_sub:              #FCC101;
+@goud_header:           @txt;
+
+
+
+@kanaalsturing:         @oranje;
+@digitaaloporde:        @paars;
+@interndraagvlak:       @groen;
+@goedproces:            @blauw;
+@deelwerksamen:         @turquoise;
+@informatieveiligheid:  @gmred;
+
+@active_color:          #d81b60;
+
+@od_roze1:              #EC1561;
+
+@border-color:          #cacaca;
+@code-bg:               @border-color;
+@light_gray:            darken(@wit, 10%);
+@dark_gray:           	darken(@light_gray, 20%);
+
+@defaultcardbg:         darken(@light_gray, 50%);
+
+
+@comment-list-odd:      @wit;
+@comment-list-even:     @wit;
+
+@sidebar_bg:            @wit;
+@sidebarwidget:         @blauw3;
+@entry_bg:              @wit;
+
+@code:                  #1C5BB7;
+
+@defaultkaarkleur:      @oranje;
+@defaultkaarkleur_sub:  @oranje_sub;
+
+@nuttigelinks_bg:       #fafafa;
+@nuttigelinks_bg_hover: #F0F0F0;
+
+
+@boxshadow: 			      190;    
+
+@boxshadow: 			      2;    
+@boxshadow_opacity:     .1;    
+@boxshadow_op_hover:	  1;    
+
+@boxshadow_color: 		  rgba(@boxshadow,@boxshadow,@boxshadow, @boxshadow_opacity);    
+@boxshadow_color_hover: rgba(@boxshadow,@boxshadow,@boxshadow, @boxshadow_op_hover);    
+
+@menu_bg:               #cfd8dc;
+@menu_a_color:          #546e7a;
+
+@filter_form_bg:        #F5F5F5;
+
+@border_radius:         3px;
+
+// koeleuren voor de navigatiedinges ===============================================
+@nav_bg:                @wit;
+@header-bg-color: 		  @od_roze1;
+@nav_wrap_bg:           darken( @od_roze1, 10% );
+@mess_ok_color:         @groen;
+@mess_ok_bg:            lighten( @mess_ok_color, 50% );
+@mess_ok_border:        @mess_ok_color;
+
+@mess_error_color:      red;
+@mess_error_bg:         lighten( @mess_error_color, 50% );
+@mess_error_border:     @mess_error_color;
+@bodybgcolor:			@wit;
+
+
+// tekst-koeleuren, best belangrijk ================================================
+@txt:                   #000;
+@wit:                   #fff;
+
+@meta_color:            lighten(@txt, 10%);
+
+@a_hover:               @violet;
+@a-content-color:       @txt;
+@a-content-hover-color: @violet;
+
+// en button-koeleuren, ook belangrijk =============================================
+@button-normal:         @wit;
+@button-hover:          @wit;
+
+@button-sidebar-normal: darken(@groen, 18%);
+@button-sidebar-hover:  @blauw3;
+@button-sidebar-normal-color: @wit;
+
+@bbpress_badge_default: lighten(@txt,30%);
+
+// basisdingen om mee te kunnen rekenen ============================================
+@pixel:                 1px;
+@viewport:              1vw;
+@basefontsize:          12;
+@basefont:              ( @basefontsize * @pixel );
+
+@bigmargin:             0;
+
+@widget-area-button:    38px;
+
+@sidebar_marginright:   ( 4 * @padding );
+@sidebar_margin_top:    -143px;
+@sidebar_width:         ( 17 * @padding );
+
+@logowidth:             300px;
+@logoheight:            92px;
+
+@widget-area:           ( @break_tablet - ( @logowidth + @padding + 5px ) );
+
+@gutter:                16px;
+@padding:               16px;
+@contentpadding:        @padding;
+
+
+@position_navbar:       180px;
+@height_navbar:         43px;
+@adminbar:              32;
+@headerheight:          0;
+
+@headerimage_height:    150px;
+@headerimage_height_1:  400px;
+
+@widget_first_margin:   0;
+
+@klikicoon_groot_height:		62px;
+@klikicoon_groot_width: 		80px;
+
+@klikicoon_klein_height:		32px;
+@klikicoon_klein_width: 		30px;
+
+
+@singletip_width: 		900px;
+
+
+@skew: 					3deg;
+@brainsize: 			110px;
+@cardpadding: 			20px;
+
+
+// font-stijlen en -groottes =======================================================
+
+@ubuntubold: 			'ubuntubold', Helvetica, Arial, sans-serif;
+@ubunturegular:			'ubunturegular', Helvetica, Arial, sans-serif;
+@ubuntumedium: 			'ubuntumedium', Helvetica, Arial, sans-serif;
+@ubuntuitalic: 			'ubuntuitalic', Helvetica, Arial, sans-serif;
+@osansregular: 			'open_sansregular', Helvetica, Arial, sans-serif;
+@osansregular: 			'open_sansregular', Helvetica, Arial, sans-serif;
+@osanssemibold: 		'open_sanssemibold', Helvetica, Arial, sans-serif;
+
+@headerfont:            @ubunturegular;
+@headerfont_italic:     @ubuntuitalic;
+@headerfont_bold:     	@ubuntubold;
+@bodyfont:              @osansregular;
+@bodyfont_bold:         @osanssemibold;
+
+
+@header_color:          red;
+@header_color_2:        red;
+
+@fontsize_title_h1:     ( 2.9 * @basefontsize );
+@fontsize_title_h2:     28px;
+@fontsize_title_h3:     ( .9 * @fontsize_title_h2 );
+@fontsize_title_h4:     ( .8 * @fontsize_title_h2 );
+@fontsize_title_h5:     ( .7 * @fontsize_title_h2 );
+@fontsize_title_h6:     ( .6 * @fontsize_title_h2 );
+
+@fontsize_title_entrytitle: @fontsize_title_h1;
+
+
+// ten behoeve van het menu =========================================================
+
+@menubreedte:		350px;
+@menuhoogte:		650px;
+@contentbreedte:	700px;
+@grijs:				0;
+@padding:			16px;
+
+@timer: 			400ms;
+
+// search form op tip-pagina ========================================================
+@backlink_search_width: 30%;
+@backlink_anchor_width: ( 100% - @backlink_search_width );
+
+
 // instellingen voor tipgeverkaarten ================================================
-@tipgeverkaartbgkleur:        @light_gray;
-@tipgeverkaartbgkleur_hover:  @wit;
-@tipgeverkaartborderkleur:    @wit;
-@tipgeverkaartborderwidth:    1px;
-@tipgeverkaartgutterwidth:    5px;
-@tipgeverkaarttxtkleur:       @txt;
+@tipgeverkaartbgkleur: @light_gray;
+@tipgeverkaartbgkleur_hover: @wit;
+@tipgeverkaartborderkleur: @wit;
+@tipgeverkaartborderwidth: 1px;
+@tipgeverkaartgutterwidth: 5px;
+@tipgeverkaarttxtkleur: @txt;
 
 
-
-//=========================================================================================================
+// ==================================================================================
 // mixins
-//=========================================================================================================
+// ==================================================================================
 
 .mess_ok() {
 	background-color: @mess_ok_bg;
 	border: 1px solid @mess_ok_border;
 }
 
-//=========================================================================================================
-
 .mess_error() {
 	background-color: @mess_error_bg;
 	border: 1px solid @mess_error_border;
 }
 
-//=========================================================================================================
+.button-shared-pijltje-1() {
+//	background: red;
+}
+
+.button-shared-pijltje-1-hover() {
+//	background: blue;
+}
 
 .boxshadow_hover() {
 	box-shadow: @boxshadowwidth @boxshadowwidth @boxshadowspread 0px @boxshadow_color_hover;
 }
 
-//=========================================================================================================
-
 .boxshadow() {
 	box-shadow: @boxshadowwidth @boxshadowwidth @boxshadowspread 0px @boxshadow_color;
 }
 
-//=========================================================================================================
+
 
 .button-shared() {
-  
-  box-shadow: none;
-  color: @wit;
-  cursor: pointer;
-  text-transform: uppercase;
-  width: auto;
-  .inputpadding();
-  border-style: none;
-  padding: ( @padding / 2 ) ( @padding * 2 );
-  border-radius: 0;
+
+	box-shadow: none;
+	color: @wit;
+	cursor: pointer;
+	text-transform: uppercase;
+	width: auto;
+	.inputpadding();
+	border-style: none;
+	padding: ( @padding / 2 ) ( @padding * 2 );
+    border-radius: 0;
+    .button-shared-pijltje-1();
 	
 	&:hover,
 	&:active,
 	&:focus {
-    color: @button-normal;
-    text-decoration: underline;
+    	color: @button-normal;
+        text-decoration: underline;
+        .button-shared-pijltje-1-hover();
 	}
 }
 
-//=========================================================================================================
 
 .inputborder-shared() {
-  background-color: @wit;
-  box-shadow: 1px 1px 3px #eee inset;
-  color: @txt;
-  .font-size(14);
-  .inputpadding();
-  .inputborder();
-  width: 100%;
+    background-color: @wit;
+    box-shadow: 1px 1px 3px #eee inset;
+    color: @txt;
+    .font-size(14);
+    .inputpadding();
+    .inputborder();
+    width: 100%;
 }
-
-//=========================================================================================================
 
 .font-size(@input: 16) {
     font-size: unit( round( ( ( @input / @basefontsize ) * @basefontsize ), 0), px );
+//    font-size: ( ( @input / @basefontsize )  * @viewport );
 }
-
-//=========================================================================================================
 
 .inputborder() {
     border: 2px solid @txt;
 }
-
-//=========================================================================================================
-
 .inputpadding() {
 	padding: ( @padding / 2 );
 }
-
-//=========================================================================================================
 
 .testbg(@testcolor: '#f00') {
 //    background: @testcolor;
@@ -117,79 +341,76 @@
 //=========================================================================================================
 
 .visuallyhidden() {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
 //=========================================================================================================
 
 .visuallyvisual() {
-  border: inherit;
-  clip: auto;
-  height: auto;
-  margin: auto;
-  overflow: auto;
-  padding: inherit;
-  position: inherit;
-  width: auto;
+    border: inherit;
+    clip: auto;
+    height: auto;
+    margin: auto;
+    overflow: auto;
+    padding: inherit;
+    position: inherit;
+    width: auto;
 }
 
 //=========================================================================================================
+
 
 .visuallyhidden {
   .visuallyhidden();
 }
 
-//=========================================================================================================
 
 .active-menu() {
-  color: @wit;
-  text-decoration: underline;
-  background: lighten(@nav_wrap_bg, 10%);
+    color: @wit;
+    text-decoration: underline;
+    background: lighten(@nav_wrap_bg, 10%);
 }
 
-//=========================================================================================================
 
 .bold-font() {
-  font-family: @bodyfont_bold;
-  font-weight: bold;
+//    font-weight: 700;
+    font-family: @bodyfont_bold;
+    font-weight: bold;
 }
-
-//=========================================================================================================
 
 .visuallyhidden() { 
-  position: absolute; 
-  overflow: hidden; 
-  clip: rect(0 0 0 0); 
-  height: 1px; width: 1px; 
-  margin: -1px; padding: 0; border: 0; 
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; width: 1px; 
+    margin: -1px; padding: 0; border: 0; 
 }
 
-//=========================================================================================================
 
 .box-shadow (@string) {
-  -webkit-box-shadow: @string;
-  -moz-box-shadow:    @string;
-  box-shadow:         @string;
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
 }
 
 //========================================================================================================
 
 .content_margins(@margin_top, @margin_rechts, @margin_bottom, @margin_links) {
-  margin: @cardmargin @margin_rechts @margin_bottom @margin_links;
+	margin: @cardmargin @margin_rechts @margin_bottom @margin_links;
 }
 
 //========================================================================================================
 
-.setfont( @fontfamily, @fontsize: 16px ) {
-//  font-family: @fontfamily;
-  font-size: unit(@fontsize, px);
+.setfont(@fontfamily, @fontsize: 16px) {
+	font-family: @fontfamily;
+	font-size: unit(@fontsize, px);
 }
 
 //========================================================================================================
@@ -198,63 +419,66 @@
 @iconsize: 24px;
 
 .menubuttondesign() {
-  
-  background: transparent;
-  text-align: left;
-  font-size: 16px;
-  font-family: @headerfont;
-  border-radius: @border_radius;
-  height: @buttonsize;
-  padding: 0;
-  
-  span {
-    padding: 0;
-    margin: 0;
-    height: @buttonsize;
-    display: inline-block;
-  }
-  
-  span.icon {
+				
+	background: transparent;
+
+    text-align: left;
+	font-size: 16px;
+	font-family: @headerfont;
+	border-radius: @border_radius;
+	height: @buttonsize;
+//	width: @buttonsize;
+	padding: 0;
+
+	span {
+		padding: 0;
+		margin: 0;
+		height: @buttonsize;
+		display: inline-block;
+	}
+	span.icon {
+
     background: transparent url('images/icon-menu.png') no-repeat left top;
     background-image: url('images/icon-menu.svg'), none;
     background-size: @buttonsize @buttonsize;
     width: @buttonsize;
-  }	
-  
-  &:hover, &:active, &:focus {
-    color: @wit;
-    
-    span.icon {
-      background: transparent url('images/icon-menu-hover.png') no-repeat left top;
-      background-image: url('images/icon-menu-hover.svg'), none;
-    }	
-  }	
+
+	}	
+
+	&:hover, &:active, &:focus {
+		color: @wit;
+
+		span.icon {
+			background: transparent url('images/icon-menu-hover.png') no-repeat left top;
+		    background-image: url('images/icon-menu-hover.svg'), none;
+		}	
+	}	
 }
 
 //========================================================================================================
 
 .checkedzwart() {
-  background-image: url(images/checkbox-checked-zwart.png);
-  background-image: url('images/checkbox-checked-zwart.svg'), none;
+	background-image: url(images/checkbox-checked-zwart.png);
+	background-image: url('images/checkbox-checked-zwart.svg'), none;
 }
 
 //========================================================================================================
 
 .uncheckedzwart() {
-  background-image: url(images/checkbox-unchecked-zwart.png);
-  background-image: url('images/checkbox-unchecked-zwart.svg'), none;
+	background-image: url(images/checkbox-unchecked-zwart.png);
+	background-image: url('images/checkbox-unchecked-zwart.svg'), none;
 }
 
 
 //=========================================================================================================
 
 .icon_search_fill(@src, @fill-new) {
-  @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
-  @replace-default: 	escape('id="icon-search" fill="#999999"');
-  @replace-new: 		escape('id="icon-search" fill="@{fill-new}"');
-  @replacesrc1: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
-  
-  background-image: e(@replacesrc1);
+    @data-uri: 			data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+    @replace-default: 	escape('id="icon-search" fill="#999999"');
+    @replace-new: 		escape('id="icon-search" fill="@{fill-new}"');
+    @replacesrc1: 		replace("@{data-uri}", @replace-default, @replace-new, "g");
+
+    background-image: e(@replacesrc1);
 }
 
 //========================================================================================================
@@ -268,30 +492,30 @@
   @replacesrc2: 		  replace("@{data-uri}", @replace-default, @replace-new2, "g");
   
   background-image: e(@replacesrc1);
-  
+
   &:hover,
   &:active,
   &:focus {
     background-image: e(@replacesrc2);
   }
-  
+    
 }
 
 //========================================================================================================
 
 .search_form_submit_button(@iconcolor: red, @hover_bg_ncolor: red, @hover_icon_ncolor: red) {
-  background-image: url('images/icon-search.png');
-  .icon_search_fill('../images/icon-search.svg', @iconcolor);	
-  background-position: center center;
-  background-repeat: no-repeat;
-  
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: @hover_bg_ncolor;
-    .icon_search_fill('../images/icon-search.svg', @hover_icon_ncolor);	
-    border-color: @hover_icon_ncolor !important;
-  }
+    background-image: url('images/icon-search.png');
+	.icon_search_fill('../images/icon-search.svg', @iconcolor);	
+    background-position: center center;
+    background-repeat: no-repeat;
+
+	&:hover,
+	&:active,
+	&:focus {
+        background-color: @hover_bg_ncolor;
+		.icon_search_fill('../images/icon-search.svg', @hover_icon_ncolor);	
+        border-color: @hover_icon_ncolor !important;
+    }
 }	        
 
 //=========================================================================================================

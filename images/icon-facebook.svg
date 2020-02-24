@@ -1,1 +1,12 @@
-<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m14.5 4.06996841h-1.5170473c-.7473131 0-1.3537181.60623253-1.3537181 1.35371809v1.02964671h2.8707654v3.06979594h-2.8707654v9.45291565h-4.03476635v-9.45291565h-2.59446825v-3.06979594h2.59446825v-1.836462c0-1.99754911 1.6193221-3.61687121 3.61652625-3.61687121h3.2890055z" fill="#fff" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-facebook" fill="#FFFFFF">
+            <path d="M14.5,4.06996841 L12.9829527,4.06996841 C12.2356396,4.06996841 11.6292346,4.67620094 11.6292346,5.4236865 L11.6292346,6.45333321 L14.5,6.45333321 L14.5,9.52312915 L11.6292346,9.52312915 L11.6292346,18.9760448 L7.59446825,18.9760448 L7.59446825,9.52312915 L5,9.52312915 L5,6.45333321 L7.59446825,6.45333321 L7.59446825,4.61687121 C7.59446825,2.6193221 9.21379035,1 11.2109945,1 L14.5,1 L14.5,4.06996841 Z"></path>
+        </g>
+    </g>
+</svg>

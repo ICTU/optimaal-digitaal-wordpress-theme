@@ -1,1 +1,25 @@
-<svg height="71" viewBox="0 0 1180 71" width="1180" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m0 2h1187.90625v50h-1187.90625z" fill="#c2c2c2"/><path d="m9.02558 9.001984h40.136054v40h-40.136054z" fill="#c2c2c2" transform="matrix(.70710678 -.70710678 .70710678 .70710678 548.915182 42.066772)"/><g fill="#efefef"><path d="m0 0h1187.90625v50h-1187.90625z"/><path d="m9.03429 9.000664h40.136054v40h-40.136054z" transform="matrix(.70710678 -.70710678 .70710678 .70710678 548.918666 39.072544)"/></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1180px" height="71px" viewBox="0 0 1180 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>filter-hover</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="filter-hover">
+            <g id="SELECTED">
+                <g id="line:_ad1457" transform="translate(0.000000, 2.000000)" fill="#C2C2C2">
+                    <rect id="Rectangle-path" x="0" y="0" width="1187.90625" height="50"></rect>
+                </g>
+                <g id="arrow:_ad1457" transform="translate(560.901361, 13.000000)" fill="#C2C2C2">
+                    <rect id="Rectangle-path" transform="translate(29.093608, 29.001984) rotate(-45.000000) translate(-29.093608, -29.001984) " x="9.02558045" y="9.00198436" width="40.1360544" height="40"></rect>
+                </g>
+                <g id="bg:_eee" fill="#EFEFEF">
+                    <rect id="Rectangle-path" x="0" y="0" width="1187.90625" height="50"></rect>
+                </g>
+                <g id="bg:_eee-2" transform="translate(560.901361, 10.000000)" fill="#EFEFEF">
+                    <rect id="Rectangle-path" transform="translate(29.102317, 29.000664) rotate(-45.000000) translate(-29.102317, -29.000664) " x="9.03428963" y="9.00066402" width="40.1360544" height="40"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
