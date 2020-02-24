@@ -1,0 +1,14 @@
+{
+  "name": "ictu/ictuwp-theme-optimaaldigitaal",
+  "type": "wordpress-theme",
+  "license": "GPL-3.0",
+  "description": "Theme voor Optimaal Digitaal",
+  "homepage": "https://optimaaldigitaal.gebruikercentraal.nl",
+  "authors": [
+    {
+      "name": "Paul van Buuren",
+      "email": "paul@wbvb.nl",
+      "homepage": "https://wbvb.nl"
+    }
+  ]
+}
