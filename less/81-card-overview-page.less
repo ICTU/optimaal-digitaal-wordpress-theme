@@ -155,8 +155,15 @@
 			}
 		}
 		&.icon-gloeilamp .contentinfo {
-	    .iconaddfill('../images/icon-gloeilamp-card-bg.svg', '#000000');
-	
+			.iconaddfill('../images/icon-gloeilamp-card-bg.svg', '#000000');
+			
+			&:after {
+				content: '';
+			}
+		}
+		&.icon-inclusie .contentinfo {
+			.iconaddfill('../images/icon-inclusie-card-bg.svg', '#ffffff');
+			
 			&:after {
 				content: '';
 			}
@@ -310,6 +317,7 @@
 	.tipsstyling(turquoise, @turquoise, @turquoise_sub, @turquoise_sub, @wit, @turquoise );
 	.tipsstyling(bruin, @gmred, @gmred_sub, @gmred_sub, @wit, @gmred );
 	.tipsstyling(goud, @goud, @goud_sub, @goud_sub, @txt, @goud_header );
+	.tipsstyling(inclusie, @inclusie, @inclusie_sub, @inclusie_sub, @wit, @wit );
 
   .single-tips.goud {
 
