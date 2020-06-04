@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.4
-// @desc.   Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
+// @version 2.12.1
+// @desc.   Kleur en icoon voor inclusie toegevoegd.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -46,8 +46,8 @@ $genesis_js_no_js->run();/**
 
 define( 'CHILD_THEME_NAME', 'Optimaal Digitaal' );
 define( 'CHILD_THEME_URL', 'https://github.com/ICTU/optimaal-digitaal-wordpress-theme' );
-define( 'CHILD_THEME_VERSION', '2.11.4' );
-define( 'CHILD_THEME_DESCRIPTION', "2.11.4 Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen." );
+define( 'CHILD_THEME_VERSION', '2.12.1' );
+define( 'CHILD_THEME_DESCRIPTION', "2.12.1 Kleur en icoon voor inclusie toegevoegd." );
 
 define( 'WP_THEME_DEBUG', false );
 define( 'HALFWIDTH', 'halfwidth' );
