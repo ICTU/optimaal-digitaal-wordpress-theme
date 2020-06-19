@@ -451,8 +451,10 @@ function od_tip_custom_content() {
 	    }
 	
 
-	    if ( ( $contactformulier ) &&
-	    	( $nuttigelinks ) &&
+//	    if ( ( $contactformulier ) &&
+//	    	( $nuttigelinks ) &&
+//			( $onderzoek ) ) {
+	    if ( ( $nuttigelinks ) &&
 			( $onderzoek ) ) {
 		    
 	
@@ -460,13 +462,10 @@ function od_tip_custom_content() {
 			$spring_naar_contactformulier_tekst	= get_field('spring_naar_contactformulier_tekst', 'option');
 			$spring_naar_contactformulier_cta	= get_field('spring_naar_contactformulier_cta', 'option');
 		    
-	//		echo '<section class="contactformulierjump hasboxshadow">';
 			echo '<section class="nuttigelinks contactformulierjump">';
-	
-	
-			echo '<div>
-			<a href="#' . ID_reactieformulier . '" id="jumptosuggestie" class="hasboxshadow jumptosuggestie"><div>';
-	
+			echo '<div>';
+//			echo '<a href="#' . ID_reactieformulier . '" id="jumptosuggestie" class="hasboxshadow jumptosuggestie">';
+			echo '<div>';
 			echo '<h2>';
 			if ( $spring_naar_contactformulier_titel )  {
 				echo  $spring_naar_contactformulier_titel;
@@ -491,8 +490,9 @@ function od_tip_custom_content() {
 				echo  __( "Stuur hier in", 'gebruikercentraal' );
 			}
 			echo '</span>';
-			echo '</div></a></div>';
-	
+			echo '</div>';
+//			echo '</a>';
+			echo '</div>';
 			echo '</section>';
 	    }
 	
