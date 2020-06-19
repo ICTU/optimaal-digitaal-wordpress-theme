@@ -5,13 +5,14 @@
 Dit theme wordt gebruikt op [optimaaldigitaal.gebruikercentraal.nl](https://optimaaldigitaal.gebruikercentraal.nl)
 
 ## Version
-Current: 2.12.1 - Kleur en icoon voor inclusie toegevoegd.
+Current: 2.12.2 - Doorklik naar reactieformulier aangepast.
 
 ## Contact
 * Victor Zuydweg
 * Paul van Buuren: paul@wbvb.nl
 
 ## Version history
+* 2.12.2 - Doorklik naar reactieformulier aangepast.
 * 2.12.1 - Kleur en icoon voor inclusie toegevoegd.
 * 2.11.4 - Contactinfo overzichtspagina tipgevers: kolombreedte aangepast voor smallere schermen.
 * 2.11.3 - Contactinfo: visitekaartje op single met achtergrondkleur.

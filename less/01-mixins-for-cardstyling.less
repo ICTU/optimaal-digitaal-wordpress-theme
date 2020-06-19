@@ -7,8 +7,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 2.11.3
-// @desc.   Contactinfo: visitekaartje op single met achtergrondkleur.
+// @version 2.12.2
+// @desc.   Doorklik naar reactieformulier aangepast.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -116,9 +116,12 @@
 
 
 		
-    .nuttigelinks a,
-    .nuttigelinks section a,
-    .contactformulierjump section a {
+/*		
+*/
+	
+    .nuttigelinks a.jumptosuggestie,
+    .nuttigelinks section a.jumptosuggestie,
+    .contactformulierjump section a.jumptosuggestie {
 
       @media only screen and (min-width: ( @break_phone600 + 1 ) ) {
         background: @nuttigelinks_bg url('images/icon-arrow.png') no-repeat right center;
@@ -149,12 +152,17 @@
       }
     }	
 
+
 		.contactformulierjump {
-			.jumptosuggestie {
+//			.jumptosuggestie {
 				div {
 				    .iconaddfill('../images/icon-lamp.svg', @kleur);
+				    background-size: 8rem 8rem;
+				    padding-left: 10rem;
+				    background-repeat: no-repeat;
+				    background-position: left top;
 			    }
-			}
+//			}
 		}
 	} 
 	

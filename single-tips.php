@@ -8,8 +8,8 @@
 // @package optimaal-digitaal
 // @author  Paul van Buuren
 // @license GPL-2.0+
-// @version 3.1.4
-// @desc.   Contactformulier is nu optioneel.
+// @version 2.12.2
+// @desc.   Doorklik naar reactieformulier aangepast.
 // @link    https://github.com/ICTU/optimaal-digitaal-wordpress-theme
 ///
 
@@ -465,7 +465,7 @@ function od_tip_custom_content() {
 			echo '<section class="nuttigelinks contactformulierjump">';
 			echo '<div>';
 //			echo '<a href="#' . ID_reactieformulier . '" id="jumptosuggestie" class="hasboxshadow jumptosuggestie">';
-			echo '<div>';
+//			echo '<div>';
 			echo '<h2>';
 			if ( $spring_naar_contactformulier_titel )  {
 				echo  $spring_naar_contactformulier_titel;
@@ -492,7 +492,7 @@ function od_tip_custom_content() {
 			echo '</span>';
 			echo '</div>';
 //			echo '</a>';
-			echo '</div>';
+//			echo '</div>';
 			echo '</section>';
 	    }
 	
