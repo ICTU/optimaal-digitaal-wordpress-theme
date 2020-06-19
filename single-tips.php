@@ -482,14 +482,15 @@ function od_tip_custom_content() {
 				echo  __( "Heeft u een eigen voorbeeld, eigen case of andere aanvulling waar anderen iets aan hebben? Laat het ons weten. Optimaal Digitaal draait immers om het delen van goede ideeën.", 'gebruikercentraal' );
 			}
 	
-			echo ' <span>';
-			if ( $spring_naar_contactformulier_cta )  {
-				echo  $spring_naar_contactformulier_cta;
-			}
-			else {
-				echo  __( "Stuur hier in", 'gebruikercentraal' );
-			}
-			echo '</span>';
+//			echo ' <span>';
+//			if ( $spring_naar_contactformulier_cta )  {
+//				echo  $spring_naar_contactformulier_cta;
+//			}
+//			else {
+//				echo  __( "Stuur hier in", 'gebruikercentraal' );
+//			}
+//			echo '</span>';
+
 			echo '</div>';
 //			echo '</a>';
 //			echo '</div>';
