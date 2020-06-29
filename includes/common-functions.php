@@ -303,34 +303,34 @@ add_filter( 'login_redirect', 'od_wbvb_login_redirect', 10, 3 );
 //========================================================================================================
 
 
-add_filter( 'genesis_after', 'od_wbvb_add_piwik_code', 999 );
+//add_filter( 'genesis_after', 'od_wbvb_add_piwik_code', 999 );
 
-function od_wbvb_add_piwik_code() {
-
-
-  if ( 'optimaaldigitaal.gebruikercentraal.nl' == $_SERVER["HTTP_HOST"] || 'www.optimaaldigitaal.nl' == $_SERVER["HTTP_HOST"]  || 'optimaaldigitaal.nl' == $_SERVER["HTTP_HOST"] ) { 
-        echo '<!-- Piwik -->
-      <script type="text/javascript">
-      var _paq = _paq || [];
-      _paq.push([\'trackPageView\']);
-      _paq.push([\'enableLinkTracking\']);
-      (function() {
-      var u="//statistiek.rijksoverheid.nl/piwik/";
-      _paq.push([\'setTrackerUrl\', u+\'/js/tracker.php\']);
-      _paq.push([\'setSiteId\', 519]);
-      var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0];
-      g.type=\'text/javascript\'; g.async=true; g.defer=true; g.src=u+\'piwik.js\'; s.parentNode.insertBefore(g,s);
-      })();
-      </script>
-      <noscript><p><img src="//statistiek.rijksoverheid.nl/piwik//js/tracker.php?idsite=519" style="border:0;" alt="" /></p></noscript>
-      <!-- End Piwik Code -->​​';
-    }
-    else {
-        if ( WP_DEBUG ) {
-          echo '<!-- Geen Piwik: ' . $_SERVER["HTTP_HOST"] . '-->';
-        }
-    }
-}
+//	function od_wbvb_add_piwik_code() {
+//	
+//	
+//	  if ( 'optimaaldigitaal.gebruikercentraal.nl' == $_SERVER["HTTP_HOST"] || 'www.optimaaldigitaal.nl' == $_SERVER["HTTP_HOST"]  || 'optimaaldigitaal.nl' == $_SERVER["HTTP_HOST"] ) { 
+//	        echo '<!-- Piwik -->
+//	      <script type="text/javascript">
+//	      var _paq = _paq || [];
+//	      _paq.push([\'trackPageView\']);
+//	      _paq.push([\'enableLinkTracking\']);
+//	      (function() {
+//	      var u="//statistiek.rijksoverheid.nl/piwik/";
+//	      _paq.push([\'setTrackerUrl\', u+\'/js/tracker.php\']);
+//	      _paq.push([\'setSiteId\', 519]);
+//	      var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0];
+//	      g.type=\'text/javascript\'; g.async=true; g.defer=true; g.src=u+\'piwik.js\'; s.parentNode.insertBefore(g,s);
+//	      })();
+//	      </script>
+//	      <noscript><p><img src="//statistiek.rijksoverheid.nl/piwik//js/tracker.php?idsite=519" style="border:0;" alt="" /></p></noscript>
+//	      <!-- End Piwik Code -->​​';
+//	    }
+//	    else {
+//	        if ( WP_DEBUG ) {
+//	          echo '<!-- Geen Piwik: ' . $_SERVER["HTTP_HOST"] . '-->';
+//	        }
+//	    }
+//	}
 
 
 //========================================================================================================
